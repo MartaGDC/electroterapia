@@ -1,0 +1,60 @@
+.range-picker {
+  display: flex;
+  flex-direction: column;
+  --background: none !important;
+
+  ion-label {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    
+    div {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        display: flex;
+        width: 60%;
+        font-size: 1rem;
+        color: var(--ion-color-primary);
+        font-weight: 600;
+
+      }
+      .info {
+        display: flex;
+        align-items: center;
+        color: var(--ion-color-primary);
+        margin-left: 10px;
+        font-weight: 600;
+        opacity: 1 !important;
+      }
+
+      input {
+        width: 40%;
+        background-color: none;
+      }
+
+      span {
+        font-size: 1rem;
+        white-space: nowrap;
+        font-weight: bold;
+        width: 75px;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: end;
+        padding-right: 20px;
+      }
+    }
+  }
+
+  ion-range {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 0;
+    height: 100%;
+    --bar-background: var(--ion-color-blanco);
+    --bar-background-active: var(--ion-color-secondary);
+  }
+}

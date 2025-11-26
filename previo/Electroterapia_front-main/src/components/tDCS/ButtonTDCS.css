@@ -1,0 +1,18 @@
+.active-tdcs-elec {
+  --background: var(--ion-color-dark) !important;
+}
+
+.content-tdcs-modal {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 50%;
+}
+
+.buttons-tdcs {
+  display: flex;
+}
+
+.tdcs-main-button {
+  width: 100%;
+}

@@ -1,0 +1,1182 @@
+{
+  "LOGIN": {
+    "INICIAR_SESION": "Inicio de sesión",
+    "USUARIO": "Usuario",
+    "USUARIO_PLACEHOLDER": "Introduzca su nombre de usuario",
+    "CONTRASENA": "Contraseña",
+    "CONTRASENA_PLACEHOLDER": "Introduzca su contraseña",
+    "BUTTON": "Iniciar sesión",
+    "ERROR": "Inicio de sesión incorrecto"
+  },
+  
+  "MENU": {
+    "HOME": "Página principal",
+    "APRENDIZAJE": "Aprendizaje",
+    "SIMULACION": "Simulación",
+    "EVALUACION": "Evaluación",
+    "USUARIOS": "Usuarios",
+    "AJUSTES": "Ajustes",
+    "CERRAR_SESION": "Cerrar sesión"
+  },
+
+  "AJUSTES": {
+    "CONTRASENA": {
+      "CONTRASENA": "Contraseña",
+      "CAMBIO": "Cambio de contraseña",
+      "ACTUAL": "Contraseña (actual)",
+      "ACTUAL_PH": "Introduzca su contraseña actual",
+      "NUEVA": "Nueva contraseña",
+      "NUEVA_PH": "Introduzca su nueva contraseña",
+      "REPETIR": "Repita la nueva contraseña",
+      "REPETIR_PH": "Introduzca de nuevo su nueva contraseña",
+      "BUTTON": "Cambiar contraseña"
+    },
+    "ESTADISTICAS": {
+      "ESTADISTICAS": "Estadísticas"
+    },
+    "IDIOMA": {
+      "IDIOMA": "Idioma",
+      "IDIOMA_PH": "Selecciona el idioma"
+    }
+  },
+
+  "HOME": {
+    "SUB_APRENDIZAJE": "Explora cada simulador, practica sin límites y accede a información teórica para comprender los conceptos de electroterapia",
+    "SUB_SIMULACION": "Simula el uso de un equipo de electroterapia en un entorno clínico realista. Configura los parámetros, coloca los electrodos sobre el cuerpo y practica sin evaluación ni ayuda teórica",
+    "SUB_EVALUACION": "Resuelve casos prácticos creados por tu profesor. El sistema registra tus acciones para que puedan ser evaluadas posteriormente. ¡Pon en práctica tus conocimientos como si estuvieras en un entorno real!",
+    "SUB_ALUMNOS": "Crea y elimina usuarios de la aplicación"
+  },
+
+  "APRENDIZAJE": {
+    "EQUIPOS": "Equipos de electroterapia"
+  },
+
+  "SIMULACION": {
+    "EQUIPOS": "Equipos de electroterapia"
+  },
+
+  "ALUMNOS": {
+    "SELECCIONAR": "Seleccionar todos",
+    "CREAR": "Crear usuarios",
+    "CONFIRMAR":"Confirmar",
+    "BUTTON": "Crear",
+    "PROFESOR": {
+      "TITLE": "Crear profesor",
+      "LABEL": "NIP",
+      "PH": "Introduzca el NIP del profesor"
+    },
+    "UNICO": {
+      "TITLE": "Crear alumno",
+      "LABEL": "NIP",
+      "PH": "Introduzca el NIP del estudiante"
+    },
+    "VARIOS": {
+      "TITLE": "Crear alumnos",
+      "LABEL": "Arrastre un fichero o haga click para subirlo"
+    },
+    "LISTA": {
+      "ALUMNO": "Alumno",
+      "PROFESOR": "Profesor"  
+    },
+    "ALERTAS":{
+      "USUARIO_OK": "Usuario creado correctamente",
+      "USUARIO_ERROR": "No se pudo crear el usuario"
+    },
+    "FICHERO": {
+      "ALERTA_CREAR": {
+        "H1": "Creación de",
+        "H2": "usuarios",
+        "SH1": "¿Está seguro de que quiere crear",
+        "SH2": "usuarios?",
+        "MSG1": "Se crearán",
+        "MSG2": "usuarios alumno"
+      },
+      "ALERTA_ERROR": {
+        "H": "Error en la creación",
+        "SH": "Algunos alumnos no fueron creados",
+        "MSG": "Los siguientes alumnos no fueron creados:",
+        "BUTTON": "Aceptar"
+      }
+    }
+  },
+
+  "ACTIVIDAD": {
+    "TITLE": "Nueva actividad",
+    "CONFIRMAR":"Confirmar",
+    "NOMBRE": {
+      "LABEL": "Nombre de la actividad",
+      "PH": "Introduzca el nombre de la actividad"
+    },
+    "CODIGO": {
+      "LABEL": "Código",
+      "PH": "Introduzca el código de la actividad",
+      "COPIADO": "Código copiado"
+    },
+    "DESCRIPCION": {
+      "TITLE": "Descripción de la actividad",
+      "LABEL": "Descripción",
+      "PH": "Introduzcla una descripción de la actividad"
+    },
+    "ESTADO": {
+      "LABEL": "Estado de la actividad",
+      "ABIERTO": "Abierta",
+      "CERRADO": "Cerrada"
+    },
+    "DETALLES": "Detalles de la actividad",
+    "RESPUESTAS": "Respuestas de la actividad",
+    "CAMBIADA": "Actividad actualizada",
+    "ERROR_CAMBIO": "Error al actualizar. Vuelva a intentarlo más tarde",
+    "GUARDAR": "Guardar",
+    "ELIMINAR": "Eliminar",
+    "ALERT_ELIMINAR": {
+      "HEADER": "Eliminar sala",
+      "SUBHEADER": "¿Está seguro de que quiere eliminar la sala?",
+      "MSG": "Se perderán todos los datos asociados a esta sala"
+    },
+    "ERROR": {
+      "REALIZADA": "La actividad ya ha sido realizada",
+      "CERRADA": "Actividad cerrada"
+    },
+    "MODAL_ENTRAR": {
+      "TITLE": "Iniciar actividad",
+      "CANCELAR": "Cancelar",
+      "ENTRAR": "Entrar"
+    },
+    "NOTA": {
+      "NO_REALIZADA": "No realizada",
+      "SIN_CALIFICAR": "Sin calificar"
+    },
+    "EVALUAR": {
+      "BUTTON": "Evaluar actividad",
+      "CANCELAR": "Cancelar",
+      "EVALUAR": "Evaluar",
+      "LABEL": "Nota (0-10)",
+      "PH": "Introduzca una nota del 0 al 10"
+    }
+  },
+
+  "VISUALIZADOR": {
+    "TITLE": "Visualizador",
+    "MATERIALES": "Materiales",
+    "FIJOS": "Parámetros fijos",
+    "VARIABLES": "Parámetros variables"
+  },
+
+  "EVALUACION": {
+    "ACTIVIDADES": "Mis actividades",
+    "NUEVA_ACTIVIDAD": "Nueva actividad",
+    "CODIGO": "Código de la actividad",
+    "CODIGO_PLACEHOLDER": "Introduzca el código de la actividad",
+    "CODIGO_BUTTON": "Enviar",
+    "ESTADISTICAS": "Estadísticas"
+  },
+
+  "ESTADISTICAS": {
+    "NOTA_MEDIA": "Nota media",
+    "MEJOR_NOTA": "Mejor nota",
+    "PEOR_NOTA": "Peor nota",
+    "ACTIVIDADES_REALIZADAS": "Actividades realizadas",
+    "ACTIVIDADES_CORREGIDAS": "Actividades corregidas",
+    "ACTIVIDADES_APROBADAS": "Actividades aprobadas",
+    "ACTIVIDADES_SUSPENDIDAS": "Actividades suspendidas"
+  },
+
+  "MATERIALES": {
+    "AGUJA": "Aguja",
+    "CAUCHO": "Caucho",
+    "ADHESIVO": "Adhesivo"
+  },  
+
+
+  "MENU_MATERIALES": {
+    "APLICADOR": {
+      "TITULO": "Aplicadores",
+      "LABEL": "Tipo de aplicador",
+      "APLICADOR": {
+        "LABEL": "Aplicador",
+        "PH": "Seleccionar aplicador"
+      },
+      "PH": "Tipo de aplicador",
+      "OPCIONES": [
+        "Sin tipo específico",
+        "Electrodos",
+        "Aplicador"
+      ],
+      "OPCIONES_APLICADOR": [
+        "Diatermia",
+        "Onda corta",
+        "Microondas",
+        "Infrarrojos",
+        "Láser",
+        "Ultravioletas",
+        "Magnetoterapia",
+        "Ultrasonidos",
+        "Ondas de choque"
+      ]
+    },
+    "ELECTRODOS": {
+      "LABEL": "Electrodos",
+      "PH1": "Material del electrodo",
+      "PH2": "Tamaño del electrodo",
+      "LABEL2": "Tamaño",
+      "AGUJA": "Aguja",
+      "CAUCHO": "Caucho",
+      "ADHESIVO": "Adhesivo"
+    },
+    "COMPLEMENTOS": {
+      "LABEL": "Complementos de los aplicadores",
+      "ESPONJA": "Esponja humedecida",
+      "GORRO": "Gorro tDCS",
+      "COMPLEMENTO_OPTIONS": [
+        "Esponja humedecida",
+        "Gorro tDCS",
+        "Cincha",
+        "Cubeta de agua",
+        "Gasas"
+      ]
+    },
+    "CONDUCCION": {
+      "LABEL": "Productos de conducción",
+      "CONDUCCION_OPTIONS": [
+        "Aceite vegetal",
+        "Gel US",
+        "Clorhexidina y desinfectante",
+        "Gel salino tDCS"
+      ]
+    },
+    "PROTECCION": {
+      "LABEL": "Productos de protección",
+      "PROTECCION_OPTIONS": [
+        "Clorhexidina",
+        "Gafas de protección",
+        "Guantes"  
+      ]
+    },
+    "LEYENDA": {
+      "TITULO": "Materiales seleccionados",
+      "CONFIRMAR": "Confirmar",
+      "CANAL1": "Canal 1",
+      "CANAL2": "Canal 2",
+      "APLICADOR": "Aplicador",
+      "ANODO1": {
+        "LABEL1": "Ánodo C1 (Canal 1)",
+        "LABEL2": "Tamaño"
+      },
+      "CATODO1": {
+        "LABEL1": "Cátodo C1 (Canal 1)",
+        "LABEL2": "Tamaño"
+      },
+      "ANODO2": {
+        "LABEL1": "Ánodo C2 (Canal 2)",
+        "LABEL2": "Tamaño"
+      },
+      "CATODO2": {
+        "LABEL1": "Cátodo C2 (Canal 2)",
+        "LABEL2": "Tamaño"
+      }
+    },
+    "FARMACOS": {
+      "LABEL": "Fármacos y sustancias para iontoforesis",
+      "OPCIONES":[
+        "Dexametasona sódica fosfato (0,4%)",
+        "Ácido acético (2–5%)",
+        "Salicilato sódico (2%)",
+        "Ioduro de potasio (5%)",
+        "Cloruro de calcio (2%)",
+        "Ketoprofeno gel (2,5%)",
+        "Diclofenaco sódico gel (1-5%)",
+        "Lidocaína (4%)",
+        "Hidrocortisona (1%)",
+        "Zinc sulfato (0,5%)",
+        "Hialuronidasa (150 U/mL)",
+        "Pilocarpina (0,5%)",
+        "Diclofenaco gel (1–5%)",
+        "Ketoprofeno gel (2,5%)",
+        "Piroxicam gel (0,5–1%)",
+        "Ibuprofeno gel (5%)",
+        "Indometacina gel (1%)"
+      ]
+    }
+  },
+
+  "TAMAÑOS_AGUJA": {
+    "0": "13 mm",
+    "1": "25 mm",
+    "2": "30 mm",
+    "3": "40 mm",
+    "4": "50 mm",
+    "5": "60 mm",
+    "6": "75 mm",
+    "7": "100 mm"
+  },
+
+  "TAMAÑOS_CAUCHO_ADHESIVO": {
+    "0": "Pequeño (2 x 2 cm)",
+    "1": "Mediano (5 x 5 cm)",
+    "2": "Intermedio (6 x 8 cm)",
+    "3": "Grande (8 x 12 cm)",
+    "4": "Muy grande (12 x 18 cm)",
+    "5": "Extra grande (15 x 20 cm)",
+    "6": "Circular (35 cm²)"
+  },
+
+  "GALVANICA": {
+    "GALVANICA": { 
+      "0": "Galvánica", "1": "Galvánica - Electrólisis Percutánea", "2": "Galvánica - Electrólisis Percutánea", "3": "Galvánica - tDCS"
+    },
+    "INFORMACION": "Información",
+
+    "INICIAR": "Iniciar tratamiento",
+    "CANCELAR": "Cancelar",
+    
+    "ELECTRODOS": { 
+      "ELECTRODOS": "Electrodos",
+      "CATODO": { "LABEL": "Cátodo (-, negro)", "PH": "Material del electrodo" },
+      "ANODO": { "LABEL": "Ánodo (+, rojo)", "PH": "Material del electrodo" },
+      "TAMAÑO": {"LABEL": "Tamaño", "PH": "Tamaño del electrodo"}
+    },
+
+    "TECNICAS": {
+      "LABEL": "Técnicas",
+      "PH": "Seleccionar técnica",
+      "OPCIONES": [ "Configuración manual", "Electrólisis Percutánea Alta intensidad", "Electrólisis Percutánea Baja intensidad", "tDCS" ]
+    },
+
+    "TIEMPO_TRATAMIENTO": "Tiempo de tratamiento",
+    "RAMPA": "Tiempo de rampa",
+    "INTENSIDAD":"Intensidad",
+    
+    "CONCEPTO": "Concepto",
+    "EFECTOS_POLARES": "Efectos polares",
+    "INDICACIONES": "Indicaciones",
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "DOSIS_MAXIMA": "Dosis máxima recomendada",
+    "RIESGO_QUEMADURA": "Riesgo de quemadura galvánica",
+    "TDCS": {
+      "TITULO_APRENDIZAJE": "Colocar electrodos",
+      "TITULO_SIMULACION": "Ver electrodos - Gorro tDCS",
+      "CONFIRMAR": "Confirmar",
+      "LABEL": "Posición del ánodo",
+      "PH": "Pulse el botón y seleccione la zona",
+
+      "C3": "C3: Corteza somato-sensorial y motora primaria izquierda",
+      "C4": "C4: Corteza somato-sensorial y motora primaria derecha",
+      "F3": "F3: Corteza frontal izquierda",
+      "F4": "F4: Corteza frontal derecha",
+      "FP1": "Fp1: Corteza prefrontal dorso-lateral izquierda",
+      "FP2": "Fp2: Corteza prefrontal dorso-lateral derecha",
+      "F7": "F7",
+      "F8": "F8",
+      "T3": "T3",
+      "T4": "T4",
+      "A1": "A1",
+      "A2": "A2",
+      "T5": "T5",
+      "T6": "T6",
+      "P3": "P3",
+      "P4": "P4",
+      "PZ": "PZ",
+      "CZ": "CZ",
+      "FZ": "FZ",
+      "O1": "O1",
+      "O2": "O2"
+    },
+
+    "CONCEPTO_TEXTO": "La corriente continua (CC) es una forma de corriente eléctrica con flujo constante y unidireccional de electrones. Su frecuencia es 0 Hz (o, más correctamente, infinita, al no haber alternancia de polaridad). Se emplea principalmente por sus efectos polares y químicos, siendo la base de técnicas como la electrólisis percutánea, la iontoforesis o la estimulación transcraneal por corriente directa (tDCS).",
+    "EFECTOS_POLARES_TEXTO": "En el electrodo positivo (ánodo) se produce una reacción ácida (analgesia). En el electrodo negativo (cátodo) se produce una reacción básica (irritación).",
+    "INDICACIONES_LISTA": [
+      "Analgesia (+)",
+      "Anti-inflamatorio en procesos agudos (+)",
+      "Regeneración (-)",
+      "Irritación en procesos crónicos (-)",
+      "Hiperhidrosis",
+      "Iontoforesis"
+    ],
+    "CONTRAINDICACIONES_LISTA": [
+      "Marcapasos, neuroestimuladores",
+      "Embarazo",
+      "Procesos cancerígenos",
+      "Heridas",
+      "Problemas de sensibilidad en la piel"
+    ],
+    "BASES_FISICAS": {
+      "TITULO": "Bases físicas",
+      "TEXTO": "Se genera por una diferencia de potencial constante entre dos electrodos. Al ser una corriente neta, sin inversión de polaridad, su carga acumulada en los tejidos no es cero. Esta característica la diferencia de las corrientes alternas y produce efectos de tipo químico. Debido a la elevada resistencia inicial de la piel y la incomodidad que puede generar, se aplican rampas de entrada y salida para aumentar y disminuir la intensidad de forma progresiva."
+    },
+    "EFECTOS_FISIOLOGICOS": {
+      "TITULO": "Efectos fisiológicos principales",
+      "P1": "Cuando la corriente continua atraviesa el cuerpo humano, se producen varios fenómenos biológicos fundamentales: \n <ol>  <li><strong>Electrólisis tisular:</strong> bajo el electrodo negativo (cátodo) se produce alcalinización del medio (generación de OH⁻), mientras que bajo el positivo (ánodo) se produce acidificación (generación de H⁺). Estos cambios de pH pueden afectar directamente a las proteínas, membranas celulares y procesos inflamatorios.</li>\n  <li><strong>Electroforesis:</strong> favorece la migración de iones en función de su carga hacia el electrodo de polaridad opuesta, lo cual se emplea terapéuticamente para administrar fármacos en <strong>iontoforesis</strong>.</li>\n  <li><strong>Efecto térmico leve:</strong> aunque no es la finalidad de la corriente continua, puede haber un leve aumento de temperatura en los tejidos por el paso sostenido de electrones, sobre todo si la intensidad es elevada o el tiempo prolongado.</li> </ol>",
+      "P2": "A partir de estos efectos primarios, se derivan beneficios clínicos: <ul>  <li><strong>Electroanalgesia:</strong> los cambios químicos producidos por la corriente pueden disminuir la sensibilidad nociceptiva, especialmente si hay inflamación local.    <ul>      <li>Bajo el <strong>cátodo:</strong> se genera un entorno alcalino que puede disminuir la excitabilidad y reducir dolor inflamatorio.</li>\n      <li>Bajo el <strong>ánodo:</strong> el ambiente ácido puede aumentar inicialmente la sensibilidad, pero es útil en procesos de cierre de heridas o regeneración tisular.</li>    </ul>  </li>  <li><strong>Modulación metabólica:</strong> mejora del trofismo y activación local de procesos reparadores, especialmente con aplicación sostenida en intensidades bajas (efecto más relevante en la tDCS).</li>\n  <li><strong>Modificación de umbrales de excitabilidad neuronal:</strong> en aplicaciones craneales (tDCS), el flujo constante modula la excitabilidad cortical: <ul>  <li>El <strong>ánodo</strong> suele aumentar la excitabilidad (efecto facilitador).</li>  <li>El <strong>cátodo</strong> suele disminuirla (efecto inhibidor).</li></ul> </li></ul>"
+    },
+    "USO_CLINICO": {
+      "TITULO": "Uso clínico",
+      "TEXTO": "<ul><li><strong>Dolor musculoesquelético</strong> con componente inflamatorio. <li><strong>Lesiones degenerativas de tejidos blandos</strong> (tendón, músculo, ligamento, fascia) que requieren regeneración.</li><li><strong>Modulación cortical no invasiva</strong>, como en <strong>tDCS</strong>, para dolor crónico, neurorehabilitación o fatiga.</li><li><strong>Administración local de fármacos</strong> ionizados mediante iontoforesis.</li><li><strong>Procesos ulcerosos o heridas cutáneas</strong>, ya que favorece la regeneración y el cierre tisular.</li></ul>"
+    },
+    "CONTRAINDICACIONES": {
+      "TITULO": "Contraindicaciones",
+      "TEXTO": "<ul><li><strong>Implantes electrónicos activos</strong> (marcapasos, DAI, neuroestimuladores…).</li><li><strong>Alteración severa de la sensibilidad</strong>, que impide controlar la intensidad.</li><li><strong>Procesos infecciosos o inflamatorios activos</strong> extensos sobre la zona.</li><li><strong>Patologías cardiovasculares graves</strong> en zonas torácicas.</li><li><strong>Trastornos dermatológicos severos</strong> o de integridad cutánea en zonas amplias.</li></ul>"
+    },
+    "FORMA_APLICACION_GENERAL": {
+      "TITULO": "Forma de aplicación general",
+      "TEXTO": "<ul><li>Se aplican <strong>electrodos de superficie</strong>, en montajes bipolares o monopolares.</li><li>Siempre se incluye una <strong>rampa de entrada y salida</strong> para evitar el efecto brusco.</li><li>En <strong>iontoforesis</strong>, el medicamento se coloca bajo el electrodo de igual carga.</li><li>En <strong>electrólisis percutánea</strong>, el cátodo suele aplicarse con aguja intratisular, y el ánodo como electrodo de retorno amplio.</li><li>En <strong>tDCS</strong>, los electrodos se colocan en montajes predefinidos sobre la cabeza con uso de electrodos de esponja o goma conductora.</li></ul>"
+    },
+
+    "ALERTAS": {
+      "ELECTRODOS": "Seleccione los electrodos",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento",
+      "RAMPA": "El tiempo de tratamiento debe ser mayor al de rampa"
+    }
+  },
+
+  "MONOFASICA": {
+    "MONOFASICA": "Corriente Monofásica",
+    "CORRIENTES": {
+      "LABEL": "Técnicas",
+      "PH": "Seleccionar técnica",
+      "OPCIONES": [
+        "Configuración manual",
+        "Träbert",
+        "Diadinámicas"
+      ]
+    },
+    "FORMA_ONDA": {
+      "LABEL": "Forma de onda",
+      "PH": "Seleccione la forma de onda",
+      "OPCIONES": [
+        "Cuadrangular",
+        "Triangular",
+        "Sinusoidal"
+      ]
+    },
+    "ELECTRODOS": { 
+      "CATODO": { "LABEL": "Cátodo (-, negro)", "PH": "Material del electrodo" },
+      "ANODO": { "LABEL":"Ánodo (+, rojo)", "PH":"Material del electrodo" },
+      "TAMAÑO": {"LABEL": "Tamaño", "PH": "Tamaño del electrodo" }
+    },
+    "ANCHURA":"Duración de pulso",
+    "DURACION_PAUSA":"Duración de pausa",
+    "FRECUENCIA":"Frecuencia",
+    "INTENSIDAD":{
+      "INTENSIDAD": "Intensidad",
+      "TRABERT": "La intensidad es a nivel de la contracción muscular"
+    },
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "DIADINAMICA": {
+      "LABEL": "Tipo de diadinámica", "PH": "Seleccione el tipo de diadinámica",
+      "OPCIONES": [
+        "Difásica fija",
+        "Monofásica fija",
+        "Corto periodo",
+        "Largo periodo"
+      ]
+    },
+    "FIBRAS": {
+      "LABEL": "Fibras estimuladas",
+      "PH": "Seleccionar fibras estimuladas",
+      "OPCIONES": [
+        "Efecto relajación",
+        "Fibras tipo I",
+        "Fibras tipo IIa",
+        "Fibras tipo IIb"
+      ]
+    },
+    "ALERTAS":{
+      "ELECTRODOS":"Seleccione los electrodos",
+      "FORMA_ONDA":"Seleccione una forma de onda",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+  },
+
+  "BIFASICA": {
+    "BIFASICA": "Corriente bifásica",
+    "CORRIENTES": {
+      "LABEL": "Corrientes", "PH":"Seleccionar corriente por defecto",
+      "OPCIONES": [
+        "Configuración manual",
+        "TENS convencional",
+        "TENS de acupuntura",
+        "TENS por trenes (BURST)",
+        "EENM"
+      ]
+    },
+    
+    "FORMA_ONDA": {
+      "LABEL":"Forma de onda", "PH":"Seleccione la forma de onda",
+      "OPCIONES": ["Simétrica", "Asimétrica"]
+    },
+
+    "ELECTRODOS": {
+      "ELECTRODOS": "Electrodos",
+      "CATODO": {"LABEL": "Cátodo (-, negro)", "PH": "Material del electrodo"},
+      "ANODO": {"LABEL": "Ánodo (+, rojo)", "PH": "Material del electrodo"},
+      "TAMAÑO": {"LABEL": "Tamaño", "PH": "Tamaño del electrodo"}
+    },
+
+    "FIBRAS": {
+      "LABEL": "Fibras estimuladas",
+      "PH": "Seleccionar fibras estimuladas",
+      "OPCIONES": [
+        "Fibras Abeta",
+        "Fibras Adelta"
+      ]
+    },
+
+    "RANGO_RECOMENDADO": "Dentro del rango de trabajo",
+    "RANGO_NO_RECOMENDADO": "Fuera del rango de trabajo",
+    "RANGO_FIBRAS": {
+      "TONOLITICO": "Efecto tonolítico (relajación muscular, analgesia)",
+      "RELAJACION": "Relajación muscular, analgesia, capilarización, recuperación muscular, drenaje",
+      "CONTRACCION": "Contracciones aisladas (calentamiento muscular, relajación muscular)",
+      "VIBRACION": "Vibración (relajación muscular)",
+      "TIPO_I": "Fibras tipo I estimuladas",
+      "TIPO_IIa": "Fibras tipo IIa estimuladas",
+      "TIPO_IIb": "Fibras tipo IIb estimuladas",
+      "ANALGESIA": "Estimulación sensitiva (analgesia)"
+    },
+    "ANCHURA": "Anchura de pulso",
+    "ANCHURA_EENM_MSG": [
+      "La anchura de pulso óptima para la estimulación muscular suele situarse entre 200 y 400 µs. Aunque no existe un valor único ideal, esta franja permite obtener contracciones eficaces con buena tolerancia.",
+      "• Anchuras menores (<200 µs): requieren intensidades más altas para lograr contracción muscular, suelen ser más cómodas pero menos efectivas.",
+      "• Anchuras mayores (>400 µs): permiten generar contracciones intensas con menor intensidad, pero pueden resultar menos tolerables, especialmente en pacientes sensibles.",
+      "La elección debe adaptarse a la respuesta clínica y los objetivos del tratamiento."
+    ],
+    "FRECUENCIA": "Frecuencia",
+    "FRECUENCIA_EENM_MSG": [
+      "La activación de fibras musculares no sigue límites estrictos ni fijos. A medida que aumenta la frecuencia, la estimulación progresa de forma gradual desde fibras lentas (tipo I) hacia fibras rápidas (tipo IIb).",
+      "La frecuencia de trabajo dependerá del objetivo terapéutico, de las características personales y del resto de parámetros de la corriente (tamaño y colocación de electrodos, anchura de pulso)."
+    ],
+    "TRENES": "Frecuencia del tren",
+    "ANCHURA_TREN": "Anchura del tren",
+    "INTENSIDAD": "Intensidad",
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "FRECUENCIA_TRENES_MSG": "Normalmente la frecuencia del tren oscila entre 1 y 4 Hz",
+    "TENS_TRENES": "TENS por trenes (BURST)",
+    "ALERTAS": {
+      "ELECTRODOS": "Seleccione los electrodos",
+      "FORMA_ONDA": "Seleccione una forma de onda",
+      "TRATAMIENTO": "Establezca un tiempo de tratamiento",
+      "INTENSIDAD": "Seleccione la intensidad a aplicar"
+    }
+  },
+
+  "MEDIA_FRECUENCIA": {
+    "MEDIA_FRECUENCIA": "Media frecuencia",
+    "SUBIDA": "Tiempo de subida",
+    "MANTENIMIENTO_MIN": "Tiempo de mantenimiento en mínimo",
+    "MANTENIMIENTO_MAX": "Tiempo de mantenimiento en máximo",
+    "BAJADA": "Tiempo de bajada",
+    "CICLO": "Tiempo de ciclo",
+    "ACELERACION": "Tiempo de aceleración",
+    "DESACELERACION": "Tiempo de desaceleración",
+    "MINIMO": "Tiempo mínimo entre cambios",
+    "MAXIMO": "Tiempo máximo entre cambios",
+
+    "MODO": {
+      "LABEL": "Modo de aplicación", "PH": "Seleccionar modo de aplicación",
+      "OPCIONES": ["Modo Bipolar", "Modo Tetrapolar"]
+    },
+
+    "ELECTRODOS": {
+      "ELECTRODOS": "Electrodos",
+      "LABEL": "Electrodo",
+      "MATERIAL": "Material del electrodo",
+      "TAMAÑO": {"LABEL": "Tamaño", "PH": "Tamaño del electrodo"}
+    },
+
+    "FRECUENCIA": "Frecuencia Portadora",
+    "FMA": "Frecuencia Modulada en Amplitud",
+    "BARRIDO": "Barrido de frecuencia",
+    "CONTORNOS": {
+      "LABEL": "Contornos",
+      "PH": "Seleccione el contorno",
+      "OPCIONES":[
+        "Sin contorno específico",
+        "1/1",
+        "6/6",
+        "1/30/1/30",
+        "1/5/1/5",
+        "12/12",
+        "Personalizado"
+      ]
+    },
+    "CONTORNOS_PERSONALIZADO": {
+      "LABEL": "Contorno de barrido de frecuencia",
+      "PH": "Seleccione el contorno",
+      "OPCIONES": [
+        "Sin contorno",
+        "Triangular",
+        "Trapezoidal",
+        "Sinusoidal",
+        "Cuadrada",
+        "Exponencial",
+        "Aleatoria"
+      ]
+    },
+    "INTENSIDAD":"Intensidad",
+    "VECTOR": {
+      "VECTOR": "Vector", 
+      "LABEL": "Vector", "PH": "Seleccione el vector",
+      "OPCIONES": [
+        "Estático",
+        "Lineal",
+        "Rotatorio",
+        "Aleatorio"
+      ]
+    },
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "ALERTAS": {
+      "MODO": "Seleccione el modo de aplicación",
+      "ELECTRODOS":"Seleccione los electrodos",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+  },
+
+  "DIATERMIA": {
+    "DIATERMIA": "Diatermia",
+
+    "MODOS": {
+      "LABEL": "Tipo de diatermia", "PH": "Seleccionar tipo de diatermia",
+      "OPCIONES": [
+        "Bipolar",
+        "Monopolar"
+      ]
+    },
+    "TECNICAS": {
+      "LABEL": "Tipo de diatermia", "PH": "Seleccionar tipo de diatermia",
+      "OPCIONES": [
+        "Bipolar - Capacitativa",
+        "Bipolar - Resistiva",
+        "Monopolar - Dieléctrica"
+      ]
+    },
+
+    "ELECTRODOS": {
+      "ELECTRODOS":"Electrodos",
+      "PH":"Tamaño del electrodo",
+      "ACTIVO_BIPOLAR_CAPACITIVO": {
+        "LABEL": "Electrodo activo (aplicador con recubrimiento aislante)"
+      },
+      "ACTIVO_BIPOLAR_RESISTIVO": {
+        "LABEL": "Electrodo activo (aplicador sin recubrimiento aislante)"
+      },
+      "ACTIVO_MONOPOLAR": {
+        "LABEL": "Electrodo activo (antena)"
+      },
+      "PASIVO": {
+        "LABEL": "Electrodo pasivo (placa de retorno)"
+      },
+      "OPCIONES_ACT_BI": [
+        "Pequeño (2.5 cm diámetro)",
+        "Mediano (5 cm diámetro)",
+        "Grande (10 cm diámetro)"
+      ],
+      "OPCIONES_ACT_MO": [
+        "Pequeño (2.5 cm diámetro)",
+        "Grande (5 cm diámetro)"
+      ],
+      "OPCIONES_PAS": [
+        "Pequeño",
+        "Grande"
+      ]
+    },
+
+    "TIEMPO_MSG": "En la diatermia, el rango de uso es de 5 a 30 minutos",
+
+    "CONDUCTOR": {
+      "CONDUCTOR": "Producto de conducción",
+      "PH": "Tipo de conductor",
+      "OPCIONES": [
+        "Crema conductora de base oleosa",
+        "Crema conductora de base oleosa",
+        "Aceite vegetal"
+      ]
+    },
+
+    "FRECUENCIA": "Frecuencia de emisión",
+    "POTENCIA": "Potencia de aplicación",
+    "EMISION": {
+      "EMISION": "Modo de emisión",
+      "LABEL": "Modo de emisión",
+      "PH": "Seleccione el modo de emisión",
+      "OPCIONES": [
+        "Continuo",
+        "Pulsado"
+      ]
+    },
+
+    "DUTY_CYCLE": {
+      "LABEL": "Relación de pulso (Duty Cycle)", 
+      "PH": "Seleccione el duty cycle",
+      "OPCIONES": [
+        "100% (1:0)", "50% (1:1)", "33% (1:2)", "25% (1:3)", "20% (1:4)", "10% (1:9)" 
+      ]
+    },
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "ALERTAS": {
+      "TIPO": "Seleccione el tipo de diatermia",
+      "MODO": "Seleccione el modo de emisión",
+      "RELACION": "Seleccione la relación de pulso (duty cycle)",
+      "TRATAMIENTO": "Establezca un tiempo de tratamiento"
+    }
+  },
+
+  "ONDA_CORTA": {
+    "ONDA_CORTA": "Onda Corta",
+    "MODO": {
+      "LABEL": "Modo", "PH": "Seleccionar modo",
+      "OPCIONES": [
+        "Capacitivo (Campo condensador)",
+        "Inductivo"
+      ]
+    },
+    "ELECTRODOS": {
+      "1": {
+        "CAPACITIVO": {
+          "LABEL": "Electrodo 1", "PH": "Seleccione el electrodo"
+        },
+        "INDUCTIVO": {
+        "LABEL": "Aplicador", "PH": "Seleccione el aplicador"
+        }
+      },
+      "2": {
+        "LABEL": "Electrodo 2", "PH": "Seleccione el electrodo"
+      },
+      "OPCIONES": [
+        "Placa metálica",
+        "Bobina o tambor"
+      ]
+    },
+    "TIEMPO_MSG": "El rango de uso es de 5 a 30 minutos",
+
+    "FRECUENCIA":"Frecuencia de emisión",
+    "POTENCIA":"Potencia de aplicación",
+    "EMISION":{
+      "EMISION": "Modo de emisión",
+      "LABEL": "Modo de emisión",
+      "PH": "Seleccione el modo de emisión",
+      "OPCIONES": [
+        "Continuo",
+        "Pulsado"
+      ]
+    },
+
+    "DUTY_CYCLE": {
+      "LABEL": "Relación de pulso (Duty Cycle)",
+      "PH":"Seleccione el duty cycle",
+      "OPCIONES": [
+        "100% (1:0)", "50% (1:1)", "33% (1:2)", "25% (1:3)", "20% (1:4)", 
+        "16.6% (1:5)", "10% (1:9)" 
+      ]
+    },
+
+    "DISTANCIA": "Distancia aplicador-piel",
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "SECCIONES": [
+      "Riesgo de quemadura y sobrecalentamiento",
+      "Distancia recomendada en fisioterapia",
+      "Disminución del efecto térmico",
+      "Efecto nulo"
+    ],
+    "ALERTAS": {
+      "MODO": "Seleccione el modo de uso",
+      "EMISION":"Seleccione el modo de emisión",
+      "RELACION":"Seleccione la relación de pulso (duty cycle)",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+  },
+
+  "MICROONDAS": {
+    "MICROONDAS": "Microondas",
+    "APLICADOR": {
+      "LABEL": "Aplicador", "PH": "Seleccionar aplicador",
+      "OPCIONES": [
+        "Radiación directa",
+        "Campo conformado"
+      ]
+    },
+
+    "FRECUENCIA":"Frecuencia de emisión",
+    "POTENCIA":"Potencia de aplicación",
+
+    "EMISION":{
+      "EMISION": "Modo de emisión",
+      "LABEL": "Modo de emisión",
+      "PH": "Seleccione el modo de emisión",
+      "OPCIONES": [
+        "Continuo",
+        "Pulsado"
+      ]
+    },
+
+    "DUTY_CYCLE": {
+      "LABEL": "Relación de pulso (Duty Cycle)",
+      "PH":"Seleccione el duty cycle",
+      "OPCIONES": [
+        "100% (1:0)", "50% (1:1)", "33% (1:2)", "25% (1:3)", "20% (1:4)", 
+        "16.6% (1:5)", "10% (1:9)" 
+      ]
+    },
+
+    "DISTANCIA": "Distancia aplicador-piel",
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "SECCIONES": [
+      "Riesgo de quemadura y sobrecalentamiento",
+      "Distancia recomendada en fisioterapia",
+      "Disminución del efecto térmico",
+      "Efecto nulo"
+    ],
+    "TIEMPO_MSG":"El rango de uso es de 5 a 30 minutos",
+    "ALERTAS":{
+      "APLICADOR":"Seleccione el aplicador",
+      "EMISION":"Seleccione el modo de emisión",
+      "RELACION":"Seleccione la relación de pulso (duty cycle)",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+  },
+
+  "INFRARROJOS": {
+    "INFRARROJOS": "Infrarrojos",
+    "EQUIPO": {
+      "EQUIPO": "Equipo",
+      "LABEL": "Equipo",
+      "PH": "Seleccionar tipo de equipo",
+      "OPCIONES": [
+        "Lámpara de potencia fija (convencional)",
+        "Lámpara de potencia regulable"
+      ]
+    },
+
+    "POTENCIA":"Potencia de aplicación",
+    "DISTANCIA": "Distancia aplicador-piel",
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "ALTA_POTENCIA": "Bombilla de alta potencia",
+    "INFO_BOMBILLA": "Los equipos regulables suelen permitir regular la potencia entre 50 y 500 W. Sin embargo, excepcionalmente existen equipos con bombillas de alta potencia de 1000 W.",
+    "SECCIONES": [
+      "Riesgo de quemadura",
+      "Distancia recomendada en fisioterapia",
+      "Disminución del efecto térmico",
+      "Efecto nulo"
+    ],
+    "GAFAS":{
+      "LABEL": "Gafas de protección", "PH": "Seleccionar gafas de protección",
+      "OPCIONES":[
+        "Sin gafas",
+        "Gafas de protección IR"
+      ]
+    },
+    "ALERTAS":{
+      "EQUIPO": "Seleccione el equipo a usar",
+      "GAFAS": "Seleccione las gafas a usar",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+  },
+
+  "LASER": {
+    "LASER": "Láser",
+    "TIPOS": {
+      "LABEL": "Tipo de láser", "PH": "Seleccionar tipo de láser",
+      "OPCIONES": [
+        "Láser de Baja Potencia (LLLT)",
+        "Láser de Alta Potencia (HILT)"
+      ]
+    },
+
+    "LONGITUD_ONDA": {
+      "LABEL": "Longitud de onda", "PH": "Seleccione la longitud de onda",
+      "OPCIONES": [
+        "LLLT Rojo (650-680 nm)",
+        "LLLT Infrarrojo (780-850 nm)",
+        "HILT (905-1064 nm)"
+      ]
+    },
+
+    "POTENCIA": {
+      "LABEL": "Potencia de aplicación",
+      "MSG": "El valor máximo de la potencia depende del aplicador seleccionado"
+    },
+    "EMISION":{
+      "EMISION": "Modo de emisión",
+      "LABEL": "Modo de emisión",
+      "PH": "Seleccione el modo de emisión",
+      "OPCIONES": [
+        "Continuo",
+        "Pulsado"
+      ]
+    },
+    "TIEMPO_MSG":"El rango de uso es de 1 a 30 minutos",
+
+    "FRECUENCIA": "Frecuencia de pulso",
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "GAFAS": "Gafas de protección",
+    "SUPERFICIE_TRATADA": "Superficie tratada",
+    "DOSIS": {
+      "LABEL": "Dosis total",
+      "FORMULA": [
+        "Dosis (J/cm²) = Potencia (W) × Tiempo (s) / Área tratada (cm²)"
+      ],
+      "SECCIONES": [
+        "Dosis insuficiente",
+        "Baja dosis",
+        "Dosis óptima",
+        "Dosis alta (controlada)",
+        "Riesgo de daño tisular"
+      ]
+    },
+    "APLICADOR": {
+      "LABEL": "Aplicador",
+      "PH": "Seleccionar aplicador",
+      "OPCIONES_LLLT": [
+        "Puntual (1 cm²)",
+        "Cluster de 6 diodos (5 cm²)"
+      ],
+      "OPCIONES_HILT": [
+        "Puntual (1 cm²)",
+        "Cluster (5 cm²)",
+        "Escáner"
+      ]
+    },
+    "ALERTAS":{
+      "TIPO": "Seleccione el tipo de láser",
+      "LONGITUD": "Seleccione la longitud de onda",
+      "APLICADOR": "Seleccione el aplicador",
+      "EMISION": "Seleccione el modo de emisión",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+  },
+
+  "ULTRAVIOLETAS": {
+    "ULTRAVIOLETAS": "Ultravioletas",
+    "EQUIPO": {
+      "EQUIPO": "Equipo",
+      "LABEL": "Equipo",
+      "PH": "Seleccionar tipo de equipo",
+      "OPCIONES": [
+        "UV-A (315 - 400 nm) - Onda Larga",
+        "UV-B (280 - 315 nm) - Onda Media"
+      ]
+    },
+    "TIEMPO_MSG":"El rango de uso es de 30 segundos a 10 minutos",
+
+    "LONGITUD_ONDA": "Longitud de onda",
+    "DOSIS": {
+      "LABEL":"Dosis de radiación UV",
+      "SECCIONES": [
+        "Dosis insuficiente",
+        "Baja dosis",
+        "Dosis óptima",
+        "Dosis alta",
+        "Riesgo de daño cutáneo"
+      ]
+    },
+    "DISTANCIA": {
+      "LABEL": "Distancia aplicador-piel",
+      "SECCIONES": [
+        "Irradiancia excesiva",
+        "Irradiancia óptima",
+        "Irradiancia baja",
+        "Irradiancia mínima"
+      ]
+    },
+    "MATERIAL": "Material adicional",
+    "GAFAS": "Gafas de protección",
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "IRRADIANCIA": "Irradiancia estimada",
+    "IRRADIANCIA_MSG": "La irradiancia depende de la distancia aplicador-piel",
+    "CALCULADORA": {
+      "TITULO": "Calculadora de dosis",
+      "FORMULA": "Dosis (J/cm²) = Irradiancia (W/cm²) × Tiempo (s)",
+      "IRRADIANCIA": "Irradiancia",
+      "TIEMPO": "Tiempo",
+      "DOSIS": "Dosis"
+    },
+    "ALERTAS": {
+      "EQUIPO":"Seleccione el equipo a usar",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+    
+  },
+
+  "MAGNETOTERAPIA": {
+    "MAGNETOTERAPIA": "Magnetoterapia",
+    "TIPOS": {
+      "LABEL": "Tipo de magnetoterapia", "PH": "Seleccionar tipo de magnetoterapia",
+      "OPCIONES": [
+        "Magnetoterapia Convencional (Baja intensidad)",
+        "Magnetoterapia Superinductiva (Alta intensidad)"
+      ]
+    },
+
+    "APLICADOR": {
+      "LABEL": "Aplicador", "PH": "Seleccionar aplicador",
+      "OPCIONES_PBMF": [
+        "Solenoide",
+        "Placas electromagnéticas"
+      ],
+      "OPCIONES_SIS": [
+        "Pala SIS"
+      ]
+    },
+
+    "INTENSIDAD": "Intensidad del campo magnético",
+    "FRECUENCIA":"Frecuencia de emisión",
+    "DISTANCIA": "Distancia aplicador-piel",
+
+    "EMISION":{
+      "LABEL": "Modo de emisión",
+      "PH": "Seleccione el modo de emisión",
+      "OPCIONES": [
+        "Continuo",
+        "Pulsado"
+      ]
+    },
+    "TIEMPO_MSG_CONVENCIONAL": "El tiempo de tratamiento en magnetoterapia convencional suele ser de 30 a 60 minutos",
+    "TIEMPO_MSG_SUPERINDUCTIVA": "El tiempo de tratamiento en magnetoterapia superinductiva suele ser de 5 a 20 minutos",
+
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "BARRIDO":"Barrido de frecuencia",
+    "TIPO_FRECUENCIA": {
+      "LABEL": "Tipo de frecuencia", "PH": "Seleccione el tipo de frecuencia",
+      "OPCIONES": [ "Fija", "Barrido" ]
+    },
+    "ALERTAS": {
+      "TIPO": "Seleccione el tipo de magnetoterapia",
+      "EMISION": "Seleccione el modo de emisión",
+      "APLICADOR":"Seleccione el aplicador",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+  },
+
+  "ULTRASONIDOS": {
+    "ULTRASONIDOS": "Ultrasonidos",
+    "CABEZAL": {
+      "LABEL": "Cabezal (cm²)", "PH": "Seleccionar superficie",
+      "OPCIONES": [
+        "1 cm²", "2 cm²", "5 cm²", "10 cm²"
+      ]
+    },
+    "CONDUCCION": {
+      "LABEL": "Producto de conducción", "PH": "Seleccionar producto de conducción",
+      "OPCIONES": [
+        "Gel de ultrasonido"
+      ]
+    },
+    "FRECUENCIA":{
+      "FRECUENCIA": "Frecuencia de emisión (MHz)",
+      "LABEL": "Frecuencia de emisión",
+      "PH": "Seleccionar frecuencia de emisión",
+      "OPCIONES": [
+        "1 MHz", "3 MHz"
+      ]
+    },
+    "INTENSIDAD": "Potencia",
+    "EMISION":{
+      "LABEL": "Modo de emisión",
+      "PH": "Seleccione el modo de emisión",
+      "OPCIONES": [
+        "Continuo",
+        "Pulsado"
+      ]
+    },
+    "RELACION": {
+      "LABEL": "Relación de pulso (Duty Cycle)", "PH": "Seleccionar relación de pulso",
+      "OPCIONES": [
+        "100% (1:0)", "50% (1:1)", "33% (1:2)", "25% (1:3)", "20% (1:4)", 
+        "16.6% (1:5)", "10% (1:9)" 
+      ]
+    },
+    "PARAMETROS": "Parámetros",
+    "MATERIALES":"Materiales",
+    "DOSIS_TOTAL": "Dosis total",
+    "MSG_DOSIS_TOTAL": "Dosis total (J) = Intensidad (W/cm²) × Cabezal (cm²) × Tiempo de tratamiento (s) × Relación de pulso",
+    "SUPERFICIE_TRATADA":"Superficie tratada",
+    "DOSIS": {
+      "LABEL": "Dosis por cm²",
+      "SECCIONES": [
+        "Dosis insuficiente",
+        "Baja dosis",
+        "Dosis óptima",
+        "Dosis alta",
+        "Riesgo de daño tisular"
+      ]
+    },
+    "ALERTAS":{
+      "FRECUENCIA": "Seleccione la frecuencia",
+      "EMISION":"Seleccione el modo de emisión",
+      "RELACION":"Seleccione la relación de pulso (duty cycle)",
+      "CABEZAL": "Seleccione el cabezal",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+
+  },
+
+  "ONDAS_CHOQUE": {
+    "ONDAS_CHOQUE": "Ondas de choque",
+    "TIPOS": {
+      "LABEL": "Tipo de onda de choque", "PH": "Seleccionar tipo",
+      "OPCIONES": [
+        "Radial (RSWT - Radial Shockwave Therapy)",
+        "Focal (FSWT - Focused Shockwave Therapy)"
+      ]
+    },
+    "APLICADOR": {
+      "LABEL": "Aplicador", "PH":"Seleccionar aplicador",
+      "OPCIONES_RADIAL": [
+        "Pequeño (10 mm diámetro)",
+        "Mediano (20 mm diámetro)",
+        "Grande (35 mm diámetro)"
+      ],
+      "OPCIONES_FOCAL": [
+        "Pequeño (5 mm diámetro)",
+        "Mediano (10 mm diámetro)",
+        "Grande (15 mm diámetro)"
+      ]
+    },
+    "CONDUCCION": {
+      "LABEL": "Producto de conducción", "PH": "Seleccionar producto de conducción",
+      "OPCIONES": [
+        "Gel de ultrasonido"
+      ]
+    },
+    "FRECUENCIA":"Frecuencia",
+    "PRESION": "Presión / Energía",
+    "IMPACTOS": {
+      "LABEL": "Número de impactos",
+      "SECCIONES": [
+        "Dosis insuficiente, sin efecto terapéutico",
+        "Dosis baja",
+        "Dosis óptima",
+        "Dosis alta",
+        "Dosis con riesgo de daño tisular"
+      ]
+    },
+    "PARAMETROS": "Parámetros",
+    "MATERIALES": "Materiales",
+    "DOSIS": {
+      "LABEL": "Dosis total",
+      "SECCIONES":[
+        "Dosis insuficiente",
+        "Dosis baja",
+        "Dosis óptima",
+        "Dosis alta",
+        "Dosis con riesgo de daño tisular"
+      ]
+    },
+    "ALERTAS":{
+      "TIPO": "Seleccione el tipo de onda de choque",
+      "APLICADOR":"Seleccione el aplicador",
+      "TRATAMIENTO":"Establezca un tiempo de tratamiento"
+    }
+  }
+
+}

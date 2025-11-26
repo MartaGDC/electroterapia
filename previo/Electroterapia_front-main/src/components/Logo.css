@@ -1,0 +1,20 @@
+.logo-login-box {
+  height: 75vh;
+
+  img {
+    width: auto;
+    max-height: 100%;
+  }
+}
+
+.logo-home-box {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 40vh;
+  img {
+    width: auto;
+    max-height: 100%;
+  }
+
+}

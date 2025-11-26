@@ -1,0 +1,25 @@
+.izq-sim {
+  overflow-y: auto; /* 🔥 Permite scroll SOLO en la izquierda */}
+
+.cuerpo {
+  height: 100%;
+  position: sticky; /* 🔥 Mantiene fija la sección derecha */
+  overflow: hidden; /* 🔥 Evita el scroll en la derecha */
+  touch-action: none; /* 🔥 Bloquea desplazamiento táctil */
+  ion-card {
+    height: 100%;
+    --background: var(--ion-color-blanco);
+    border-radius: 0px;
+
+    div {
+      height: 100%;
+      width: 100%;
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+

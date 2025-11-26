@@ -1,0 +1,54 @@
+.barrido-picker {
+  --background: none;
+  width: 100%;
+
+    div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        font-weight: 600;
+        color: var(--ion-color-primary);
+
+        .param-name {
+          width: 60%;
+
+        }
+        .p1-range {
+          margin: 0;
+          width: 105px;
+        
+        }
+        .p-range {
+          margin: 0;
+          margin-right: 20px;
+          width: 30px;
+          text-align: end;
+          justify-content: end;
+
+          ion-icon {
+            margin-left: 10px;
+          }
+        }  
+      }
+
+  }
+
+  ion-range {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 0;
+    height: 100%;
+    --bar-background: var(--ion-color-blanco);
+    --bar-background-active: var(--ion-color-secondary);
+  }
+
+}

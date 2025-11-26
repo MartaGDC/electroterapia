@@ -1,0 +1,13 @@
+.menu-titulo {
+  font-family: 'Nunito Variable', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.menu-item {
+  cursor: pointer;
+  ion-item {
+    font-weight: bold;
+  }
+}
+

@@ -1,0 +1,34 @@
+.electrodo-selector-diatermia {
+  width: 100%;
+  background: none !important;
+
+  ion-item {
+    --background: none;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    .first {
+      flex: 7;
+    }
+
+    .second {
+      margin-left: 10px;
+      flex: 3;
+    }
+  }
+}
+
+.frecuencia-diatermia {
+  display: flex;
+
+  ion-input {
+    width: 10%;
+  }
+  ion-range {
+    width: 70%;
+    --bar-background: var(--ion-color-blanco);
+    --bar-background-active: var(--ion-color-secondary);
+  }
+}

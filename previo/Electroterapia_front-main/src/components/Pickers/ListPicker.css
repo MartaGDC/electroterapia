@@ -1,0 +1,22 @@
+.selector {
+  width: 100%;
+  /* --background: #a1b4d6; */
+
+  ion-select {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  ion-select-option {
+    --background: var(--ion-color-dark) !important;
+    font-weight: bold;
+  }
+  ion-select-popover {
+    min-width: 700px !important; /* Puedes ajustar el valor según tus opciones */
+  }
+}
+
+/* Esto es para Ionic >= 6 usando Shadow DOM */
+ion-popover::part(content) {
+  min-width: 100px !important;
+}

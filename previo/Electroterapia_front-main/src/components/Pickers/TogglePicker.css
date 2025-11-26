@@ -1,0 +1,13 @@
+.toggle-picker {
+  display: flex;
+  flex-direction: column;
+  --background: none !important;
+  font-weight: 600;
+
+  ion-toogle {
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

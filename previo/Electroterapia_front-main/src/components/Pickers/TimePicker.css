@@ -1,0 +1,39 @@
+.time-picker {
+  color: var(--ion-color-blanco);
+
+  .picker-opt.picker-opt-selected {
+    color: var(--ion-color-primary);
+  }
+
+  .picker-button {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+  }
+}
+
+.time {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top:    5px;
+  margin-bottom: 5px;
+  p {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    font-size: 1rem;
+    color: var(--ion-color-primary);
+    font-weight: 600;
+
+    ion-icon {
+      margin-left: 10px;
+    }
+  }
+
+}
+
+.time-item {
+  --background: none !important;
+  /* --border-color: var(--ion-color-medium); */
+
+}

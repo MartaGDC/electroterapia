@@ -1,0 +1,43 @@
+.alumno-card {
+  height: 80px !important;
+
+  .alumno-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 16px;
+    margin-left: 16px;
+  }
+
+  .alumno-card-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .alumno-name {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .alumno-role {
+    font-size: 16px;
+    color: gray;
+  }
+}
+
+.header-content-alumnos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.check-alumno {
+  --checkbox-background: var(--ion-color-primary);
+  --checkbox-background-checked: var(--ion-color-background);
+  --border-color: var(--ion-color-blanco);
+  --border-color-checked: var(--ion-color-blanco);
+  --checkmark-color: var(--ion-color-primary);
+}
