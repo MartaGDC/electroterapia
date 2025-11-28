@@ -1,0 +1,1176 @@
+{
+  "LOGIN": {
+    "INICIAR_SESION": "Login",
+    "USUARIO": "Username",
+    "USUARIO_PLACEHOLDER": "Enter your username",
+    "CONTRASENA": "Password",
+    "CONTRASENA_PLACEHOLDER": "Enter your password",
+    "BUTTON": "Log in",
+    "ERROR": "Incorrect login"
+  },
+  
+  "MENU": {
+    "HOME": "Home",
+    "APRENDIZAJE": "Learning",
+    "SIMULACION": "Simulation",
+    "EVALUACION": "Assessment",
+    "USUARIOS": "Users",
+    "AJUSTES": "Settings",
+    "CERRAR_SESION": "Log out"
+  },
+
+  "AJUSTES": {
+    "CONTRASENA": {
+      "CONTRASENA": "Password",
+      "CAMBIO": "Change password",
+      "ACTUAL": "Current password",
+      "ACTUAL_PH": "Enter your current password",
+      "NUEVA": "New password",
+      "NUEVA_PH": "Enter your new password",
+      "REPETIR": "Repeat new password",
+      "REPETIR_PH": "Re-enter your new password",
+      "BUTTON": "Change password"
+    },
+    "ESTADISTICAS": {
+      "ESTADISTICAS": "Statistics"
+    },
+    "IDIOMA": {
+      "IDIOMA": "Language",
+      "IDIOMA_PH": "Select language"
+    }
+  },
+
+  "HOME": {
+    "SUB_APRENDIZAJE": "Explore each simulator, practice without limits, and access theoretical information to understand electrotherapy concepts",
+    "SUB_SIMULACION": "Simulate the use of an electrotherapy device in a realistic clinical setting. Set parameters, place electrodes on the body, and practice without evaluation or theoretical help",
+    "SUB_EVALUACION": "Solve practical cases created by your teacher. The system records your actions so they can be evaluated later. Put your knowledge into practice as if you were in a real environment!",
+    "SUB_ALUMNOS": "Create and delete users in the application"
+  },
+
+  "APRENDIZAJE": {
+    "EQUIPOS": "Electrotherapy equipment"
+  },
+
+  "SIMULACION": {
+    "EQUIPOS": "Electrotherapy equipment"
+  },
+
+  "ALUMNOS": {
+    "SELECCIONAR": "Select all",
+    "CREAR": "Create users",
+    "CONFIRMAR": "Confirm",
+    "BUTTON": "Create",
+    "PROFESOR": {
+      "TITLE": "Create teacher",
+      "LABEL": "NIP",
+      "PH": "Enter the teacher's NIP"
+    },
+    "UNICO": {
+      "TITLE": "Create student",
+      "LABEL": "NIP",
+      "PH": "Enter the student's NIP"
+    },
+    "VARIOS": {
+      "TITLE": "Create students",
+      "LABEL": "Drag a file or click to upload"
+    },
+    "LISTA": {
+      "ALUMNO": "Student",
+      "PROFESOR": "Teacher"
+    },
+    "ALERTAS": {
+      "USUARIO_OK": "User created successfully",
+      "USUARIO_ERROR": "User creation failed"
+    },
+    "FICHERO": {
+      "ALERTA_CREAR": {
+        "H1": "Creation of",
+        "H2": "users",
+        "SH1": "Are you sure you want to create",
+        "SH2": "users?",
+        "MSG1": "A total of",
+        "MSG2": "student users will be created"
+      },
+      "ALERTA_ERROR": {
+        "H": "Creation error",
+        "SH": "Some students were not created",
+        "MSG": "The following students were not created:",
+        "BUTTON": "Accept"
+      }
+    }
+  },
+
+  "ACTIVIDAD": {
+    "TITLE": "New activity",
+    "CONFIRMAR": "Confirm",
+    "NOMBRE": {
+      "LABEL": "Activity name",
+      "PH": "Enter the name of the activity"
+    },
+    "CODIGO": {
+      "LABEL": "Code",
+      "PH": "Enter the activity code",
+      "COPIADO": "Code copied"
+    },
+    "DESCRIPCION": {
+      "TITLE": "Activity description",
+      "LABEL": "Description",
+      "PH": "Enter a description of the activity"
+    },
+    "ESTADO": {
+      "LABEL": "Activity status",
+      "ABIERTO": "Open",
+      "CERRADO": "Closed"
+    },
+    "DETALLES": "Activity details",
+    "RESPUESTAS": "Activity responses",
+    "CAMBIADA": "Activity updated",
+    "ERROR_CAMBIO": "Update failed. Please try again later",
+    "GUARDAR": "Save",
+    "ELIMINAR": "Delete",
+    "ALERT_ELIMINAR": {
+      "HEADER": "Delete room",
+      "SUBHEADER": "Are you sure you want to delete the room?",
+      "MSG": "All data associated with this room will be lost"
+    },
+    "ERROR": {
+      "REALIZADA": "The activity has already been completed",
+      "CERRADA": "Activity closed"
+    },
+    "MODAL_ENTRAR": {
+      "TITLE": "Start activity",
+      "CANCELAR": "Cancel",
+      "ENTRAR": "Enter"
+    },
+    "NOTA": {
+      "NO_REALIZADA": "Not completed",
+      "SIN_CALIFICAR": "Not graded"
+    },
+    "EVALUAR": {
+      "BUTTON": "Evaluate activity",
+      "CANCELAR": "Cancel",
+      "EVALUAR": "Evaluate",
+      "LABEL": "Grade (0–10)",
+      "PH": "Enter a grade from 0 to 10"
+    }
+  },
+
+  "VISUALIZADOR": {
+    "TITLE": "Viewer",
+    "MATERIALES": "Materials",
+    "FIJOS": "Fixed parameters",
+    "VARIABLES": "Variable parameters"
+  },
+
+  "EVALUACION": {
+    "ACTIVIDADES": "My activities",
+    "NUEVA_ACTIVIDAD": "New activity",
+    "CODIGO": "Activity code",
+    "CODIGO_PLACEHOLDER": "Enter the activity code",
+    "CODIGO_BUTTON": "Submit",
+    "ESTADISTICAS": "Statistics"
+  },
+
+  "ESTADISTICAS": {
+    "NOTA_MEDIA": "Average grade",
+    "MEJOR_NOTA": "Highest grade",
+    "PEOR_NOTA": "Lowest grade",
+    "ACTIVIDADES_REALIZADAS": "Completed activities",
+    "ACTIVIDADES_CORREGIDAS": "Graded activities",
+    "ACTIVIDADES_APROBADAS": "Passed activities",
+    "ACTIVIDADES_SUSPENDIDAS": "Failed activities"
+  },
+
+  "MATERIALES": {
+    "AGUJA": "Needle",
+    "CAUCHO": "Rubber",
+    "ADHESIVO": "Adhesive"
+  },
+
+  "MENU_MATERIALES": {
+    "APLICADOR": {
+      "TITULO": "Applicators",
+      "LABEL": "Type of applicator",
+      "APLICADOR": {
+        "LABEL": "Applicator",
+        "PH": "Select applicator"
+      },
+      "PH": "Type of applicator",
+      "OPCIONES": [
+        "No specific type",
+        "Electrodes",
+        "Applicator"
+      ],
+      "OPCIONES_APLICADOR": [
+        "Diathermy",
+        "Shortwave",
+        "Microwaves",
+        "Infrared",
+        "Laser",
+        "Ultraviolet",
+        "Magnetotherapy",
+        "Ultrasound",
+        "Shock waves"
+      ]
+    },
+    "ELECTRODOS": {
+      "LABEL": "Electrodes",
+      "PH1": "Electrode material",
+      "PH2": "Electrode size",
+      "LABEL2": "Size",
+      "AGUJA": "Needle",
+      "CAUCHO": "Rubber",
+      "ADHESIVO": "Adhesive"
+    },
+    "COMPLEMENTOS": {
+      "LABEL": "Applicator accessories",
+      "ESPONJA": "Moistened sponge",
+      "GORRO": "tDCS cap",
+      "COMPLEMENTO_OPTIONS": [
+        "Moistened sponge",
+        "tDCS cap",
+        "Strap",
+        "Water tray",
+        "Gauze"
+      ]
+    },
+    "CONDUCCION": {
+      "LABEL": "Conduction products",
+      "CONDUCCION_OPTIONS": [
+        "Vegetable oil",
+        "Ultrasound gel",
+        "Chlorhexidine and disinfectant",
+        "tDCS saline gel"
+      ]
+    },
+    "PROTECCION": {
+      "LABEL": "Protection products",
+      "PROTECCION_OPTIONS": [
+        "Chlorhexidine",
+        "Protective glasses",
+        "Gloves"
+      ]
+    },
+    "LEYENDA": {
+      "TITULO": "Selected materials",
+      "CONFIRMAR": "Confirm",
+      "CANAL1": "Channel 1",
+      "CANAL2": "Channel 2",
+      "APLICADOR": "Applicator",
+      "ANODO1": {
+        "LABEL1": "Anode C1 (Channel 1)",
+        "LABEL2": "Size"
+      },
+      "CATODO1": {
+        "LABEL1": "Cathode C1 (Channel 1)",
+        "LABEL2": "Size"
+      },
+      "ANODO2": {
+        "LABEL1": "Anode C2 (Channel 2)",
+        "LABEL2": "Size"
+      },
+      "CATODO2": {
+        "LABEL1": "Cathode C2 (Channel 2)",
+        "LABEL2": "Size"
+      }
+    },
+    "FARMACOS": {
+      "LABEL": "Drugs and substances for iontophoresis",
+      "OPCIONES": [
+        "Dexamethasone sodium phosphate (0.4%)",
+        "Acetic acid (2–5%)",
+        "Sodium salicylate (2%)",
+        "Potassium iodide (5%)",
+        "Calcium chloride (2%)",
+        "Ketoprofen gel (2.5%)",
+        "Diclofenac sodium gel (1–5%)",
+        "Lidocaine (4%)",
+        "Hydrocortisone (1%)",
+        "Zinc sulfate (0.5%)",
+        "Hyaluronidase (150 U/mL)",
+        "Pilocarpine (0.5%)",
+        "Diclofenac gel (1–5%)",
+        "Ketoprofen gel (2.5%)",
+        "Piroxicam gel (0.5–1%)",
+        "Ibuprofen gel (5%)",
+        "Indomethacin gel (1%)"
+      ]
+    }
+  },
+
+  "TAMAÑOS_AGUJA": {
+    "0": "13 mm",
+    "1": "25 mm",
+    "2": "30 mm",
+    "3": "40 mm",
+    "4": "50 mm",
+    "5": "60 mm",
+    "6": "75 mm",
+    "7": "100 mm"
+  },
+
+  "TAMAÑOS_CAUCHO_ADHESIVO": {
+    "0": "Small (2 x 2 cm)",
+    "1": "Medium (5 x 5 cm)",
+    "2": "Intermediate (6 x 8 cm)",
+    "3": "Large (8 x 12 cm)",
+    "4": "Very large (12 x 18 cm)",
+    "5": "Extra large (15 x 20 cm)",
+    "6": "Circular (35 cm²)"
+  },
+
+  "GALVANICA": {
+    "GALVANICA": { 
+      "0": "Galvanic", "1": "Galvanic - Percutaneous Electrolysis", "2": "Galvanic - Percutaneous Electrolysis", "3": "Galvanic - tDCS"
+    },
+    "INFORMACION": "Information",
+
+    "INICIAR": "Start treatment",
+    "CANCELAR": "Cancel",
+
+    "ELECTRODOS": { 
+      "ELECTRODOS": "Electrodes",
+      "CATODO": { "LABEL": "Cathode (-, black)", "PH": "Electrode material" },
+      "ANODO": { "LABEL": "Anode (+, red)", "PH": "Electrode material" },
+      "TAMAÑO": {"LABEL": "Size", "PH": "Electrode size"}
+    },
+
+    "TECNICAS": {
+      "LABEL": "Techniques",
+      "PH": "Select technique",
+      "OPCIONES": [ "Manual configuration", "High-intensity Percutaneous Electrolysis", "Low-intensity Percutaneous Electrolysis", "tDCS" ]
+    },
+
+    "TIEMPO_TRATAMIENTO": "Treatment time",
+    "RAMPA": "Ramp time",
+    "INTENSIDAD":"Intensity",
+
+    "CONCEPTO": "Concept",
+    "EFECTOS_POLARES": "Polar effects",
+    "INDICACIONES": "Indications",
+    "PARAMETROS": "Parameters",
+    "MATERIALES":"Materials",
+    "DOSIS_MAXIMA": "Recommended maximum dose",
+    "RIESGO_QUEMADURA": "Risk of galvanic burn",
+    "TDCS": {
+      "TITULO_APRENDIZAJE": "Place electrodes",
+      "TITULO_SIMULACION": "View electrodes - tDCS cap",
+      "CONFIRMAR": "Confirm",
+      "LABEL": "Anode position",
+      "PH": "Press the button and select the area",
+
+      "C3": "C3: Left primary somatosensory and motor cortex",
+      "C4": "C4: Right primary somatosensory and motor cortex",
+      "F3": "F3: Left frontal cortex",
+      "F4": "F4: Right frontal cortex",
+      "FP1": "Fp1: Left dorsolateral prefrontal cortex",
+      "FP2": "Fp2: Right dorsolateral prefrontal cortex",
+      "F7": "F7",
+      "F8": "F8",
+      "T3": "T3",
+      "T4": "T4",
+      "A1": "A1",
+      "A2": "A2",
+      "T5": "T5",
+      "T6": "T6",
+      "P3": "P3",
+      "P4": "P4",
+      "PZ": "PZ",
+      "CZ": "CZ",
+      "FZ": "FZ",
+      "O1": "O1",
+      "O2": "O2"
+    },
+
+    "CONCEPTO_TEXTO": "Direct current (DC) is a form of electrical current with a constant, unidirectional flow of electrons. Its frequency is 0 Hz (or, more accurately, infinite, as there is no polarity alternation). It is primarily used for its polar and chemical effects, being the basis of techniques like percutaneous electrolysis, iontophoresis, or transcranial direct current stimulation (tDCS).",
+    "EFECTOS_POLARES_TEXTO": "An acidic reaction (analgesia) occurs at the positive electrode (anode). A basic reaction (irritation) occurs at the negative electrode (cathode).",
+    "INDICACIONES_LISTA": [
+      "Analgesia (+)",
+      "Anti-inflammatory for acute conditions (+)",
+      "Regeneration (-)",
+      "Irritation for chronic conditions (-)",
+      "Hyperhidrosis",
+      "Iontophoresis"
+    ],
+    "CONTRAINDICACIONES_LISTA": [
+      "Pacemakers, neurostimulators",
+      "Pregnancy",
+      "Cancerous processes",
+      "Wounds",
+      "Skin sensitivity disorders"
+    ],
+    "BASES_FISICAS": {
+      "TITULO": "Physical principles",
+      "TEXTO": "It is generated by a constant potential difference between two electrodes. As a net current without polarity reversal, the accumulated charge in the tissues is not zero. This distinguishes it from alternating currents and leads to chemical effects. Due to the high initial skin resistance and potential discomfort, ramp-up and ramp-down phases are used to gradually increase and decrease the intensity."
+    },
+    "EFECTOS_FISIOLOGICOS": {
+      "TITULO": "Main physiological effects",
+      "P1": "When direct current flows through the human body, several fundamental biological phenomena occur: \n <ol>  <li><strong>Tissue electrolysis:</strong> under the negative electrode (cathode), the medium becomes alkaline (generation of OH⁻), while under the positive (anode), it becomes acidic (generation of H⁺). These pH changes can directly affect proteins, cell membranes, and inflammatory processes.</li>\n  <li><strong>Electrophoresis:</strong> promotes ion migration according to charge toward the opposite polarity electrode, therapeutically used in <strong>iontophoresis</strong>.</li>\n  <li><strong>Mild thermal effect:</strong> though not the main goal, slight tissue temperature increases can occur due to sustained electron flow, especially with high intensity or prolonged application.</li> </ol>",
+      "P2": "From these primary effects, clinical benefits are derived: <ul>  <li><strong>Electroanalgesia:</strong> chemical changes from the current can reduce nociceptive sensitivity, especially with local inflammation.    <ul>      <li>Under the <strong>cathode:</strong> alkaline environment may decrease excitability and reduce inflammatory pain.</li>\n      <li>Under the <strong>anode:</strong> acidic environment may initially increase sensitivity but is useful for wound healing or tissue regeneration.</li>    </ul>  </li>  <li><strong>Metabolic modulation:</strong> improves trophism and locally activates reparative processes, especially with sustained low-intensity application (more relevant in tDCS).</li>\n  <li><strong>Modulation of neuronal excitability thresholds:</strong> in cranial applications (tDCS), constant flow modulates cortical excitability: <ul>  <li>The <strong>anode</strong> typically increases excitability (facilitatory effect).</li>  <li>The <strong>cathode</strong> typically decreases it (inhibitory effect).</li></ul> </li></ul>"
+    },
+    "USO_CLINICO": {
+      "TITULO": "Clinical use",
+      "TEXTO": "<ul><li><strong>Musculoskeletal pain</strong> with inflammatory component.</li><li><strong>Degenerative soft tissue injuries</strong> (tendon, muscle, ligament, fascia) requiring regeneration.</li><li><strong>Non-invasive cortical modulation</strong>, such as in <strong>tDCS</strong>, for chronic pain, neurorehabilitation, or fatigue.</li><li><strong>Local drug delivery</strong> of ionized medications via iontophoresis.</li><li><strong>Ulcerative or skin wounds</strong>, as it promotes regeneration and tissue closure.</li></ul>"
+    },
+    "CONTRAINDICACIONES": {
+      "TITULO": "Contraindications",
+      "TEXTO": "<ul><li><strong>Active electronic implants</strong> (pacemakers, ICDs, neurostimulators…).</li><li><strong>Severe sensory alterations</strong> preventing intensity control.</li><li><strong>Active infectious or inflammatory processes</strong> over a large area.</li><li><strong>Severe cardiovascular conditions</strong> in thoracic areas.</li><li><strong>Severe dermatological disorders</strong> or extensive skin damage.</li></ul>"
+    },
+    "FORMA_APLICACION_GENERAL": {
+      "TITULO": "General application method",
+      "TEXTO": "<ul><li><strong>Surface electrodes</strong> are used in bipolar or monopolar setups.</li><li>Always include <strong>ramp-up and ramp-down</strong> to avoid abrupt effects.</li><li>In <strong>iontophoresis</strong>, the drug is placed under the electrode of the same charge.</li><li>In <strong>percutaneous electrolysis</strong>, the cathode is typically an intratissue needle, and the anode a large return electrode.</li><li>In <strong>tDCS</strong>, electrodes are placed in predefined positions on the head using sponge or rubber conductive electrodes.</li></ul>"
+    },
+
+    "ALERTAS": {
+      "ELECTRODOS": "Select the electrodes",
+      "TRATAMIENTO":"Set a treatment time",
+      "RAMPA": "Treatment time must be greater than ramp time"
+    }
+  },
+
+  "MONOFASICA": {
+    "MONOFASICA": "Monophasic Current",
+    "CORRIENTES": {
+      "LABEL": "Techniques",
+      "PH": "Select technique",
+      "OPCIONES": [
+        "Manual configuration",
+        "Träbert",
+        "Diadynamic"
+      ]
+    },
+    "FORMA_ONDA": {
+      "LABEL": "Waveform",
+      "PH": "Select waveform",
+      "OPCIONES": [
+        "Square",
+        "Triangular",
+        "Sinusoidal"
+      ]
+    },
+    "ELECTRODOS": { 
+      "CATODO": { "LABEL": "Cathode (-, black)", "PH": "Electrode material" },
+      "ANODO": { "LABEL": "Anode (+, red)", "PH": "Electrode material" },
+      "TAMAÑO": { "LABEL": "Size", "PH": "Electrode size" }
+    },
+    "ANCHURA": "Pulse duration",
+    "DURACION_PAUSA": "Pause duration",
+    "FRECUENCIA": "Frequency",
+    "INTENSIDAD": {
+      "INTENSIDAD": "Intensity",
+      "TRABERT": "The intensity should reach the level of muscle contraction"
+    },
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "DIADINAMICA": {
+      "LABEL": "Type of diadynamic", 
+      "PH": "Select type of diadynamic",
+      "OPCIONES": [
+        "Fixed diphasic",
+        "Fixed monophasic",
+        "Short period",
+        "Long period"
+      ]
+    },
+    "FIBRAS": {
+      "LABEL": "Stimulated fibers",
+      "PH": "Select stimulated fibers",
+      "OPCIONES": [
+        "Relaxation effect",
+        "Type I fibers",
+        "Type IIa fibers",
+        "Type IIb fibers"
+      ]
+    },
+    "ALERTAS": {
+      "ELECTRODOS": "Select the electrodes",
+      "FORMA_ONDA": "Select a waveform",
+      "TRATAMIENTO": "Set a treatment time"
+    }
+  },
+
+  "BIFASICA": {
+    "BIFASICA": "Biphasic current",
+    "CORRIENTES": {
+      "LABEL": "Currents", "PH": "Select default current",
+      "OPCIONES": [
+        "Manual configuration",
+        "Conventional TENS",
+        "Acupuncture TENS",
+        "Burst TENS",
+        "NMES"
+      ]
+    },
+    "FORMA_ONDA": {
+      "LABEL": "Waveform", "PH": "Select waveform",
+      "OPCIONES": ["Symmetrical", "Asymmetrical"]
+    },
+    "ELECTRODOS": {
+      "ELECTRODOS": "Electrodes",
+      "CATODO": { "LABEL": "Cathode (-, black)", "PH": "Electrode material" },
+      "ANODO": { "LABEL": "Anode (+, red)", "PH": "Electrode material" },
+      "TAMAÑO": { "LABEL": "Size", "PH": "Electrode size" }
+    },
+    "FIBRAS": {
+      "LABEL": "Stimulated fibers",
+      "PH": "Select stimulated fibers",
+      "OPCIONES": [
+        "Abeta fibers",
+        "Adelta fibers"
+      ]
+    },
+    "RANGO_RECOMENDADO": "Within working range",
+    "RANGO_NO_RECOMENDADO": "Outside working range",
+    "RANGO_FIBRAS": {
+      "TONOLITICO": "Tonolytic effect (muscle relaxation, analgesia)",
+      "RELAJACION": "Muscle relaxation, analgesia, capillarization, muscle recovery, drainage",
+      "CONTRACCION": "Isolated contractions (muscle warm-up, relaxation)",
+      "VIBRACION": "Vibration (muscle relaxation)",
+      "TIPO_I": "Type I fibers stimulated",
+      "TIPO_IIa": "Type IIa fibers stimulated",
+      "TIPO_IIb": "Type IIb fibers stimulated",
+      "ANALGESIA": "Sensory stimulation (analgesia)"
+    },
+    "ANCHURA": "Pulse width",
+    "ANCHURA_EENM_MSG": [
+      "The optimal pulse width for muscle stimulation is usually between 200 and 400 µs. Although there is no single ideal value, this range allows for effective contractions with good tolerance.",
+      "• Shorter widths (<200 µs): require higher intensities for muscle contraction, usually more comfortable but less effective.",
+      "• Longer widths (>400 µs): allow for intense contractions with lower intensity, but may be less tolerable, especially for sensitive patients.",
+      "Selection should be based on clinical response and treatment goals."
+    ],
+    "FRECUENCIA": "Frequency",
+    "FRECUENCIA_EENM_MSG": [
+      "The activation of muscle fibers does not follow strict or fixed limits. As frequency increases, stimulation gradually progresses from slow fibers (type I) to fast fibers (type IIb).",
+      "The working frequency depends on the therapeutic goal, individual characteristics, and other current parameters (electrode size and placement, pulse width)."
+    ],
+    "TRENES": "Burst frequency",
+    "ANCHURA_TREN": "Burst width",
+    "INTENSIDAD": "Intensity",
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "FRECUENCIA_TRENES_MSG": "Burst frequency usually ranges between 1 and 4 Hz",
+    "TENS_TRENES": "Burst TENS",
+    "ALERTAS": {
+      "ELECTRODOS": "Select the electrodes",
+      "FORMA_ONDA": "Select a waveform",
+      "TRATAMIENTO": "Set a treatment time",
+      "INTENSIDAD": "Select the intensity to apply"
+    }
+  },
+
+  "MEDIA_FRECUENCIA": {
+    "MEDIA_FRECUENCIA": "Medium frequency",
+    "SUBIDA": "Ramp-up time",
+    "MANTENIMIENTO_MIN": "Minimum hold time",
+    "MANTENIMIENTO_MAX": "Maximum hold time",
+    "BAJADA": "Ramp-down time",
+    "CICLO": "Cycle time",
+    "ACELERACION": "Acceleration time",
+    "DESACELERACION": "Deceleration time",
+    "MINIMO": "Minimum time between changes",
+    "MAXIMO": "Maximum time between changes",
+    "MODO": {
+      "LABEL": "Application mode", "PH": "Select application mode",
+      "OPCIONES": ["Bipolar mode", "Tetrapolar mode"]
+    },
+    "ELECTRODOS": {
+      "ELECTRODOS": "Electrodes",
+      "LABEL": "Electrode",
+      "MATERIAL": "Electrode material",
+      "TAMAÑO": { "LABEL": "Size", "PH": "Electrode size" }
+    },
+    "FRECUENCIA": "Carrier frequency",
+    "FMA": "Amplitude Modulated Frequency",
+    "BARRIDO": "Frequency sweep",
+    "CONTORNOS": {
+      "LABEL": "Contours",
+      "PH": "Select contour",
+      "OPCIONES": [
+        "No specific contour",
+        "1/1",
+        "6/6",
+        "1/30/1/30",
+        "1/5/1/5",
+        "12/12",
+        "Custom"
+      ]
+    },
+    "CONTORNOS_PERSONALIZADO": {
+      "LABEL": "Frequency sweep contour",
+      "PH": "Select contour",
+      "OPCIONES": [
+        "No contour",
+        "Triangular",
+        "Trapezoidal",
+        "Sinusoidal",
+        "Square",
+        "Exponential",
+        "Random"
+      ]
+    },
+    "INTENSIDAD": "Intensity",
+    "VECTOR": {
+      "VECTOR": "Vector",
+      "LABEL": "Vector", "PH": "Select vector",
+      "OPCIONES": [
+        "Static",
+        "Linear",
+        "Rotary",
+        "Random"
+      ]
+    },
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "ALERTAS": {
+      "MODO": "Select the application mode",
+      "ELECTRODOS": "Select the electrodes",
+      "TRATAMIENTO": "Set a treatment time"
+    }
+  },
+
+  "DIATERMIA": {
+    "DIATERMIA": "Diathermy",
+
+    "MODOS": {
+      "LABEL": "Type of diathermy", "PH": "Select type of diathermy",
+      "OPCIONES": [
+        "Bipolar",
+        "Monopolar"
+      ]
+    },
+    "TECNICAS": {
+      "LABEL": "Type of diathermy", "PH": "Select type of diathermy",
+      "OPCIONES": [
+        "Bipolar - Capacitive",
+        "Bipolar - Resistive",
+        "Monopolar - Dielectric"
+      ]
+    },
+
+    "ELECTRODOS": {
+      "ELECTRODOS": "Electrodes",
+      "PH": "Electrode size",
+      "ACTIVO_BIPOLAR_CAPACITIVO": {
+        "LABEL": "Active electrode (applicator with insulating coating)"
+      },
+      "ACTIVO_BIPOLAR_RESISTIVO": {
+        "LABEL": "Active electrode (applicator without insulating coating)"
+      },
+      "ACTIVO_MONOPOLAR": {
+        "LABEL": "Active electrode (antenna)"
+      },
+      "PASIVO": {
+        "LABEL": "Passive electrode (return plate)"
+      },
+      "OPCIONES_ACT_BI": [
+        "Small (2.5 cm diameter)",
+        "Medium (5 cm diameter)",
+        "Large (10 cm diameter)"
+      ],
+      "OPCIONES_ACT_MO": [
+        "Small (2.5 cm diameter)",
+        "Large (5 cm diameter)"
+      ],
+      "OPCIONES_PAS": [
+        "Small",
+        "Large"
+      ]
+    },
+
+    "TIEMPO_MSG": "In diathermy, the recommended usage time ranges from 5 to 30 minutes",
+
+    "CONDUCTOR": {
+      "CONDUCTOR": "Conductive product",
+      "PH": "Type of conductor",
+      "OPCIONES": [
+        "Oil-based conductive cream",
+        "Oil-based conductive cream",
+        "Vegetable oil"
+      ]
+    },
+
+    "FRECUENCIA": "Emission frequency",
+    "POTENCIA": "Application power",
+    "EMISION": {
+      "EMISION": "Emission mode",
+      "LABEL": "Emission mode",
+      "PH": "Select emission mode",
+      "OPCIONES": [
+        "Continuous",
+        "Pulsed"
+      ]
+    },
+
+    "DUTY_CYCLE": {
+      "LABEL": "Pulse ratio (Duty Cycle)",
+      "PH": "Select duty cycle",
+      "OPCIONES": [
+        "100% (1:0)", "50% (1:1)", "33% (1:2)", "25% (1:3)", "20% (1:4)", "10% (1:9)"
+      ]
+    },
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "ALERTAS": {
+      "TIPO": "Select the type of diathermy",
+      "MODO": "Select the emission mode",
+      "RELACION": "Select the pulse ratio (duty cycle)",
+      "TRATAMIENTO": "Set a treatment time"
+    }
+  },
+
+  "ONDA_CORTA": {
+    "ONDA_CORTA": "Shortwave",
+
+    "MODO": {
+      "LABEL": "Mode", "PH": "Select mode",
+      "OPCIONES": [
+        "Capacitive (Condenser field)",
+        "Inductive"
+      ]
+    },
+
+    "ELECTRODOS": {
+      "1": {
+        "CAPACITIVO": {
+          "LABEL": "Electrode 1", "PH": "Select electrode"
+        },
+        "INDUCTIVO": {
+          "LABEL": "Applicator", "PH": "Select applicator"
+        }
+      },
+      "2": {
+        "LABEL": "Electrode 2", "PH": "Select electrode"
+      },
+      "OPCIONES": [
+        "Metal plate",
+        "Coil or drum"
+      ]
+    },
+
+    "TIEMPO_MSG": "Recommended usage time is between 5 and 30 minutes",
+
+    "FRECUENCIA": "Emission frequency",
+    "POTENCIA": "Application power",
+
+    "EMISION": {
+      "EMISION": "Emission mode",
+      "LABEL": "Emission mode",
+      "PH": "Select emission mode",
+      "OPCIONES": [
+        "Continuous",
+        "Pulsed"
+      ]
+    },
+
+    "DUTY_CYCLE": {
+      "LABEL": "Pulse ratio (Duty Cycle)",
+      "PH": "Select duty cycle",
+      "OPCIONES": [
+        "100% (1:0)", "50% (1:1)", "33% (1:2)", "25% (1:3)", "20% (1:4)",
+        "16.6% (1:5)", "10% (1:9)"
+      ]
+    },
+
+    "DISTANCIA": "Applicator-skin distance",
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "SECCIONES": [
+      "Risk of burn and overheating",
+      "Recommended distance in physiotherapy",
+      "Reduction of thermal effect",
+      "No effect"
+    ],
+    "ALERTAS": {
+      "MODO": "Select usage mode",
+      "EMISION": "Select emission mode",
+      "RELACION": "Select pulse ratio (duty cycle)",
+      "TRATAMIENTO": "Set a treatment time"
+    }
+  },
+
+  "MICROONDAS": {
+    "MICROONDAS": "Microwaves",
+    "APLICADOR": {
+      "LABEL": "Applicator", "PH": "Select applicator",
+      "OPCIONES": [
+        "Direct radiation",
+        "Shaped field"
+      ]
+    },
+
+    "FRECUENCIA": "Emission frequency",
+    "POTENCIA": "Application power",
+
+    "EMISION": {
+      "EMISION": "Emission mode",
+      "LABEL": "Emission mode",
+      "PH": "Select emission mode",
+      "OPCIONES": [
+        "Continuous",
+        "Pulsed"
+      ]
+    },
+
+    "DUTY_CYCLE": {
+      "LABEL": "Pulse ratio (Duty Cycle)",
+      "PH": "Select duty cycle",
+      "OPCIONES": [
+        "100% (1:0)", "50% (1:1)", "33% (1:2)", "25% (1:3)", "20% (1:4)", 
+        "16.6% (1:5)", "10% (1:9)"
+      ]
+    },
+
+    "DISTANCIA": "Applicator-skin distance",
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "SECCIONES": [
+      "Risk of burns and overheating",
+      "Recommended distance in physiotherapy",
+      "Reduction of thermal effect",
+      "No effect"
+    ],
+    "TIEMPO_MSG": "Recommended usage time is between 5 and 30 minutes",
+    "ALERTAS": {
+      "APLICADOR": "Select the applicator",
+      "EMISION": "Select the emission mode",
+      "RELACION": "Select the pulse ratio (duty cycle)",
+      "TRATAMIENTO": "Set a treatment time"
+    }
+  },
+
+  "INFRARROJOS": {
+    "INFRARROJOS": "Infrared",
+    "EQUIPO": {
+      "EQUIPO": "Equipment",
+      "LABEL": "Equipment",
+      "PH": "Select equipment type",
+      "OPCIONES": [
+        "Fixed-power lamp (conventional)",
+        "Adjustable-power lamp"
+      ]
+    },
+
+    "POTENCIA": "Application power",
+    "DISTANCIA": "Applicator-skin distance",
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "ALTA_POTENCIA": "High-power bulb",
+    "INFO_BOMBILLA": "Adjustable equipment usually allows power regulation between 50 and 500 W. However, some devices exceptionally use high-power bulbs of 1000 W.",
+    "SECCIONES": [
+      "Risk of burns",
+      "Recommended distance in physiotherapy",
+      "Reduction of thermal effect",
+      "No effect"
+    ],
+    "GAFAS": {
+      "LABEL": "Protective glasses", "PH": "Select protective glasses",
+      "OPCIONES": [
+        "No glasses",
+        "IR protective glasses"
+      ]
+    },
+    "ALERTAS": {
+      "EQUIPO": "Select the equipment to use",
+      "GAFAS": "Select the protective glasses to use",
+      "TRATAMIENTO": "Set a treatment time"
+    }
+  },
+
+  "LASER": {
+    "LASER": "Laser",
+    "TIPOS": {
+      "LABEL": "Laser type", "PH": "Select laser type",
+      "OPCIONES": [
+        "Low-Level Laser Therapy (LLLT)",
+        "High-Intensity Laser Therapy (HILT)"
+      ]
+    },
+
+    "LONGITUD_ONDA": {
+      "LABEL": "Wavelength", "PH": "Select wavelength",
+      "OPCIONES": [
+        "LLLT Red (650-680 nm)",
+        "LLLT Infrared (780-850 nm)",
+        "HILT (905-1064 nm)"
+      ]
+    },
+
+    "POTENCIA": {
+      "LABEL": "Application power",
+      "MSG": "Maximum power value depends on the selected applicator"
+    },
+    "EMISION": {
+      "EMISION": "Emission mode",
+      "LABEL": "Emission mode",
+      "PH": "Select emission mode",
+      "OPCIONES": [
+        "Continuous",
+        "Pulsed"
+      ]
+    },
+    "TIEMPO_MSG": "Recommended usage time is between 1 and 30 minutes",
+
+    "FRECUENCIA": "Pulse frequency",
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "GAFAS": "Protective glasses",
+    "SUPERFICIE_TRATADA": "Treated surface",
+    "DOSIS": {
+      "LABEL": "Total dose",
+      "FORMULA": [
+        "Dose (J/cm²) = Power (W) × Time (s) / Treated area (cm²)"
+      ],
+      "SECCIONES": [
+        "Insufficient dose",
+        "Low dose",
+        "Optimal dose",
+        "High dose (controlled)",
+        "Risk of tissue damage"
+      ]
+    },
+    "APLICADOR": {
+      "LABEL": "Applicator",
+      "PH": "Select applicator",
+      "OPCIONES_LLLT": [
+        "Spot (1 cm²)",
+        "6-diode cluster (5 cm²)"
+      ],
+      "OPCIONES_HILT": [
+        "Spot (1 cm²)",
+        "Cluster (5 cm²)",
+        "Scanner"
+      ]
+    },
+    "ALERTAS": {
+      "TIPO": "Select laser type",
+      "LONGITUD": "Select wavelength",
+      "APLICADOR": "Select applicator",
+      "EMISION": "Select emission mode",
+      "TRATAMIENTO": "Set treatment time"
+    }
+  },
+
+  "ULTRAVIOLETAS": {
+    "ULTRAVIOLETAS": "Ultraviolet",
+    "EQUIPO": {
+      "EQUIPO": "Equipment",
+      "LABEL": "Equipment",
+      "PH": "Select equipment type",
+      "OPCIONES": [
+        "UV-A (315 - 400 nm) - Long Wave",
+        "UV-B (280 - 315 nm) - Medium Wave"
+      ]
+    },
+    "TIEMPO_MSG": "Recommended usage time is from 30 seconds to 10 minutes",
+
+    "LONGITUD_ONDA": "Wavelength",
+    "DOSIS": {
+      "LABEL": "UV radiation dose",
+      "SECCIONES": [
+        "Insufficient dose",
+        "Low dose",
+        "Optimal dose",
+        "High dose",
+        "Risk of skin damage"
+      ]
+    },
+    "DISTANCIA": {
+      "LABEL": "Applicator-skin distance",
+      "SECCIONES": [
+        "Excessive irradiance",
+        "Optimal irradiance",
+        "Low irradiance",
+        "Minimal irradiance"
+      ]
+    },
+    "MATERIAL": "Additional material",
+    "GAFAS": "Protective glasses",
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "IRRADIANCIA": "Estimated irradiance",
+    "IRRADIANCIA_MSG": "Irradiance depends on applicator-skin distance",
+    "CALCULADORA": {
+      "TITULO": "Dose calculator",
+      "FORMULA": "Dose (J/cm²) = Irradiance (W/cm²) × Time (s)",
+      "IRRADIANCIA": "Irradiance",
+      "TIEMPO": "Time",
+      "DOSIS": "Dose"
+    },
+    "ALERTAS": {
+      "EQUIPO": "Select the equipment to use",
+      "TRATAMIENTO": "Set treatment time"
+    }
+  },
+
+  "MAGNETOTERAPIA": {
+    "MAGNETOTERAPIA": "Magnetotherapy",
+    "TIPOS": {
+      "LABEL": "Type of magnetotherapy", "PH": "Select type of magnetotherapy",
+      "OPCIONES": [
+        "Conventional Magnetotherapy (Low intensity)",
+        "Superinductive Magnetotherapy (High intensity)"
+      ]
+    },
+
+    "APLICADOR": {
+      "LABEL": "Applicator", "PH": "Select applicator",
+      "OPCIONES_PBMF": [
+        "Solenoid",
+        "Electromagnetic plates"
+      ],
+      "OPCIONES_SIS": [
+        "SIS paddle"
+      ]
+    },
+
+    "INTENSIDAD": "Magnetic field intensity",
+    "FRECUENCIA": "Emission frequency",
+    "DISTANCIA": "Applicator-skin distance",
+
+    "EMISION": {
+      "LABEL": "Emission mode",
+      "PH": "Select emission mode",
+      "OPCIONES": [
+        "Continuous",
+        "Pulsed"
+      ]
+    },
+    "TIEMPO_MSG_CONVENCIONAL": "Treatment time in conventional magnetotherapy is usually 30 to 60 minutes",
+    "TIEMPO_MSG_SUPERINDUCTIVA": "Treatment time in superinductive magnetotherapy is usually 5 to 20 minutes",
+
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "BARRIDO": "Frequency sweep",
+    "TIPO_FRECUENCIA": {
+      "LABEL": "Frequency type", "PH": "Select frequency type",
+      "OPCIONES": [ "Fixed", "Sweep" ]
+    },
+    "ALERTAS": {
+      "TIPO": "Select magnetotherapy type",
+      "EMISION": "Select emission mode",
+      "APLICADOR": "Select applicator",
+      "TRATAMIENTO": "Set treatment time"
+    }
+  },
+
+  "ULTRASONIDOS": {
+    "ULTRASONIDOS": "Ultrasound",
+    "CABEZAL": {
+      "LABEL": "Head (cm²)", "PH": "Select surface",
+      "OPCIONES": [
+        "1 cm²", "2 cm²", "5 cm²", "10 cm²"
+      ]
+    },
+    "CONDUCCION": {
+      "LABEL": "Conduction product", "PH": "Select conduction product",
+      "OPCIONES": [
+        "Ultrasound gel"
+      ]
+    },
+    "FRECUENCIA": {
+      "FRECUENCIA": "Emission frequency (MHz)",
+      "LABEL": "Emission frequency",
+      "PH": "Select emission frequency",
+      "OPCIONES": [
+        "1 MHz", "3 MHz"
+      ]
+    },
+    "INTENSIDAD": "Power",
+    "EMISION": {
+      "LABEL": "Emission mode",
+      "PH": "Select emission mode",
+      "OPCIONES": [
+        "Continuous",
+        "Pulsed"
+      ]
+    },
+    "RELACION": {
+      "LABEL": "Pulse ratio (Duty Cycle)", "PH": "Select pulse ratio",
+      "OPCIONES": [
+        "100% (1:0)", "50% (1:1)", "33% (1:2)", "25% (1:3)", "20% (1:4)", 
+        "16.6% (1:5)", "10% (1:9)"
+      ]
+    },
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "DOSIS_TOTAL": "Total dose",
+    "MSG_DOSIS_TOTAL": "Total dose (J) = Power (W/cm²) × Head (cm²) × Treatment time (s) × Pulse ratio",
+    "SUPERFICIE_TRATADA": "Treated surface",
+    "DOSIS": {
+      "LABEL": "Dose per cm²",
+      "SECCIONES": [
+        "Insufficient dose",
+        "Low dose",
+        "Optimal dose",
+        "High dose",
+        "Risk of tissue damage"
+      ]
+    },
+    "ALERTAS": {
+      "FRECUENCIA": "Select frequency",
+      "EMISION": "Select emission mode",
+      "RELACION": "Select pulse ratio (duty cycle)",
+      "CABEZAL": "Select head",
+      "TRATAMIENTO": "Set treatment time"
+    }
+  },
+
+  "ONDAS_CHOQUE": {
+    "ONDAS_CHOQUE": "Shockwaves",
+    "TIPOS": {
+      "LABEL": "Type of shockwave", "PH": "Select type",
+      "OPCIONES": [
+        "Radial (RSWT - Radial Shockwave Therapy)",
+        "Focused (FSWT - Focused Shockwave Therapy)"
+      ]
+    },
+    "APLICADOR": {
+      "LABEL": "Applicator", "PH": "Select applicator",
+      "OPCIONES_RADIAL": [
+        "Small (10 mm diameter)",
+        "Medium (20 mm diameter)",
+        "Large (35 mm diameter)"
+      ],
+      "OPCIONES_FOCAL": [
+        "Small (5 mm diameter)",
+        "Medium (10 mm diameter)",
+        "Large (15 mm diameter)"
+      ]
+    },
+    "CONDUCCION": {
+      "LABEL": "Conduction product", "PH": "Select conduction product",
+      "OPCIONES": [
+        "Ultrasound gel"
+      ]
+    },
+    "FRECUENCIA": "Frequency",
+    "PRESION": "Pressure / Energy",
+    "IMPACTOS": {
+      "LABEL": "Number of impacts",
+      "SECCIONES": [
+        "Insufficient dose, no therapeutic effect",
+        "Low dose",
+        "Optimal dose",
+        "High dose",
+        "Dose with risk of tissue damage"
+      ]
+    },
+    "PARAMETROS": "Parameters",
+    "MATERIALES": "Materials",
+    "DOSIS": {
+      "LABEL": "Total dose",
+      "SECCIONES": [
+        "Insufficient dose",
+        "Low dose",
+        "Optimal dose",
+        "High dose",
+        "Dose with risk of tissue damage"
+      ]
+    },
+    "ALERTAS": {
+      "TIPO": "Select type of shockwave",
+      "APLICADOR": "Select applicator",
+      "TRATAMIENTO": "Set treatment time"
+    }
+  }
+}

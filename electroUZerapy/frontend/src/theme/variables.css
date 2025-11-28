@@ -1,2 +1,446 @@
 /* For information on how to create your own theme, please refer to:
 http://ionicframework.com/docs/theming/ */
+
+:root {
+	--ion-color-background: #A7BBDE;
+	--ion-color-background-rgb: 167, 187, 222;
+	--ion-color-background-contrast: #1D3E71;
+	--ion-color-background-contrast-rgb: 29, 62, 113;
+	--ion-color-background-shade: #1f1f1f;
+	--ion-color-background-tint: #3c3c3c;
+
+	--ion-color-primary: #1D3E71;
+	--ion-color-primary-rgb: 29, 62, 113;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #111628;
+	--ion-color-primary-tint: #405599;
+
+	--ion-color-secondary: #0163aa;
+	--ion-color-secondary-rgb: 1,99,170;
+	--ion-color-secondary-contrast: #ffffff;
+	--ion-color-secondary-contrast-rgb: 255,255,255;
+	--ion-color-secondary-shade: #1d4445;
+	--ion-color-secondary-tint: #327273;
+
+	--ion-color-tertiary: #6030ff;
+	--ion-color-tertiary-rgb: 96,48,255;
+	--ion-color-tertiary-contrast: #ffffff;
+	--ion-color-tertiary-contrast-rgb: 255,255,255;
+	--ion-color-tertiary-shade: #542ae0;
+	--ion-color-tertiary-tint: #7045ff;
+
+	--ion-color-success: #2dd55b;
+	--ion-color-success-rgb: 45,213,91;
+	--ion-color-success-contrast: #000000;
+	--ion-color-success-contrast-rgb: 0,0,0;
+	--ion-color-success-shade: #28bb50;
+	--ion-color-success-tint: #42d96b;
+
+	--ion-color-warning: #ffc409;
+	--ion-color-warning-rgb: 255,196,9;
+	--ion-color-warning-contrast: #000000;
+	--ion-color-warning-contrast-rgb: 0,0,0;
+	--ion-color-warning-shade: #e0ac08;
+	--ion-color-warning-tint: #ffca22;
+
+	--ion-color-danger: #c5000f;
+	--ion-color-danger-rgb: 197,0,15;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #ad000d;
+	--ion-color-danger-tint: #cb1a27;
+
+	--ion-color-light: #f6f8fc;
+	--ion-color-light-rgb: 246,248,252;
+	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast-rgb: 0,0,0;
+	--ion-color-light-shade: #d8dade;
+	--ion-color-light-tint: #f7f9fc;
+
+	--ion-color-medium: #0015ff;
+	--ion-color-medium-rgb: 95,95,95;
+	--ion-color-medium-contrast: #ffffff;
+	--ion-color-medium-contrast-rgb: 255,255,255;
+	--ion-color-medium-shade: #545454;
+	--ion-color-medium-tint: #6f6f6f;
+
+	--ion-color-dark: #1f1f1f;
+	--ion-color-dark-rgb: 31,31,31;
+	--ion-color-dark-contrast: #ffffff;
+	--ion-color-dark-contrast-rgb: 255,255,255;
+	--ion-color-dark-shade: #292929;
+	--ion-color-dark-tint: #444444;
+
+  --ion-color-naranja: #FCCD2A;
+	--ion-color-naranja-rgb: 252,205,42;
+	--ion-color-naranja-contrast: #000000;
+	--ion-color-naranja-contrast-rgb: 0,0,0;
+	--ion-color-naranja-shade: #292929;
+	--ion-color-naranja-tint: #444444;
+
+	--ion-color-blanco: #ffffff;
+	--ion-color-blanco-rgb: 255,255,255;
+	--ion-color-blanco-contrast: #000000;
+	--ion-color-blanco-contrast-rgb: 0,0,0;
+	--ion-color-blanco-shade: #ffffff;
+	--ion-color-blanco-tint: #ffffff;
+
+  --ion-color-negro: #000000;
+	--ion-color-negro-rgb: 0,0,0;
+	--ion-color-negro-contrast: #000000;
+	--ion-color-negro-contrast-rgb: 0,0,0;
+	--ion-color-negro-shade: #000000;
+	--ion-color-negro-tint: #000000;
+
+  /* Set the background of the entire app */
+  --ion-background-color: var(--ion-color-background) !important;
+	--ion-text-color: var(--ion-color-primary) !important;
+
+  --color-color1: #be6e87;
+  --color-color2: #483a56;
+	--ion-font-family: 'Noto Sans Variable', sans-serif;
+}
+
+/******************************************************************************/
+/* Colores definidos */
+/******************************************************************************/
+.ion-color-main {
+	--ion-color-base: var(--ion-color-main);
+	--ion-color-base-rgb: var(--ion-color-main-rgb);
+	--ion-color-contrast: var(--ion-color-main-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-main-contrast-rgb);
+	--ion-color-shade: var(--ion-color-main-shade);
+	--ion-color-tint: var(--ion-color-main-tint);
+}
+
+.ion-color-naranja {
+	--ion-color-base: var(--ion-color-naranja);
+	--ion-color-base-rgb: var(--ion-color-naranja-rgb);
+	--ion-color-contrast: var(--ion-color-naranja-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-naranja-contrast-rgb);
+	--ion-color-shade: var(--ion-color-naranja-shade);
+	--ion-color-tint: var(--ion-color-naranja-tint);
+}
+
+.ion-color-blanco {
+	--ion-color-base: var(--ion-color-blanco);
+	--ion-color-base-rgb: var(--ion-color-blanco-rgb);
+	--ion-color-contrast: var(--ion-color-blanco-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-blanco-contrast-rgb);
+	--ion-color-shade: var(--ion-color-blanco-shade);
+	--ion-color-tint: var(--ion-color-blancno-tint);
+}
+
+.ion-color-negro {
+	--ion-color-base: var(--ion-color-negro);
+	--ion-color-base-rgb: var(--ion-color-negro-rgb);
+	--ion-color-contrast: var(--ion-color-negro-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-negro-contrast-rgb);
+	--ion-color-shade: var(--ion-color-negro-shade);
+	--ion-color-tint: var(--ion-color-negro-tint);
+}
+
+/******************************************************************************/
+/* Textos */
+/******************************************************************************/
+h1 {
+	font-weight: bold !important;
+	--ion-font-family: 'Inter', sans-serif;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.negro {
+	color: var(--ion-color-dark);
+}
+
+h3 {
+	font-size: 18px;
+}
+
+ion-item {
+	--border-color: var(--ion-color-primary);
+}
+
+ion-button {
+	text-transform: none;
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-blanco);
+	letter-spacing: normal !important;
+	font-size: 1rem;
+}
+
+.range-value-box {
+	border: 1px solid var(--ion-color-primary);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	padding-right: 0;
+	width: fit-content !important;
+	color: var(--ion-color-primary);
+
+	input {
+		background: transparent;
+		color: var(--ion-color-primary);
+		border: none;
+		font-size: 1rem;
+		width: 80px !important;
+		outline: none;
+	}
+
+	span {
+		font-size: 1rem;
+		white-space: nowrap;
+		font-weight: bold;
+		width: 75px !important;
+		margin-left: 0;
+		margin-right: 0;
+		text-align: end;
+		padding-right: 20px;
+	}
+}
+
+
+input[type=number]::-webkit-inner-spin-button {
+	opacity: 1
+}
+
+.page-header {
+	display: flex;
+	align-items: center;
+	--ion-box-shadow: none;
+	--ion-border-width: 0;
+	--background: var(--ion-color-primary);
+	box-shadow: none;
+
+	ion-toolbar {
+		display: flex;
+		flex-wrap: nowrap;
+		--background: var(--ion-color-primary);
+
+		/* align-items: center; */
+		width: 100%;
+
+		ion-icon {
+			font-size: 1.75rem;
+			color: var(--ion-color-blanco);
+
+		}
+	
+		ion-title {
+			font-size: 1.75rem;
+			font-weight: bold;
+			margin-left: 10px;
+			padding: 0;
+			color: var(--ion-color-blanco);
+		}
+	
+		ion-menu-button {
+			--background: var(--ion-color-blanco);
+			--color: var(--ion-color-primary);
+		}
+	
+		.titulo-page {
+			display: flex;
+			align-items: center;
+		}
+	}
+}
+
+.page-content {
+	display: flex;
+  flex-direction: column;
+	ion-row {
+		flex-grow: 1; /* Permite que ocupe toda la altura disponible */
+		display: flex;
+		height: 100%;
+		min-height: 100%;
+		padding-top: 16px;
+		padding-right: 16px;
+		padding: 0;
+
+		ion-col {
+			display: flex;
+		  flex-direction: column;
+		}
+
+		.derecha {
+			min-height: 100% !important;
+		}
+	}
+}
+
+
+ion-card {
+	--background: var(--ion-color-primary);
+	box-shadow: none;
+	--color: var(--ion-color-blanco);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	/* min-height: 200px !important; */
+
+	ion-card-header {
+		/* margin-top: 10px; */
+		margin-left: 30px;
+		ion-card-title {
+			--color: var(--ion-color-blanco);
+			font-weight: bold;
+			font-size: 22px;
+		}
+		ion-card-subtitle {
+			--color: var(--ion-color-blanco);
+			opacity: 0.6;
+		}
+	}
+	ion-card-content {
+		padding: 0 !important;
+		margin-right: 5%;
+		font-size: 16px !important;
+	}
+}
+
+
+li {
+	list-style: none;
+	background-color: var(--ion-color-primary);
+}
+
+.error {
+	background-color: red;
+	color: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	border-radius: 5px;
+}
+
+
+ion-toggle {
+	--handle-background-checked: var(--ion-color-naranja);
+	--track-background-checked: var(--ion-color-primary);
+}
+
+.info {
+	font-size: 30px;
+	cursor: pointer;
+}
+
+
+.error-toast {
+  --background: var(--ion-color-danger);
+  --color: var(--ion-color-blanco);
+  font-weight: bold;
+}
+
+.success-toast {
+  --background: var(--ion-color-success);
+  --color: var(--ion-color-blanco);
+  font-weight: bold;
+}
+
+/*******************************************************************************
+ * Aprendizaje
+ ******************************************************************************/
+.explicacion-content {
+
+  --background: var(--ion-color-primary);
+  
+	--color: var(--ion-color-blanco);
+	border-radius: 0;
+  flex-grow: 1; /* Permite que crezca dentro de IonCol */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  min-height: 100% !important;
+
+  ion-card-header {
+    margin-left: 0px;
+
+    h2 {
+      font-size: 1.2rem;
+      opacity: 0.7;
+    }
+  }
+
+  ion-card-content {
+    margin-left: 16px;
+    h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 32px;
+			white-space: pre-line;
+    }
+    
+    li {
+      font-size: 18px;
+      list-style-type:disc;
+    }
+  }
+}
+
+.popover-info {
+	--width: 50%;
+	--max-height: 300px;
+}
+
+/*******************************************************************************
+ * Simulación
+ ******************************************************************************/
+ .content-sim {
+	display: flex;
+  flex-direction: column;
+	overflow: hidden; /* 🔥 Evita el scroll en todo el contenedor */
+
+	ion-row {
+		flex-grow: 1; /* Permite que ocupe toda la altura disponible */
+		display: flex;
+		height: 100%;
+		min-height: 100%;
+		padding-top: 16px;
+		padding-right: 16px;
+		padding: 0;
+
+		.izq-sim {
+			overflow-y: auto; /* 🔥 Permite scroll SOLO en la izquierda */
+		}
+
+		.cuerpo {
+			height: 100%;
+			position: sticky; /* 🔥 Mantiene fija la sección derecha */
+			overflow: hidden; /* 🔥 Evita el scroll en la derecha */
+			touch-action: none; /* 🔥 Bloquea desplazamiento táctil */
+			ion-card {
+				height: 100%;
+				--background: var(--ion-color-blanco);
+				border-radius: 0px;
+		
+				div {
+					height: 100%;
+					width: 100%;
+		
+					svg {
+						height: 100%;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+
+.img-cuerpo {
+	height: 100%;
+}
