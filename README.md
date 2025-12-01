@@ -254,7 +254,7 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
 
     Es lo local, lo que cada usuario ve y con lo que trabaja, puede ser diferente segun uduarios. En este caso tiene contextos particulares dependientes del usuario, además de establecer rutas de login y menu (componentes a nivel App, no a nivel main)
 
-5. **Constantes**
+6. **Constantes**
 
     Directorio src/constants, que contiene constants, interfaces y simuladores.
 
@@ -282,7 +282,7 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
     - simuladores.tsx: Contiene un array con todos los temas de estudio y sus paths de aprendizaje, simulación y evaluación. **Me quiero asegurar** de que el apartado de modes de constants.tsx no tiene utilidad una vez creado este archivo simuladores.tsx.
 
 
-6. **Clases customizadas**
+7. **Clases customizadas**
 
     Directorio src/clases que contiene Aplicadores, Electrodos, Materiales y TiposAplicadores
 
@@ -295,27 +295,71 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
     - Electrodos: importa iconos y los materiles aguja, caucho y adhesivo de Materiales.tsx. Devuelve iconos según el tipo de electrodo (definido como enum, pero siendo finalmente una propiedad del objeto electrodo) y define el objeto Electrodo con coordenadas, tipo, color, nombre, material y canal, estableciendo en el constructor los valores default. Contiene funciones para crear un electrodo igual pero en otra localizacion, para devolver el icono, para devolver tipo y canal como string, para elegir el material (set), para quitarlo, para cambiar el material (devuelve el objeto), pare devolver el area, y devolver true si existe (tiene material y tamaño).
 
 
-7. **Contextos**
+8. **Contextos**
 
     Directorio src/context para los archivos que proporcionarán los providers que envolverán la app (lista de alumnos, detalles de usuario...).
 
     Los contextos en typescript sirven para compartir datos entre muchos compoenentes sin tener que asignar proprs continuamente en cada componente. Los contextos rodean la aplicacion y cualquier componente lo puede leer o modificar sin usar prop.
 
+    useRef es un contenedor para un valor persistente durante la vida de un componeente, mientras que useState causa que el componenete se re-renderice cuando cambia el valor.
+
     - aplicadorContext: requiere de la clase Aplicador definida en Aplicadores.tsx. Se crea un type, que contiene los estados modoAlpicador (el objeto aplicador elegido, o niguno), activo, pasivo, modoDiatermia, modoOndaCorta, tipoLaser, tipoagnetoterapia, tipoOndasChoque. Estos estados serán opciones que el usuario elegirá para finalmente crear el aplicador deseado. Se crea el contexto vacío usando este type creado. Se crea el provider, que es quien contiene y provee los valores del contexto, y adicionalmente tiene una funcion para resetear estos estados o valores del contexto. El provider hacer un return con todos los estados y sus valores.
 
-    - userListContext: requiere de axios. Instalar con `npm install axios`. Axios sirve para contectar un backend Express con el forntend React/Ionic. Se crea una carpeta api/ para hacer esta conexion con el backend. Requiere clases para el manejo de usuarios creadas en api/user.tsx y de los Roles definidos en interfaces.tsx.
+    - userListContext: requiere de axios. Instalar con `npm install axios`. Axios sirve para contectar un backend Express con el forntend React/Ionic. Se crea una carpeta api/ para hacer esta conexion con el backend. userListContext requiere clases para el manejo de usuarios creadas en api/user.tsx y de los Roles definidos en interfaces.tsx.
+        Define el type User con id, name y role definido por el enum de Roles de interfaces.tsx, el type SelectedUserMap donde el id del user tiene asignado un boolean, el type UserListContextType que usará el provider, formado por un array de objetos User, por el objeto SelectedUserMap, el numero de profesores y por funciones que se definen más adelante en el código dentro del provider:
+        - addUsers: introduciendo como parámetro una array de objetos conformados por pares-valor de nombre, contraseña y rol, devuelve un array de todos los usuarios con promise porque lo hará preguntando al servidor. A efectos rácticos, hace la peticion al servidor definida en createUsers de api/user y la añade al listado de usuarios total, ordena esta lista para presentar primero los profesores y despues los estudiantes. Realiza el conteo de número de profesores por si tuviera que atualziarse. Actualiza en el provider el listado y el listado visible para la búsqueda (aunque parezcan lo mismo parecen elementos diferentes necesarios en el contexto). Tras añadir usuario se establecen todos los type SelectedUserMap de cada usuario de la lista como falso, los dará como deseleccionados en el contexto.
+        - eliminateUsers: introduciendo un array de id, se eliminarán de la lista. A efectos rácticos, hace la peticion al servidor definida en deleteUsers de api/user, y en caso de que el rol del usuario sea profesor, actualiza el número de proferores. Actualiza la lista de usuarios y la lista de búsqueda de usuarios.
+        - getUsers: A efectos rácticos, hace la peticion al servidor definida en getAllUsers de api/user, realiza el conteo de profesores, actualiza la lista de usuarios y la lista de búsqueda de usuarios y se establecen todos los type SelectedUserMap de cada usuario de la lista como falso, los dará como deseleccionados en el contexto.
+        - selectUser: actualiza el estado de SelectedUserMap en el provider (`const [selected, setSelected] = useState<SelectedUsersMap>({})`) para el id de un usuario con el boleano elegido.
+        - selectAllUsers: selecciona todos los alumnos, actualizando el estado de SelectedUserMap en el provider.
+        - deleteSelectedUsers: hace los mismo que eliminateUser pero haciendo un filtrado previo del listado de usuarios por aquellos que estan seleccionados.
+        - search: filtra el listado de usuarios con lo introducido en el query de elemento HTML para el nombre de los usuarios. Si el indide de coincidencia es mayor a -1 (se encuentra coincidencia en algun punto del string) se actualiza el listado visible para búsqueda.
+
+    - userContext: usado por app no por main. userContext requiere clases para el logeo de usuarios creadas en api/user.tsx y de una clase de ionic/react llamada useIonRouter que sirve para la navegación de manera más majica que usando useNavigate. El type del contexto que usará el provider está formado por user (cualquier valor), token (cualquier valor), loading (boolean, true por defecto dentro del provider hasta que se haya hecho register, login o logout), y funciones que se definirán en el provider:
+        - register: llama a la función registerUser de api/user que requiere un name, un password y el role de estudiante. Establece el user del provider y del localStorage según el valor user de la respuesta del servidor, y el token del provider y del localStorage según el valor token de la respuesta del servidor. Establece el loading como false
+        - login: llama a la función loginUser de api/user que requiere un nip y un password. Establece el user del provider y del localStorage según el valor user de la respuesta del servidor, y el token del provider y del localStorage según el valor token de la respuesta del servidor. Establece el loading como false.
+        - logout: llama a la función logoutUser de api/user. Elimina el user y el token del localStorage. Establece el loading como false.
+
+        Adicionalmente, el provider ejecuta una función de react, no accesible desede el contexto, llamada useEffect, que sirve para ejecutar código después de que el componente se haya montado (finaliza con []), y que en este caso comprueba los valores de user y token guardados en localStorage a través de llamadas a api/user con sus funciones verifyTokenUser, y lleva a app/home usando useIonRouter.
+
+    - logContext: usado por app no por main. Requiere clases del log procedentes de api/log, de constants/interfaces.tsx, classes/Electrodos.tsx, classes/Materiales.tsx, components/Logs/Logs.tsx, classes/Aplicadores.tsx, y el contexto aplicadorContext.tsx. Primero crea tres clases enum y type para utilizar como propiedades en el context y provider: enum Estado (detenido, simulando o pausado), type LogState (popiedad estado como Estado, simulating como boolean y puased como boolean), y type LogAction (con los posibles valores iniciar, pausar, reanudar y finalizar), además tambien está definida posteriomente una const llamada reducer que usará el providaer a través de una función propia de React llamada useReducer, que devuelve un LogState determinado según el LogAction introducido (en caso de que no sea ninguno de los 4 LogAction posibles), o el LogState inicial. useReducer es similar a useState pero para lógicas más complejas.
+
+        El contexto esta formado por boolean simulating, boolean paused, number tiempoRestante, number width, number heigth, Electrodo anodoCanal1, Electrodo catodoCanal1, Electrodo anodoCanal2, Electrodo catodoCanal2, boolean complemento, PositionsTDCS nodoTDCS, PositionsTDCS catodoTDCS, Aplicador aplicador1 Aplicador aplicador2, array de boolean conduccion, array de boolean   proteccion, boolean farmaco y RoomStudent room, y funciones set (`React.Dispatch<React.SetStateAction<>>`) y funciones que se definirán en el provider:
+        - iniciar: establece el estado de la variable tipo definido en el provider que tiene un valor entre aprendizaje, simulación o evaluación. Si no es aprendizaje, establece que lastSavedParams (definido en provider con referencia a time y params) tiene los valores introducidos en la función como parámetros, llama a la funcion initLog de api/log.tsx con los paramtros variables y fijos (funciones explicadas posteriormente) y devuelve sessionId y ejecuta la funcion iniciarGuardado (comienza un setInterval que intenta guardar params con la funcion de api/log.tsx saveParamso backend via saveParams (sessionId, paramsRef.current)). Envía al reducer como dispatch "INICIAR" e inicia una cuenta atras.
+        - pausar: llama a detenerGuardado (cancela el intervalo de guardado periodico y hace nulo intervalIdRef), envía al reducer el dispacth "PAUSAR", frena la cuenta atrás, y muestra tiempoRestanteRef con el estado (useState) de tiempoRestante.
+        - reanudar: si queda tiempo y el tipo no es aprendizaje, ejecuta iniciarGuardado(). Si queda tiempo envía al reducer el dispatch "REANUDAR", actualiza ultimaReanudacionRef, y ejecuta cuentaAtras.
+        - finalizar: si el tipo no es aprendizaje, ejecuta detenerGuardado. Si existe timeoutRef, ejecuta clearInterval del mismo y lo pasa a null. Si existe sessionIdRef y el tipo no es aprendizaje ejecuta de api/log.tsx la función endLog para la sessionIdRef y con los paramsRef, y depués pasa éstos a nulo. Envía al reducer como dispatch FINALIZAR. Si el tipo es evaluación pasa el room a nulo y envía a app/evaluacion.
+        - eliminar: similar a finalizar pero llama a la función deleteLog de api/log.tsx.
+        - agregarParams: Si el estado es SIMULANDO, mete los constructVariableParams de los parametros introducidos en la función a paramsRef y actualiza lastSavedParams. Si el estado es PAUSADO: vacía paramsRef and mete en paramsRef los ultimos guardados (lastSavedParams).
+        - reset: elimina todos los sets realizados con useState para todas las propiedadesd el contexto, le da el valor finalizar (de LogAction) al dispatch definidio en el useReducer y ejecuta la funcion resetAplicadorContext de aplicadorContext.tsx.
+        - establecerActividad: para establecer el setRoom con un objeto RoomStudent.
+
+        Adicionalmente, hay funciones "helper" para los materiales:
+        - materialVariableParams: devuelve la parte variable en el log: width, height, anodoCanal1, catodoCanal1, anodoCanal2, catodoCanal2, aplicador1 y aplicador2.
+        - materialFixedParams: devuelve la parte fija en el log: complemento, anodoTDCS, catodoTDCS, conduccion, proteccion, farmaco.
+        - constructVariableParams: une un objeto que contienen paramentros con los valores de electrodos (anodo y catodo, 1 y 2) y de los aplciadores **¿?** para crear los parametros que se deberán guardar.
+        - constructFixedParams: une parametros fijos pasados con los que devuelve materialFixedParams.
+        
+        Y varios useEffectque se ejecutan en diferentes momentos de actualización de los electrodos y de los aplicadores. Estos useEffect llaman a otras funciones:
+        - agregarElecs: Actualiza los parámetros que se almacenarán en el log. Introduce en paramsRef el resultado de la funcion constructVariableParams con los parámetros introducidos. Si el estado es simulando se añaden, si el estado es pausado, se eliminan y entonces se añaden.
+        - averageElec y averageApl procedentes de components/Logs/Logs.tsx
 
 
-    - userContext:
+9. **api**
 
-    - logContext:
+- users: sirve para exportar funciones (register, login, logout, verify token, fetch/create/delete users). Las funciones utiliza axiosConfig.tsx y utiliza la contante apiURL de constants/constants.tsc para la url base.
+- axiosConfig: crea y exporta una instancia preconfigurada de Axios para todas las llamadas http. withCredentials: true significa que Axios enviará cookies y otras credenciales.
+- log: sirve para exportar funciones para interactuar con el backend acerca de los logs (init, save parameters, end, delete, get by id). Usa axiosConfig y constants.apiURL para los requests.
+- room:  sirve para conectar backend relacioando con las variables de room (creating/updating/deleting, fetching lists y logs, y entrar en rooms). Usa axiosConfig y constants.apiURL.
 
 
-8. **api**
+10. **Components**
+    1. **Logs**
+    - Logs:
+    
 
-
-9. **Components**
-
+-Logs.tsx:
+- 
 
 10. **Pages**
 

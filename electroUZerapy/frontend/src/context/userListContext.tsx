@@ -33,7 +33,7 @@ export const useUserList = () => {
   else return context;
 };
 
-export const UserListProvider = (props: any) => {
+export const UserListProvider = ({ children }: { children: React.ReactNode }) => {
   // Almacena el valor de todos los usuarios
   const [allUsers, setAllUsers] = useState<User[]>([]);
   
@@ -177,7 +177,7 @@ export const UserListProvider = (props: any) => {
         search
       }}
     >
-      {props.children}
+      {children}
     </UserListContext.Provider>  
   )
 }
