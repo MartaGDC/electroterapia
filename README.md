@@ -248,11 +248,11 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
 
 4. **main.tsx**
 
-    src/main.tsx: Punto de entrada de la app. Su estructura contiene dentro a App. Main es lo global
+    src/main.tsx: Punto de entrada de la app, requiere instalar las fontsource (`npm install @fontsource...`). Su estructura contiene dentro a App. Main es lo global
 
 5. **App.tsx**
 
-    Es lo local, lo que cada usuario ve y con lo que trabaja, puede ser diferente segun uduarios. En este caso tiene contextos particulares dependientes del usuario, además de establecer rutas de login y menu (componentes a nivel App, no a nivel main)
+    Es lo local, lo que cada usuario ve y con lo que trabaja, puede ser diferente segun uduarios. En este caso tiene contextos particulares dependientes del usuario, además de establecer rutas de login y menu (componentes a nivel App, no a nivel main). Hay que instalar @capacitor/status-bar (`npm intal @capacitor/status-bar`).
 
 6. **Constantes**
 
@@ -322,7 +322,7 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
 
         Adicionalmente, el provider ejecuta una función de react, no accesible desede el contexto, llamada useEffect, que sirve para ejecutar código después de que el componente se haya montado (finaliza con []), y que en este caso comprueba los valores de user y token guardados en localStorage a través de llamadas a api/user con sus funciones verifyTokenUser, y lleva a app/home usando useIonRouter.
 
-    - logContext: usado por app no por main. Requiere clases del log procedentes de api/log, de constants/interfaces.tsx, classes/Electrodos.tsx, classes/Materiales.tsx, components/Logs/Logs.tsx, classes/Aplicadores.tsx, y el contexto aplicadorContext.tsx. Primero crea tres clases enum y type para utilizar como propiedades en el context y provider: enum Estado (detenido, simulando o pausado), type LogState (popiedad estado como Estado, simulating como boolean y puased como boolean), y type LogAction (con los posibles valores iniciar, pausar, reanudar y finalizar), además tambien está definida posteriomente una const llamada reducer que usará el providaer a través de una función propia de React llamada useReducer, que devuelve un LogState determinado según el LogAction introducido (en caso de que no sea ninguno de los 4 LogAction posibles), o el LogState inicial. useReducer es similar a useState pero para lógicas más complejas.
+    - logContext: usado por app no por main. Requiere clases del log procedentes de api/log, de constants/interfaces.tsx, classes/Electrodos.tsx, classes/Materiales.tsx, components/Logs/Logs.tsx, classes/Aplicadores.tsx, y el contexto aplicadorContext.tsx. Primero crea tres clases enum y type para utilizar como propiedades en el context y provider: enum Estado (detenido, simulando o pausado), type LogState (popiedad estado como Estado, simulating como boolean y puased como boolean), y type LogAction (con los posibles valores iniciar, pausar, reanudar y finalizar), además tambien está definida posteriomente una const llamada reducer que usará el provider a través de una función propia de React llamada useReducer, que devuelve un LogState determinado según el LogAction introducido (en caso de que no sea ninguno de los 4 LogAction posibles), o el LogState inicial. useReducer es similar a useState pero para lógicas más complejas y se ejecuta cuando el componente se monta o cuando se mandan dispatch.
 
         El contexto esta formado por boolean simulating, boolean paused, number tiempoRestante, number width, number heigth, Electrodo anodoCanal1, Electrodo catodoCanal1, Electrodo anodoCanal2, Electrodo catodoCanal2, boolean complemento, PositionsTDCS nodoTDCS, PositionsTDCS catodoTDCS, Aplicador aplicador1 Aplicador aplicador2, array de boolean conduccion, array de boolean   proteccion, boolean farmaco y RoomStudent room, y funciones set (`React.Dispatch<React.SetStateAction<>>`) y funciones que se definirán en el provider:
         - iniciar: establece el estado de la variable tipo definido en el provider que tiene un valor entre aprendizaje, simulación o evaluación. Si no es aprendizaje, establece que lastSavedParams (definido en provider con referencia a time y params) tiene los valores introducidos en la función como parámetros, llama a la funcion initLog de api/log.tsx con los paramtros variables y fijos (funciones explicadas posteriormente) y devuelve sessionId y ejecuta la funcion iniciarGuardado (comienza un setInterval que intenta guardar params con la funcion de api/log.tsx saveParamso backend via saveParams (sessionId, paramsRef.current)). Envía al reducer como dispatch "INICIAR" e inicia una cuenta atras.
@@ -353,13 +353,57 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
 - room:  sirve para conectar backend relacioando con las variables de room (creating/updating/deleting, fetching lists y logs, y entrar en rooms). Usa axiosConfig y constants.apiURL.
 
 
-10. **Components**
-    1. **Logs**
-    - Logs:
-    
+10. **Pages**
 
--Logs.tsx:
-- 
+    De acuerdo a App.tsx se comienza en Login y Menu. El Login está definido enpages/login.tsx, que tiene una parte izquierda con el logo y en la parte derecha el usuario, contraseña y submit. Si los datos son correctos, lleva a Home.
+
+    Para ir a Home, la direccion incluye app/, que tal y como está definido en App.tsx, debe renderizar el componenete Menú. Para que pueda ir a Home, es necesario que la app sepa donde se encuentra home. Por este motivo es necesario tener la importacion de Home en Menu especificando su direccion y archivo.
+    - Botón Aprendizaje: como empieza por app, aparece el menu (por lo que esta pagina debe estar correctamente definida en menu) y muchos botones para cada tema. Para poder generar los titulos de bloque hace un bucle usando constants/simuladores.tsx, y subbucles para los botones de cada tema con el indice aprendizaje.
+        - Corriente galvánica: requiere componentes de grfica, de picker, logica y de tDCS. Explicacion:
+
+            Permite elegir técnica, ajustar intensidad y tiempos, seleccionar electrodos, mostrar una gráfica, leer información teórica e iniciar un tratamiento simulado.
+
+                const { t } = useTranslation();
+                const [present] = useIonToast();
+                const { simulating, tiempoRestante, iniciar } = useLog();
+            useTranslation() → para textos traducidos.
+            
+            useIonToast() → para mostrar mensajes en pantalla.
+            
+            useLog() → contexto que controla la simulación (tiempos, estado, logs…).
+
+            El componente guarda muchos estados (tiempos, intensidad, y electrodos (clase con color, tamaño, tipo...), serie para gráficos, técnica seleccionada).
+            
+            Al entrar en la página se ejecuta `useIonViewWillEnter` que realiza unr eset automático de los estados.
+
+            Recupera grupo de indicaciones y grupo de contrindicaciones desde el archivo de traducciones.
+
+            Construye las opciones del selector de tecnica (objeto ListPicker) procedentes del archivo de traducciones y gracias a Logica.tsx donde permite hacer un mapeo y devolver los valores.
+
+            Posteriormente se realiza la lógica del cambio de la técnica donde se establecen valores de electrodos,intensidad, tiempos y tratamientos según la técnica seleccionada.
+
+            Usa useEffects para modificar automáticamente la gráfica si cambia tratamiento, rampa, intensidad, catodo o anodo, y para calcular la dosis máxima si cambia catodo o anodo.
+            
+            Despues esta la funcion para iniciar la simulacion, que comprueba si se puede iniciar, y si puede llama a la funcion de Galvanica.tsx exhaustiveSerie() y a la función iniciar de useLog de LogContext.tsx. Esta funcion se ejecuta al clicar un LogButton con esta funcion como prop inciar.
+            
+            La interfaz se divide en dos columnas, la izquierda con selector de técnica, intensidad, tiempo, botones, selector de materiales, y la derecha gráfico y texto explicativo con `<Trans />` para HTML traducido.
+
+
+11. **Components**
+    1. **Logs**
+    - Logs: sirve para reunir y suvizar los datos posicionales de electrodos y aplicadores. Además expone dos funciones: averageElec (se introducen como parametros electrodos (ref), número de electrodos (ref), callback (función que recibirá como argumento en los elementos que la usen el "avgElectrodo" y devolverá void) y un nuevo electrodo, y si el número es superior a 10 promedia la posicion y crea un electrodo con esta nueva posicion y el resto de datos del electrodo introducido como parámetro, sobre el que se podrán hacer diferentes funciones gracias al callback)  y averageApl (igual que la anterior pero para aplicadores).
+
+    - LogButton.tsx (y css): requiere de la función useLog del contexto logContext.tsx que es la que crea el contexto.
+
+    2. **Alumnos**
+    - SubidaFichero.tsx y css:
+
+    - AlumnosCrearModal.tsx y css:
+
+    3. **Grafica**
+    
+        Requiere la instalación de apexcharts (`npm install apexcharts`)
+    
 
 10. **Pages**
 

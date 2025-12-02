@@ -1,0 +1,11 @@
+.log-button-container {
+  display: flex;
+  width: 100%;
+  ion-button {
+    width: 100%;
+  }
+}
+
+.log-button {
+  width: 100%;
+}

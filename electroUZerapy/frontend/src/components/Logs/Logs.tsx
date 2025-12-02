@@ -1,16 +1,16 @@
-import { endLog, initLog, saveParams } from "../../api/log";
+//import { endLog, initLog, saveParams } from "../../api/log";
 import { Electrodo } from "../../classes/Electrodos";
-import { Simuladores, Time } from "../../constants/interfaces";
+//import { Simuladores, Time } from "../../constants/interfaces";
 
-const intervalSave = 5000; // ms
+//const intervalSave = 5000; // ms
 
 ////////////////////////////////////////////////////////////////////////////////
 // Guardar parametro
 ////////////////////////////////////////////////////////////////////////////////
 const itersElec = 10;
 export const averageElec = (
-  avgParam: React.MutableRefObject<Electrodo>,
-  iCount: React.MutableRefObject<number>,
+  avgParam: React.RefObject<Electrodo>,
+  iCount: React.RefObject<number>,
   callBack: (pos: any) => void,
   newElec: Electrodo
 ) => {
@@ -39,8 +39,8 @@ export const averageElec = (
 }
 
 export const averageApl = (
-  avgPos: React.MutableRefObject<{x: number, y: number}>,
-  iCount: React.MutableRefObject<number>,
+  avgPos: React.RefObject<{x: number, y: number}>,
+  iCount: React.RefObject<number>,
   callBack: (pos: any) => void,
   newApl: {x: number, y: number}
 ) => {

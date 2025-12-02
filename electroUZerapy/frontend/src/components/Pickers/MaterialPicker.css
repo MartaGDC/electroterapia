@@ -1,0 +1,25 @@
+.material-picker {
+  width: 100%;
+  --background: none;
+
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+
+  .first {
+    width: 60%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /* flex: 7; */
+  }
+
+  .second {
+    width: 40%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    margin-left: 20px;
+    /* flex: 3; */
+
+  }
+}

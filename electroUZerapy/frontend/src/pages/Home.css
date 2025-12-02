@@ -1,0 +1,67 @@
+.menu-button {
+  width: 30vw;
+  height: 50px;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 50px;
+}
+
+.settings-icon {
+  position: absolute;
+  font-size: 3rem;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.modos-home {
+  width: 100%;
+
+  .modos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    ion-card {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+
+      ion-card-header {
+        margin-left: 2%;
+        ion-card-title {
+          font-size: 22px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          ion-icon {
+            font-size: 22px;
+            margin-right: 10px;
+            /* margin-bottom: 10px; */
+          }
+        }
+      }
+    }
+
+    ion-card:hover {
+      transform: scale(1.01);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.button-crear-alumno {
+  width: 100%;
+}
+
+.modal-crear-alumno {
+
+  --min-width: 90vw;
+  ion-input {
+    --border-color: var(--ion-color-primary) !important;
+  }
+}
