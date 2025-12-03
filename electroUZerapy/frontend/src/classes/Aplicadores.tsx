@@ -44,3 +44,9 @@ export enum Aplicadores {
   ULTRASONIDOS = 7,
   ONDAS_CHOQUE = 8,
 };
+
+export const allAplicadores = [
+  Aplicadores.DIATERMIA, Aplicadores.ONDA_CORTA, Aplicadores.MICROONDAS, 
+  Aplicadores.INFRARROJOS, Aplicadores.LASER, Aplicadores.ULTRAVIOLETAS, 
+  Aplicadores.MAGNETOTERAPIA, Aplicadores.ULTRASONIDOS, Aplicadores.ONDAS_CHOQUE
+];

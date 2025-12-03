@@ -378,15 +378,106 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
 
             Recupera grupo de indicaciones y grupo de contrindicaciones desde el archivo de traducciones.
 
-            Construye las opciones del selector de tecnica (objeto ListPicker) procedentes del archivo de traducciones y gracias a Logica.tsx donde permite hacer un mapeo y devolver los valores.
+            Construye las opciones del selector de tecnica (objeto ListPicker) procedentes del archivo de traducciones y gracias a Logica/General.tsx donde permite hacer un mapeo y devolver los valores.
 
             Posteriormente se realiza la lógica del cambio de la técnica donde se establecen valores de electrodos,intensidad, tiempos y tratamientos según la técnica seleccionada.
 
             Usa useEffects para modificar automáticamente la gráfica si cambia tratamiento, rampa, intensidad, catodo o anodo, y para calcular la dosis máxima si cambia catodo o anodo.
             
-            Despues esta la funcion para iniciar la simulacion, que comprueba si se puede iniciar, y si puede llama a la funcion de Galvanica.tsx exhaustiveSerie() y a la función iniciar de useLog de LogContext.tsx. Esta funcion se ejecuta al clicar un LogButton con esta funcion como prop inciar.
+            Despues esta la función para iniciar la simulacion, que comprueba si se puede iniciar, y si puede llama a la funcion de Galvanica.tsx exhaustiveSerie() y a la función iniciar de useLog de LogContext.tsx. Esta función se ejecuta al clicar un LogButton con esta función como prop inciar.
             
             La interfaz se divide en dos columnas, la izquierda con selector de técnica, intensidad, tiempo, botones, selector de materiales, y la derecha gráfico y texto explicativo con `<Trans />` para HTML traducido.
+
+            - Selector de técnica: Componente creado en ListPicker.tsx que requiere variable, onChange, label, placeholder, valueOptions, y dos parámetros opcionales disabled e insideInput.
+            
+                - variable: es la variable tecnica que se define con useState a [tecnica, setTecnica] a través de la const tecnicas creadas en Galvanica.tsx (es una variabl de pares valor, con un nombre que identifica la tecnica y un valor asociado de 0 a 3).
+
+                - onChange: ejecutará la función cambiarTecnica que establecía valores según la tecnica.
+
+                - label: accede al archivo de traducciones.
+
+                - placeholder: accede al archivo de traducciones.
+
+                - valueOptions: son tecOptions creadas por una función que (también) se llama valueOptions generada en Logica/General.tsx que require un string, el useTranslator, un array y una función con valor boolean (que terminará qué está deshabilitado), y devuelve pares-valor con las claves name, value y disabled. En el caso de tecOptions los parámetros introducidos son el string GALVANICA.TECNICAS.OPCIONES, que se buscará en el archivo de traducciones para obtener los valores en name, el value será el índice de cada valor en el archivo de traduccion (que el autor ha hecho que coincida con tecnicas.values), y el valor disabled introducido en parámetro para todos los elementos del array que devuelve.
+
+                - disabled: adquiere el valor de simulating que procede de useLog del contexto logContext (cuyo valor es definido por su reducer).
+
+                - insideInput: por defecto falso, no se le da valor desde GalvanicaAprendizaje.tsx, pero esto solo afecta a su estilo.
+
+                Este componente está fomado por IonItem>IonSelect>IonSelectOption. Es decir, un select con opciones, que al elegir una opcion ejecuta un onIonChange donde pasa a la función onChange recibida por parámetros el event.detail.value del cambio, y al pasar el ratón o clicar se aplia un tint negro (variables.css). Cada una de las opciones tiene una key, un valor y el estado disabled, y muestra un nombre, todo pasado por parámetros.
+
+            - Seleccion de intensidad: Componente creado en RangeColorPicker.tsx que requiere de name, variable, setVariable, disabled, min, max, step, sections y dos parámetros opcionales unit e infoMsg.
+
+                - name: accede al archivo de traducciones.
+
+                - variable:es la variable intensidad que se define con useState a [intensidad, setIntensidad], que se establece inicialmente con valor 0 en useIonViewWillEnter, y se reestablece en cambiarTecnica.
+
+                - setVariable: llama a setIntensidad definida con useState.
+
+                - disabled: si la tecnica es diferente a tecnicas.NULL_TEC disabled es true.
+
+                - min: es el valor minIntensidad procedente de Galvanica.tsx, que vale 0.0.
+
+                - max: es el valor maxIntensidad procedente de Galvanica.tsx, que vale 50.0.
+
+                - step: 0.1
+
+                - sections: es un array con dos "diccionarios", uno para la maxima dosis y otro para la máxima intensidad. De esta manera se muestra un mensaje y con un color. El estado incial dentro de RangeColorPicker es el primer diccionario, y se va actualizando al modificar el valor del parámetro variable  o del tramo/seccion (? esto cambia?).
+
+                - unit: mA.
+
+                - infoMsg: vacío para GalvanicaAprendizaje.
+
+                Este componente está fomado por:
+                
+                    IonItem>
+                        IonLabel>
+                            IonIcon
+                            IonPopover
+                            input
+                            IonRange
+                Es decir, un elemento con un label, y debajo un icono de información y un popover de información si hay infoMsg (no es el caso). Después muestra un input numérico con los parametros introducidos para value, max, min y step, y cuando se cambia el input, se llama a setVariable del parámetro. El input estara disabled si asi se ha dicho por parámetro o si el min es igual al max. Después muestra las unidades. Debajo aparece un IonRange donde se pasan los parátro de manera similar al input, pero a través de un range.
+
+
+        - BAJA FRECUENCIA...
+
+        - MEDIA FRECUENCIA: Falta terminarlo.
+
+        - ALTA FRECUENCIA: falta terminarlos.
+
+        - FOTOTERAPIA: Infrarrojo falta terminar. Láser bastante bien. Ultravioletas bastante bien.
+
+        - MAGNETOTERAPIA: falta terminar.
+
+        - OTRAS TECNICAS: ultasonidos y ondas de choque bastante bien.
+
+    - Botón simulación: 
+
+    - Botón evaluación: necesita el folder de backend para fucionar, hace un get desde api/romm.tsx necesario. Para ello, vamos al folder backend y para imitar el proyecto del compañero hacemos: 
+        cd backend
+        npm init -y
+        npm install express cors dotenv mongoose bcryptjs jsonwebtoken cookie-parser
+        npm install -D nodemon standard
+
+    En package.json se añade al inicio `"type": "module"` (Node usará ES Modules (import/export) en vez de de CommonJS (require)), y se agrega en "scripts" `"dev": "nodemon index.js"` (para poder arrancar el backend con nodemon).
+
+    Las instalaciones de despendencias sirven para:
+
+        - bcryptjs: cifrado de contraseñas
+        - cookie-parser: leer cookies en Express
+        - cors: habilitar CORS (acceso desde frontend)
+        - dotenv: variables de entorno
+        - express: framework de servidor
+        - jsonwebtoken: tokens JWT (permiten guardar usuarios sin guardar sension en el servidor). Usado en lib/jwt.js
+        - mongoose: conexión con MongoDB
+        - nodemon (dev): reinicio automático en desarrollo
+        - standard (dev): estilo de código
+    
+    Una vez creado package.json éste hace referencia a index.js.
+
+    Para aceder a las variables del entorno env, es necesario tener un archivo .env (en gitignore, por lo que desconozco el que usó el compañero), que defina el puerto, la direccion de mongodb y el token_secret. LEER TFM DEL COMPAÑERO POR SI TIENE INFO GENERAL AL RESPECTO.
+
+
 
 
 11. **Components**
@@ -405,7 +496,7 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
         Requiere la instalación de apexcharts (`npm install apexcharts`)
     
 
-10. **Pages**
 
+12. **Themes**
 
-11. **Themes**
+    Contiene el archivo variables.css que es un archivo global de estilos al que acceder los componentes html. Además este archivo permite sobreescribir estilos de ionic para toda la aplicación.

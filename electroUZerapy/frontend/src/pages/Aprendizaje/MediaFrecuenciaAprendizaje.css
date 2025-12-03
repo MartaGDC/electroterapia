@@ -1,0 +1,40 @@
+.electrodo-selector-media {
+  width: 100%;
+  background: none !important;
+
+  ion-item {
+    --background: none;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    .first {
+      flex: 7;
+    }
+
+    .second {
+      margin-left: 10px;
+      flex: 3;
+    }
+  }
+}
+
+.titulo-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .titu-off {
+    opacity: 0.3;
+  }
+
+  .titu-on {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+  }
+}
+
+.icono-contorno {
+  font-size: 64px;
+}

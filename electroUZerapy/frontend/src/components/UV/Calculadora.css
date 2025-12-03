@@ -1,0 +1,10 @@
+.calc-main-button {
+  width: 100%;
+}
+
+.item-dosis {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  width: 100%;
+}
