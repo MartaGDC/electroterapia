@@ -1,0 +1,7 @@
+ion-input {
+  --border-color: var(--ion-color-primary) !important;
+}
+
+.disabled-visible {
+  opacity: 1 !important;
+}

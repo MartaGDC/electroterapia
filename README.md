@@ -527,13 +527,38 @@ Lo copio del compañero.
 
 
 5. **controllers**
-    1. user.controller.js: define las funciones para hacer login, obtener a todos los usuarios, crear usuarios (que requiere de una funcion privada del propio documento para crear usuario), eliminar usuarios, conseguir usuario por id, conseguir el id del usuario y cambio de contraseña. Encripta las contraseñas y permite comparar el guardado y el recibido con la libreria bcryptjs.
+    1. user.controller.js: define las funciones para hacer login, cambio de contraseña, obtener a todos los usuarios, crear usuarios (que requiere de una funcion privada del propio documento para crear usuario), eliminar usuario y eliminar usuarios (en comentarios también esta conseguir usuario por id y conseguir el id del usuario). Encripta las contraseñas y permite comparar el guardado y el recibido con la libreria bcryptjs.
         - login: con la llegada name y password desde res.body, si el name y su password es correcta, mete en res.coockie el token dentro de "token" con diferentes caracteristicas de proteccion, segurdiad... y devuelve res.status(200).json({ status: 200, user: { id: userFound._id, name: userFound.name, role: userFound.role }, token});
         - logout: limpia la cookie de token y devuelve status 200.
         - changePassword: error en caso de que no se envíe parámetros o falte alguno, estos parámetros son userId, oldPassword, newPassword. Si el userId existe y su oldPassword es la existente, encripta la nueva contraseña y le introduce en el usuario (necesitará un user.save()). Si todo es correcto devuelve status 200.
         - getAllUsers: recupera todo el model de User ordenado por rol, excluyendo el usuario que ha hecho la peticion. Excluye al cliente del listado de busqueda. Si todo es correcto, devuelve status 200 y listado de usuarios conformados por el id, el nombre y el rol.
-        - createUsers: 
+        - createUser: será usada en createUsers, que se exportará. En esta se guarda un nuevo usuario con los datos name, password encriptada y role en caso de que se pasen estos datos en req.body, y en caso de que ese usuario no exista ya en la base. Devuelve el status 200 y el usuario con su _id, name y role una vez guardado en la base.
+        - createUsers: se pasan unos usuarios que se se pasan a la funcion createUser. Se guarda lo que ésta retorna, y si el status devuelto no es 200, pasa al usuario creado al array userNotCreated. Si devuelve status 200 es que se ha creado correctamente, introduce a los usuarios al array usersCreated, y hace un return de status 200, del array usersCreated y del array usersNotCreated.
+        - deleteUser: hace un findOneAndDelete del modelo user si coincide el userId del body introducido como parámetro, en caso de que se introduzca el parámetro correcto y exista en la base. En este caso retorna 200 y el usuario eliminado.
+        - deleteUsers: hace un deleteMany del modelo user en el que el _id esté en el array introducido re.body.users. Si no hay coincidncias, sale error y mensaje. Si todo bien, devuelve status 200, y el deletedCount del usuario eleiminado (cuando se hace deleteMany lo que devuelve tiene esta propiedad).
 
-    2. room.controller.js:
+    2. room.controller.js: define las funciones para crear sala, actualizar sala y eliminar sala (en comentarios también está abrir sala y cerrar sala).
+        - create: se deben pasar por parámetro en req.body name, passwod, description y open para crear un obtejo room de mongodb. Devuelve status 200 y la sala creada.
+        - update: se debe pasar por parametro en req.body roomId, name, description y open. Hace updateOne en el _id sea el roomId y se actualiza el name, description y open. Si mathcedCount del objeto guardado al hacer el updateOne es cero, se devuelve que no se ha encontrado la sala. Si no, devuelve status 200.
+        - eliminate: se debe pasar por parametro en req.body el roomId. Se hace findOneAndDelete del room con _id roomId, y se hace deleteMany de los logs donde su room tenga el valor de roomId. Si todo ha ocurrido correctamnte, devuelve status 200 y el room eliminado.
 
-    3. log.controller.js
+    3. log.controller.js: define las funciones para iniciar log, guardar parametros, finalizar log, eliminar el log y obtener log por id.
+        - initLog: para hacerlo necesita que req.body traiga params, fixedParams, simulator, type (con valor simulación o evaluacion) y roomId (aunque se usa mas alante en la función). Se meten los req.body.params en un array llamado params, se guarda el req.body.simulator en simulator y el req.body.fixedParams en fixedParams. Se crea el timestamp del momento actual, un string construido por id del usuario - timestamp que es usado para crear la sessionId encriptandolo con sha26.
+            
+            Si el type es evaluacion, hace findOne del room donde su _id coincida con req.body.roomId. Si la sala coincidente no está open, devuelve error y mensaje, si está open hace un findIndex donde se busca dentro de un array (room.logs) el índice del primer elemento que cumple la condición en que el userId del room.log sea req.userId (conformado desde el middleware previo a la accion de este archivo) para comprobar si ya hay un log con este user. En caso de que ya esté en otro log, devuelve error y mensaje. Si hasta ahora todo bien, contruye una variable llamada log, de clase Log del modelo de mongo, con el userId, type, sessionId, params, fixedParams y simulador introducido por parametros o por req.userId. Además establece que si el valor del type del log es evaluacion, añade el parametro romm con el valor req.body.rommId. Si es simulación, como el parametro room de Log no es obligatorio, éste no se añade.
+        
+        - saveParams: recibe sessionId y params de req.body. Hace un findOneAndUPdate donde la sessionId tenga el valor req.body.sessionId, y actualiza los parametros con un push de cada param dentro de req.body.params. Es decir, añade más parametros al log. El log actualizado se guarda en log para comprobar si este existe, es decir si se ha actualizado realmente. Si no se ha actualizado, devuelve error y mensaje, si no hay problema devuelve status 200.
+        - endLog: recibe seesionId y params de req.body. Hace un findOneAndUpdate donde la sessionId tenga el valor req.body.sessionId (aunque lo escribe más sencillo) y finished sea false, y actualiza los parametros con un push de igual manera que la función anterior, y establece finished como true.
+
+            Si el type del log actualizado es evaluación hace findById del user cuyo _id sea userId (procedente de req.userId). Si no hay coincidencia devuelve error y mensaje. Si existe, hace findOneAndUpdate en room donde el _id sea el log.room del log actualizado, y actualiza los logs de room con logId con el valor log._id, el userId pasado en req, y el userName con user.name del user encontrado con el findById. Si todo bien, devuelve estatus 200.
+
+        - deleteLog: recibe sessionId y roomId (aunque se usa más adelante en la función) por req.body. Hace findOneAnDelete donde la sessionId tenga el valor pasado por req.body y donde finished sea false. Si no se puede, devuelve error y mensaje. Si el log.type es evaluacion hace findOneAndUpdate de room donde su _id sea el roomId pasado por req.body y en ese caso elimina en room.logs el log cuyo logId sea log._id. Si todo bien devuelve status 200.
+        - getLogByid: recibe req.query.logId (generalmente query es porque se hace una busqueda en la propia ruta api). Se hace un findById en log con ese logId, y si lo encuentra devuelve status 200 y el log encontrado.
+
+6. **routes**
+
+Las peticiones post se usan para crear o enviar datos al servidor (el cuerpo del request se envía en req.body). Las peticiones put se usan para actualizar datos, en general cualquier request que reemplaza o modifica recursos. Las peticiones get se usan para recuperar datos, sin modificar nada en el servidor (los parámetros opcionales se pasan en req.query (query params) o en la URL (req.params)). Las peticiones delete se usan para eliminar recursos.
+
+1. user.routes.js: direcciones para api de funciones user.controller.
+2. room.routes.js: direcciones para api de funciones room.controller.
+3. log.routes.js: direcciones para api de funciones log.controller.

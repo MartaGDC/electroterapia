@@ -1,0 +1,9 @@
+.visualizador-list {
+  ion-item {
+    cursor: pointer;
+  }
+
+  .principal-items {
+    font-weight: bold;
+  }
+}
