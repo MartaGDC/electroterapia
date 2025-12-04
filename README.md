@@ -94,58 +94,29 @@ Un App.tsx típico con Ionic + React Router + Providers:
 
 El proyecto es la plantilla estándar con modificaciones.
 
-<h2>9. Crear el backend desde cero (Express)</h2>
+<h2>9. Crear el backend desde cero (Node con Express)</h2>
 
-Backend típico Express modular. Para crearlo:
+    cd backend
+    npm init -y
+    npm install express cors dotenv mongoose bcryptjs jsonwebtoken cookie-parser
+    npm install -D nodemon standard
 
-`npm init -y`
+En package.json se añade al inicio `"type": "module"` (Node usará ES Modules (import/export) en vez de de CommonJS (require)), y se agrega en "scripts" `"dev": "nodemon index.js"` (para poder arrancar el backend con nodemon).
 
-`npm install express cors cookie-parser`
+Las instalaciones de despendencias sirven para:
 
-Luego crear app.js:
+    - express: framework de servidor Node
+    - cors: habilitar CORS (acceso desde frontend)
+    - dotenv: variables de entorno
+    - mongoose: conexión con MongoDB
+    - bcryptjs: cifrado de contraseñas
+    - jsonwebtoken: tokens JWT (permiten guardar usuarios sin guardar sension en el servidor). Usado en lib/jwt.js
+    - cookie-parser: leer cookies en Express
+    - nodemon (dev): reinicio automático en desarrollo
+    - standard (dev): estilo de código
 
-    import express from "express";
-    import cors from "cors";
-    import cookieParser from "cookie-parser";
+Los documentos se explicarán en el apartado de backend.
 
-    const app = express();
-
-    app.use(express.json());
-    app.use(cookieParser());
-    app.use(cors({
-    origin: "http://localhost:8100",
-    credentials: true
-    }));
-
-    app.listen(3000, () => console.log("Servidor arrancado en puerto 3000"));
-
-
-Y una estructura como la inicial creada por el compañero:
-
-    backend/
-    routes/
-    controllers/
-    models/
-
-<h2>10. Creacion backend</h2
-
-La parte de backend se hace en otra carpeta, con Node + Express:
-
-`npm init -y` → crea package.json del backend
-
-`npm install express cors cookie-parser` → dependencias del servidor
-
-`app.js` o `index.js` → archivo principal de backend
-
-`routes/`, `controllers/`, `models/` → estructura del backend
-
-    Frontend: (Ionic + React + Vite + Capacitor)
-    └─ npm run dev / ionic cap sync / android build
-    └─ Llama al backend via fetch/axios
-    
-    Backend (Node + Express)
-    └─ npm start
-    └─ Escucha rutas API /api/...
 
 <h1>Configuración frontend</h1>
 
@@ -348,7 +319,7 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
 9. **api**
 
 - users: sirve para exportar funciones (register, login, logout, verify token, fetch/create/delete users). Las funciones utiliza axiosConfig.tsx y utiliza la contante apiURL de constants/constants.tsc para la url base.
-- axiosConfig: crea y exporta una instancia preconfigurada de Axios para todas las llamadas http. withCredentials: true significa que Axios enviará cookies y otras credenciales.
+- axiosConfig: crea y exporta una instancia preconfigurada de Axios para todas las llamadas http. withCredentials: true significa que Axios enviará cookies y otras credenciales. Axios simplifica la escritura de peticiones, en las que hace de forma automatica fetch cuyo body será el parámetro introducido en la función que se usará en frontend.
 - log: sirve para exportar funciones para interactuar con el backend acerca de los logs (init, save parameters, end, delete, get by id). Usa axiosConfig y constants.apiURL para los requests.
 - room:  sirve para conectar backend relacioando con las variables de room (creating/updating/deleting, fetching lists y logs, y entrar en rooms). Usa axiosConfig y constants.apiURL.
 
@@ -453,29 +424,8 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
 
     - Botón simulación: 
 
-    - Botón evaluación: necesita el folder de backend para fucionar, hace un get desde api/romm.tsx necesario. Para ello, vamos al folder backend y para imitar el proyecto del compañero hacemos: 
-        cd backend
-        npm init -y
-        npm install express cors dotenv mongoose bcryptjs jsonwebtoken cookie-parser
-        npm install -D nodemon standard
-
-    En package.json se añade al inicio `"type": "module"` (Node usará ES Modules (import/export) en vez de de CommonJS (require)), y se agrega en "scripts" `"dev": "nodemon index.js"` (para poder arrancar el backend con nodemon).
-
-    Las instalaciones de despendencias sirven para:
-
-        - bcryptjs: cifrado de contraseñas
-        - cookie-parser: leer cookies en Express
-        - cors: habilitar CORS (acceso desde frontend)
-        - dotenv: variables de entorno
-        - express: framework de servidor
-        - jsonwebtoken: tokens JWT (permiten guardar usuarios sin guardar sension en el servidor). Usado en lib/jwt.js
-        - mongoose: conexión con MongoDB
-        - nodemon (dev): reinicio automático en desarrollo
-        - standard (dev): estilo de código
-    
-    Una vez creado package.json éste hace referencia a index.js.
-
-    Para aceder a las variables del entorno env, es necesario tener un archivo .env (en gitignore, por lo que desconozco el que usó el compañero), que defina el puerto, la direccion de mongodb y el token_secret. LEER TFM DEL COMPAÑERO POR SI TIENE INFO GENERAL AL RESPECTO.
+    - Botón evaluación: necesita el folder de backend para fucionar, hace un get desde api/romm.tsx necesario. Hasta este momento la dependencia con api se había podido ignorar en la fase desarrollo (se falsea la verificación de usuraios), pero ahora obliga. Para ello, creamos al folder backend y para imitar el proyecto del compañero hacemos: 
+        
 
 
 
@@ -500,3 +450,90 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
 12. **Themes**
 
     Contiene el archivo variables.css que es un archivo global de estilos al que acceder los componentes html. Además este archivo permite sobreescribir estilos de ionic para toda la aplicación.
+
+
+<h1>Configuración backend</h1>
+
+se ha desarrollado mediante Node.js con el framework de Express.js. Se ha optado por una arquitectura de tipo API RESTful, lo que permite una comunicacion estructurada, escalable y mantenible entre el cliente y el servidor. Se definen rutas que actúan como endpoints a los que se realizan las peticiones HTTP. Estos endpoints llaman a los controladores de la API, que son los responsables de la lógica.
+
+
+Para aceder a las variables del entorno env, es necesario tener un archivo .env (en gitignore, por lo que desconozco el que usó el compañero), que defina el puerto, la direccion de mongodb y el token_secret.
+
+    models/
+Donde se define el contenido de la base de datos MongoDB.
+
+    controllers/
+Donde se definen las funciones a realzar sobre la base de datos.
+
+    routes/
+Donde se asocian las funciones con direcciones de la api a la que accederá el frontend.
+
+    libs/
+Contiene una clase donde se definen los simuladores que se usaran en otros archivos, y el archivo jwt.js (JSON Web Token) que sirve para autenticar usuarios, mantener la sesion y restringir rutas según roles.
+
+    package.json
+Se crea automáticamente con los comandos de creación. Una vez creado package.json éste hace referencia a index.js en scripts, que a su vez llama a app.js.
+
+    package-lock.json
+Creado automáticamente, no tocar.
+
+    index.js
+Importa la cont app del archivo app.js donde está la instancia del servidor Node Express, importa la función connnectDB del arhcivo db.js, e importa tambien variables locales de entorno a las que accede el archivo config.js que llama a .env.
+
+    app.js
+Llama a las ruta definidas en los documentos de /routes para las consultas API RESTful y las registra en el servidor. A través de cors, se habilitan las peticiones dessw frontend a express (localhost:5137 que es la direccion visible en frontend, y credentials true que permite el envío de cookies y otras credenciales).
+
+    db.js
+Define la función de conexión a la base de datos MongoDB. Esta función requiere de la dirección de conexión conMongoDb, que procederá de config.js y .env.
+
+    config.js
+Ejecuta la función config() de dotenv y establece valores para el puerto de escucha, la dirección de conexión de mongoDB y el token secreto de la simulación. Esto lo hace llamando alas variables guardads en .env si existen, y si no les da valorespor defecto.
+
+    .env
+No disponible, dado que es un documento sensible y no está en el proyecto de github. Se puede imaginar que aquí están las variables a las que llama config.js.
+El puerto posiblemente sea 4000. La dirección a MongoDB hará referencia a una creada en MongoDB Atlas (en la nube, versión gratuita). El TOKEN será cualquiera que yo defina.
+
+    .gitignore
+Lo copio del compañero.
+
+
+<h1>Desarrollo backend</h1>
+
+1. **index.js, app.js, config.js**
+
+    Explicados en el mismo archivo.
+
+2. **.env**
+
+    Con lo explicado se escribirá una vez cree la base en MongoDB Atlas.
+
+3. **jwt.js**
+
+    Usa la libreria jsonwebtoken, llama a las variables de entorno (config.js) y al modelo de usuario del mongoDB (user.model.js).
+
+    Exporta las const createAccessToken, authRequired, authTeacherRequired, verifyToken, que según cuál se llamarán en el archivo de controller de usuario (user.controller.js), o se definirán rutas para verificación y para manejo de usuarios donde servirán como middleware antes de ejecutar las funciones de manejo definidas en controller del usuario, de la sala y de los logs.
+
+    - createAccessToken: se usará en user.controller. Requiere de un payload (en este caso es simplemente un id), y devuelve una promesa (async) donde se firma el payload introducido con el token de .env, y expira en un día. Esto significa que el token contiene de manera codificada el id pasado como payload. **ESTO ES UN ERROR, DEBERÍA PASAR COMO PAYLOAD EL ID Y EL ROLE PARA PODER HACER AUTHTEACHERREQUIRED**.
+    - authRequired: se usa como middleware para proteger rutas. Al ejecutar las funciones de los controller, primero se ejecuta el middleware según cómo estén definidos en los archivos de routes. Comprueba que req (petición del cliente) tiene una cookie llamada token (req.cookies.token) y verifica que sea igual que el token de .env. Si no lo es, manda como respuesta (res) error 400. Si la verificación es correcta pasa a req.userId el valor id codigficado en el token gracias a createAccessToken. Después de hacer esto ejecuta next() lo que permite continuar a la ruta siguiente tras finalizar el middleware.
+    - authTeacherRequired: se usa como middleware para proteger rutas de manejo de usuarios, obtencion de log, y evaluacion y obtencion, creacion y eliminacion de room. Es similar al anterior pero verifica tambén el rol del token (NO SE HA GUARDADO EN EL CÓDIGO DEL COMPAÑERO).
+    - verifyToken: se usa para crear una ruta cuyo middleware es authRequired. Es muy similar, pero en este caso verifyToken en vez de comprobar el token de cookies con el token de env, comprueba el token del body de la petición del cliente, es decir, un token que procede de otra estructura que no es ni cookie ni header, sino el body, que en nuestro código lo hace solo axios. En el api/user.tsx de frontend establece que el parametro introducido (body) es una prop. En userContext el provider hace esta comprobación introduciendo como prop el token guardado en localStorage.
+
+4. **models**
+    1. user.model.js: es un esquema de MongoDB con name obligatorio de tipo String, password obligatorio tipo String y rol con valor default "student" de tipo String. Este documento exporta el modelo con nombre "User" y el esquema definido.
+
+    2. room.model.js: es un esquema de MongoDB con name obligatorio de tipo String, password obligatorio tipo String, description de tipo String, open de tipo boolean, date de tipo Date con valor por defecto el día actual, y log de tipo clave-valor (logId: tipo nativo id, userId: tipo nativo de id, username: tipo String, mark: de tipo Number con valor por defecto -1). Este documento exporta el modelo con nombre "Room" y el esquema definido.
+
+    3. log.model.js: es un esquema de MongoDB con userId obligatorio de tipo id nativo de mongo y que hace referencia al id de "User", type obligatorio tipo String con los posibles valores simulacion y evaluacion, sessionId obligatorio, único y de tipo String, fixedParams (sin definir contenido), params de tipo clave-valor (time:Date, params:{}) con valor por defecto [], finished de tipo boolean con valor por defecto false, simulator obligatorio de tipo String cuyos valores posibles son los definidos en libs/simuladores.js, y room no obligatorio, de tipo id nativo de room, que hace referencia a Room. Este documento exporta el modelo con nombre "Log" y el esquema definido.
+
+
+5. **controllers**
+    1. user.controller.js: define las funciones para hacer login, obtener a todos los usuarios, crear usuarios (que requiere de una funcion privada del propio documento para crear usuario), eliminar usuarios, conseguir usuario por id, conseguir el id del usuario y cambio de contraseña. Encripta las contraseñas y permite comparar el guardado y el recibido con la libreria bcryptjs.
+        - login: con la llegada name y password desde res.body, si el name y su password es correcta, mete en res.coockie el token dentro de "token" con diferentes caracteristicas de proteccion, segurdiad... y devuelve res.status(200).json({ status: 200, user: { id: userFound._id, name: userFound.name, role: userFound.role }, token});
+        - logout: limpia la cookie de token y devuelve status 200.
+        - changePassword: error en caso de que no se envíe parámetros o falte alguno, estos parámetros son userId, oldPassword, newPassword. Si el userId existe y su oldPassword es la existente, encripta la nueva contraseña y le introduce en el usuario (necesitará un user.save()). Si todo es correcto devuelve status 200.
+        - getAllUsers: recupera todo el model de User ordenado por rol, excluyendo el usuario que ha hecho la peticion. Excluye al cliente del listado de busqueda. Si todo es correcto, devuelve status 200 y listado de usuarios conformados por el id, el nombre y el rol.
+        - createUsers: 
+
+    2. room.controller.js:
+
+    3. log.controller.js

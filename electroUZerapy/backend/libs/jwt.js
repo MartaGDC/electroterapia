@@ -4,7 +4,7 @@ import User from "../models/user.model.js"
 
 export const createAccessToken = async (payload) => {
   return new Promise((resolve, reject) => {
-    jwt.sign(payload, TOKEN, { expiresIn: "1d" }, (err, token) => {
+    jwt.sign(payload, TOKEN, { expiresIn: "1d" }, (err, token) => { //firma el payload con el token de config.js que expira en un día
       if (err) reject(err);
       resolve(token);
     });
@@ -13,13 +13,13 @@ export const createAccessToken = async (payload) => {
 
 export const authRequired = (req, res, next) => {
   try {
-    if (!req.cookies.token) return res.status(400).json({status: 400});
+    if (!req.cookies.token) return res.status(400).json({status: 400}); //Si no hay cookie llamada token, error 400
     
-    const token = req.cookies.token.replace(/['"]+/g, '');
+    const token = req.cookies.token.replace(/['"]+/g, ''); //sustituye todas las posibles comillas que haya en la cookie por nada. Las elimina
 
-    jwt.verify(token, TOKEN, (err, user) => {
+    jwt.verify(token, TOKEN, (err, user) => { //verifica que el token cookie sea igual que token de env, en ese caso:
       if (err) return res.status(400).json({status: 400, message: "Error procesando el token de sesión"});
-      req.userId = user.id;
+      req.userId = user.id; //se le pasa a req.userId el valor del id codificado en el token (llamado aqui user como parametro de verify)
       next();
     })
   } catch (error) {
