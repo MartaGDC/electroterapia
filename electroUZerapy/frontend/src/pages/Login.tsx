@@ -14,7 +14,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState("");
   const [isTouched, setIsTouched] = useState(false)
 
-  const libre = true //Este valor no cambia, para DESARROLLO porque ignora la autenticacion
+  //const libre = true //Este valor no cambia, para DESARROLLO porque ignora la autenticacion
 
   // const doLogin = (event: any) => {
   //   event?.preventDefault();
@@ -25,27 +25,23 @@ const Login: React.FC = () => {
     
     event?.preventDefault();
     
-    if (libre) {
-      router.push("/app/home");
-    } else {
-      if (name == "" || password == "") {
-        setIsTouched(true);
-        return;
-      }
+    if (name == "" || password == "") {
+      setIsTouched(true);
+      return;
+    }
 
-      try {
-        const response = await login(name, password); //funcion de useUser, del contexto
-        if (response.status === 200) {
-          router.push("/app/home", "root", "replace");
-          setIsTouched(false);
-        } else {
-          console.log("error");
-          setIsTouched(true);
-        }          
-      } catch (error) {
+    try {
+      const response = await login(name, password); //funcion de useUser, del contexto
+      if (response.status === 200) {
+        router.push("/app/home", "root", "replace");
+        setIsTouched(false);
+      } else {
         console.log("error");
         setIsTouched(true);
-      }
+      }          
+    } catch (error) {
+      console.log("error");
+      setIsTouched(true);
     }
   }
 

@@ -29,7 +29,8 @@
       "NUEVA_PH": "Introduzca su nueva contraseña",
       "REPETIR": "Repita la nueva contraseña",
       "REPETIR_PH": "Introduzca de nuevo su nueva contraseña",
-      "BUTTON": "Cambiar contraseña"
+      "BUTTON": "Cambiar contraseña",
+      "CAMBIADO": "Contraseña actualizada"
     },
     "ESTADISTICAS": {
       "ESTADISTICAS": "Estadísticas"

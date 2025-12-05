@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { loginUser, logoutUser, registerUser, verifyTokenUser } from "../api/user";
+import { loginUser, logoutUser, changePasswordUser, registerUser, verifyTokenUser } from "../api/user";
 import { useIonRouter } from "@ionic/react";
 
 type UserContextType = {
@@ -9,6 +9,7 @@ type UserContextType = {
   register: (nip: string, password: string) => Promise<any>;
   login: (nip: string, password: string) => Promise<any>;
   logout: () => void;
+  changePassword: (userId:string, oldPassword: string, newPassword: string) => Promise<any>;
 };
 
 const UserContext = createContext<UserContextType | null>(null);
@@ -82,6 +83,13 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     return;
   };
 
+  const changePassword = async (userId: string, oldPassword: string, newPassword: string) => {
+    const res = await changePasswordUser({userId, oldPassword, newPassword});
+    return res;
+
+  };
+
+
   useEffect(() => {
     const verifyIsLogued = async () => {
       const userStorage = localStorage.getItem('user');
@@ -116,7 +124,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         loading,
         register,
         login,
-        logout
+        logout,
+        changePassword
       }}
     >
       {children}

@@ -29,7 +29,8 @@
       "NUEVA_PH": "Enter your new password",
       "REPETIR": "Repeat new password",
       "REPETIR_PH": "Re-enter your new password",
-      "BUTTON": "Change password"
+      "BUTTON": "Change password",
+      "CAMBIADO": "Password updated"
     },
     "ESTADISTICAS": {
       "ESTADISTICAS": "Statistics"

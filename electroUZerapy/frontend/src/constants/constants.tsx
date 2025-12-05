@@ -16,7 +16,7 @@ const constants = {
     },
   ],
   timeLog: 5000, // ms. Probablemente para refrescar logs, temporizadores, polling, intervalos
-  apiURL: "http://localhost:8080/api/", //url base del backend
+  apiURL: "http://localhost:4000/api/", //url base del backend MODIFICADO PARA COINCIDA CON EL DEFINIDO EL BACKEND
   izqColAprendizaje: '6', //probablemente se usará para definir el número de columnas en layouts
   dchColAprendizaje: '6',
   izqColSimulacion: '6',

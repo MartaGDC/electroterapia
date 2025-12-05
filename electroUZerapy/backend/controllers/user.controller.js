@@ -54,7 +54,7 @@ export const login = async (req, res) => {
     const equal = await bcrypt.compare(password, userFound.password);
     if (!equal) return res.status(400).json({ status: 400 });
 
-    const token = await createAccessToken({ id: userFound._id });
+    const token = await createAccessToken({ id: userFound._id, role: userFound.role});
 
     res.cookie("token", token, {
       httpOnly: true, // No accesible desde JavaScript (protección XSS)
@@ -88,7 +88,6 @@ export const changePassword = async (req, res) => {
     if (!req.body || !req.body.userId || !req.body.oldPassword || !req.body.newPassword) {
       return res.status(400).json({status: 400});
     }
-
     const userID = req.body.userId;
     const oldPassword = req.body.oldPassword;
     const newPassword = req.body.newPassword;

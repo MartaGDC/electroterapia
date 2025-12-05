@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: `http://localhost:5137`, // Estaba en el 8100 pero como uso Vite, el frontend usa este nuevo
+  origin: `http://localhost:5173`, // Estaba en el 8100 pero como uso Vite, el frontend usa este nuevo
   credentials: true, // Permite el envío de cookies y otras credenciales
 }));
 

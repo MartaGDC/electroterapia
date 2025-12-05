@@ -1,15 +1,26 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuButton, IonNote, IonPage, IonRow, IonSegment, IonSegmentButton, IonText, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
-import { languageOutline, lockClosedOutline, personCircleOutline, personOutline, settingsOutline, statsChartOutline } from 'ionicons/icons';
+import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuButton, IonNote, IonPage, IonRow, IonSegment, IonSegmentButton, IonText, IonTitle, IonToolbar, useIonRouter, useIonToast } from '@ionic/react';
+import { languageOutline, lockClosedOutline, personCircleOutline, personOutline, repeat, settingsOutline, statsChartOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
 import './Ajustes.css';
 import { useTranslation } from 'react-i18next';
 import ListPicker from '../../components/Pickers/ListPicker';
+import { useUser } from '../../context/userContext';
 
 const Ajustes: React.FC = () => {
   const {t, i18n} = useTranslation();
   const router = useIonRouter();
   const [option, setOption] = useState(0);
-  
+
+  const {user} = useUser();
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [isTouched, setIsTouched] = useState(false);
+  const {changePassword} = useUser();
+  const [present] = useIonToast();
+
+
+
   const lngs = [
     { name: "🇪🇸 Español", value: "es", disabled: false },
     { name: "🇬🇧 Inglés", value: "en", disabled: false}
@@ -17,6 +28,32 @@ const Ajustes: React.FC = () => {
 
   const navigateButton = (path: any) => {
     router.push(path);
+  }
+
+  const doChangePassword = async (event:any) => {
+    event?.preventDefault();
+
+    if (oldPassword=='' || newPassword=='' || repeatPassword=='') {
+      setIsTouched(true);
+      return;
+    }
+
+    try {
+      const response = await changePassword(user.id, oldPassword, newPassword);
+      if (response.status === 200) {
+        setOldPassword('');
+        setNewPassword('');
+        setRepeatPassword('');
+        setIsTouched(false);
+        present({ message: t("AJUSTES.CONTRASENA.CAMBIADO"), duration: 4000})
+      } else {
+        console.log("error");
+        setIsTouched(true);
+      }          
+    } catch (error) {
+      console.log("error");
+      setIsTouched(true);
+    }
   }
 
   return (
@@ -39,7 +76,7 @@ const Ajustes: React.FC = () => {
             <IonContent>
               <div>
                 <IonIcon className='perfil' icon={personCircleOutline} />
-                <h1> 839899 </h1>
+                <h1>{user?.name}</h1>
                 <IonList className='lista-ajustes' >
                   <IonItem onClick={() => setOption(0)} lines='full' button={true}>
                     <IonIcon aria-hidden="true" slot='start' icon={lockClosedOutline} />
@@ -57,43 +94,51 @@ const Ajustes: React.FC = () => {
             <IonContent>
               {option == 0 ? (
                 <div className='ion-padding-end'>
-                  <h2 className='cambio-title ion-margin-start ion-margin-top ion-no-margin'> 
-                    {t('AJUSTES.CONTRASENA.CAMBIO')} 
-                  </h2>
-                  <IonInput
-                    className='ajustes-input ion-margin-start ion-margin-top'
-                    label={t("AJUSTES.CONTRASENA.ACTUAL")}
-                    type="password"
-                    placeholder={t("AJUSTES.CONTRASENA.ACTUAL_PH")}
-                    labelPlacement="stacked"
-                    fill="solid"
-                    color={'dark'}
-                  />
-                  <IonInput
-                    className='ajustes-input ion-margin-start ion-margin-top'
-                    label={t("AJUSTES.CONTRASENA.NUEVA")}
-                    type="password"
-                    placeholder={t("AJUSTES.CONTRASENA.NUEVA_PH")}
-                    labelPlacement="stacked"
-                    fill="solid"
-                    color={'dark'}
-                  />
-                  <IonInput
-                    className='ajustes-input ion-margin-start ion-margin-top'
-                    label={t("AJUSTES.CONTRASENA.REPETIR")}
-                    type="password"
-                    placeholder={t("AJUSTES.CONTRASENA.REPETIR_PH")}
-                    labelPlacement="stacked"
-                    fill="solid"
-                    color={'dark'}
-                  />
-                  <IonButton
-                    className="passwd-button ion-margin-start ion-no-margin ion-margin-top"
-                    expand="block"
-                    type="submit"
-                  >
-                    {t("AJUSTES.CONTRASENA.BUTTON")}
-                  </IonButton>
+                  <form className="" onSubmit={doChangePassword}>
+                    <h2 className='cambio-title ion-margin-start ion-margin-top ion-no-margin'> 
+                      {t('AJUSTES.CONTRASENA.CAMBIO')} 
+                    </h2>
+                    <IonInput
+                      className={`${isTouched && "ion-invalid ion-touched"} ajustes-input ion-margin-start ion-margin-top`}
+                      label={t("AJUSTES.CONTRASENA.ACTUAL")}
+                      value={oldPassword}
+                      onInput={(e) => setOldPassword((e.target as HTMLInputElement).value)}
+                      type="password"
+                      placeholder={t("AJUSTES.CONTRASENA.ACTUAL_PH")}
+                      labelPlacement="stacked"
+                      fill="solid"
+                      color={'dark'}
+                    />
+                    <IonInput
+                      className={`${isTouched && "ion-invalid ion-touched"} ajustes-input ion-margin-start ion-margin-top`}
+                      label={t("AJUSTES.CONTRASENA.NUEVA")}
+                      value={newPassword}
+                      onInput={(e) => setNewPassword((e.target as HTMLInputElement).value)}
+                      type="password"
+                      placeholder={t("AJUSTES.CONTRASENA.NUEVA_PH")}
+                      labelPlacement="stacked"
+                      fill="solid"
+                      color={'dark'}
+                    />
+                    <IonInput
+                      className={`${isTouched && "ion-invalid ion-touched"} ajustes-input ion-margin-start ion-margin-top`}
+                      label={t("AJUSTES.CONTRASENA.REPETIR")}
+                      value= {repeatPassword}
+                      onInput = {(e) => setRepeatPassword((e.target as HTMLInputElement).value)}
+                      type="password"
+                      placeholder={t("AJUSTES.CONTRASENA.REPETIR_PH")}
+                      labelPlacement="stacked"
+                      fill="solid"
+                      color={'dark'}
+                    />
+                    <IonButton
+                      className="passwd-button ion-margin-start ion-no-margin ion-margin-top"
+                      expand="block"
+                      type="submit"
+                    >
+                      {t("AJUSTES.CONTRASENA.BUTTON")}
+                    </IonButton>
+                  </form>
                 </div>
               ) : (
                 <div>

@@ -10,6 +10,9 @@ export const loginUser = async (props: any) =>
 export const logoutUser = async () => 
   await axiosConfig.post(constants.apiURL + "user/logout");
 
+export const changePasswordUser = async (props: any) => 
+  await axiosConfig.post(constants.apiURL + "user/changePassword", props);
+
 export const verifyTokenUser = async (props: any) => 
   await axiosConfig.put(constants.apiURL + "user/verifyToken", props);
 

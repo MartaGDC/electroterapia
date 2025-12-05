@@ -428,8 +428,6 @@ Por ahora no uso Docker (por falta de experiencia). Valolaré más adelante si l
         
 
 
-
-
 11. **Components**
     1. **Logs**
     - Logs: sirve para reunir y suvizar los datos posicionales de electrodos y aplicadores. Además expone dos funciones: averageElec (se introducen como parametros electrodos (ref), número de electrodos (ref), callback (función que recibirá como argumento en los elementos que la usen el "avgElectrodo" y devolverá void) y un nuevo electrodo, y si el número es superior a 10 promedia la posicion y crea un electrodo con esta nueva posicion y el resto de datos del electrodo introducido como parámetro, sobre el que se podrán hacer diferentes funciones gracias al callback)  y averageApl (igual que la anterior pero para aplicadores).
@@ -499,15 +497,24 @@ Lo copio del compañero.
 
 <h1>Desarrollo backend</h1>
 
-1. **index.js, app.js, config.js**
+1. **MongoDB Atlas**
+
+    https://www.mongodb.com/cloud/atlas/register
+
+    Me registro con mi cuenta de gmail. Establezco características básicas y plan gratuito. Se establece la **IP actual como aquella con conexión** incialmente a este cluster (el nombre del cluster es clusterElectroUZ). Creo al usuario con los datos que aparecerán en la url presente en .env, ademñas añado un nombre para la base de datos y parametros opcionales que hace más segura y resiliente la escritura sobre la base de datos (...mongodb.net/electroDB?retryWrites=true&w=majority&appName=ClusterElectroUZ).
+
+    Paso a seleccion de método de conexión con Driver para conectar desde la propia aplicacion. En este caso es para Node.js. Recomiendan instalar en el folder del backend `npm install mongodb`, pero en mi código uso mongoose, que es lo que ya he instalado. Elimino en atlas, los datos de prueba que ha creado (1 base de datos con 6 colecciones). Cada model creado en el backend será una colección. 
+    
+
+2. **index.js, app.js, config.js**
 
     Explicados en el mismo archivo.
 
-2. **.env**
+3. **.env**
 
     Con lo explicado se escribirá una vez cree la base en MongoDB Atlas.
 
-3. **jwt.js**
+4. **jwt.js**
 
     Usa la libreria jsonwebtoken, llama a las variables de entorno (config.js) y al modelo de usuario del mongoDB (user.model.js).
 
@@ -518,7 +525,7 @@ Lo copio del compañero.
     - authTeacherRequired: se usa como middleware para proteger rutas de manejo de usuarios, obtencion de log, y evaluacion y obtencion, creacion y eliminacion de room. Es similar al anterior pero verifica tambén el rol del token (NO SE HA GUARDADO EN EL CÓDIGO DEL COMPAÑERO).
     - verifyToken: se usa para crear una ruta cuyo middleware es authRequired. Es muy similar, pero en este caso verifyToken en vez de comprobar el token de cookies con el token de env, comprueba el token del body de la petición del cliente, es decir, un token que procede de otra estructura que no es ni cookie ni header, sino el body, que en nuestro código lo hace solo axios. En el api/user.tsx de frontend establece que el parametro introducido (body) es una prop. En userContext el provider hace esta comprobación introduciendo como prop el token guardado en localStorage.
 
-4. **models**
+5. **models**
     1. user.model.js: es un esquema de MongoDB con name obligatorio de tipo String, password obligatorio tipo String y rol con valor default "student" de tipo String. Este documento exporta el modelo con nombre "User" y el esquema definido.
 
     2. room.model.js: es un esquema de MongoDB con name obligatorio de tipo String, password obligatorio tipo String, description de tipo String, open de tipo boolean, date de tipo Date con valor por defecto el día actual, y log de tipo clave-valor (logId: tipo nativo id, userId: tipo nativo de id, username: tipo String, mark: de tipo Number con valor por defecto -1). Este documento exporta el modelo con nombre "Room" y el esquema definido.
@@ -526,7 +533,7 @@ Lo copio del compañero.
     3. log.model.js: es un esquema de MongoDB con userId obligatorio de tipo id nativo de mongo y que hace referencia al id de "User", type obligatorio tipo String con los posibles valores simulacion y evaluacion, sessionId obligatorio, único y de tipo String, fixedParams (sin definir contenido), params de tipo clave-valor (time:Date, params:{}) con valor por defecto [], finished de tipo boolean con valor por defecto false, simulator obligatorio de tipo String cuyos valores posibles son los definidos en libs/simuladores.js, y room no obligatorio, de tipo id nativo de room, que hace referencia a Room. Este documento exporta el modelo con nombre "Log" y el esquema definido.
 
 
-5. **controllers**
+6. **controllers**
     1. user.controller.js: define las funciones para hacer login, cambio de contraseña, obtener a todos los usuarios, crear usuarios (que requiere de una funcion privada del propio documento para crear usuario), eliminar usuario y eliminar usuarios (en comentarios también esta conseguir usuario por id y conseguir el id del usuario). Encripta las contraseñas y permite comparar el guardado y el recibido con la libreria bcryptjs.
         - login: con la llegada name y password desde res.body, si el name y su password es correcta, mete en res.coockie el token dentro de "token" con diferentes caracteristicas de proteccion, segurdiad... y devuelve res.status(200).json({ status: 200, user: { id: userFound._id, name: userFound.name, role: userFound.role }, token});
         - logout: limpia la cookie de token y devuelve status 200.
@@ -555,7 +562,7 @@ Lo copio del compañero.
         - deleteLog: recibe sessionId y roomId (aunque se usa más adelante en la función) por req.body. Hace findOneAnDelete donde la sessionId tenga el valor pasado por req.body y donde finished sea false. Si no se puede, devuelve error y mensaje. Si el log.type es evaluacion hace findOneAndUpdate de room donde su _id sea el roomId pasado por req.body y en ese caso elimina en room.logs el log cuyo logId sea log._id. Si todo bien devuelve status 200.
         - getLogByid: recibe req.query.logId (generalmente query es porque se hace una busqueda en la propia ruta api). Se hace un findById en log con ese logId, y si lo encuentra devuelve status 200 y el log encontrado.
 
-6. **routes**
+7. **routes**
 
 Las peticiones post se usan para crear o enviar datos al servidor (el cuerpo del request se envía en req.body). Las peticiones put se usan para actualizar datos, en general cualquier request que reemplaza o modifica recursos. Las peticiones get se usan para recuperar datos, sin modificar nada en el servidor (los parámetros opcionales se pasan en req.query (query params) o en la URL (req.params)). Las peticiones delete se usan para eliminar recursos.
 
