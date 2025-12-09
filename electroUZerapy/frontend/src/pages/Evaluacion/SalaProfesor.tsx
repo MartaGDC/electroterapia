@@ -62,7 +62,6 @@ const SalaProfesor: React.FC = () => {
         setEstado(res.data.room.open);
         setDescription(res.data.room.description);
       }
-
     }
     getRoom();
   }, []);
@@ -217,7 +216,7 @@ const SalaProfesor: React.FC = () => {
             <IonAlert
               isOpen={isOpenAlertEliminar}
               onDidDismiss={() => setIsOpenAlertEliminar(false)}
-              trigger="create-students"
+              //trigger="create-students"
               header={t('ACTIVIDAD.ALERT_ELIMINAR.HEADER')}
               subHeader={t('ACTIVIDAD.ALERT_ELIMINAR.SUBHEADER')}
               message={t('ACTIVIDAD.ALERT_ELIMINAR.MSG')}

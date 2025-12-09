@@ -14,6 +14,7 @@
     "APRENDIZAJE": "Aprendizaje",
     "SIMULACION": "Simulación",
     "EVALUACION": "Evaluación",
+    "CONTINUA": "Evaluación continuada",
     "USUARIOS": "Usuarios",
     "AJUSTES": "Ajustes",
     "CERRAR_SESION": "Cerrar sesión"
@@ -45,6 +46,7 @@
     "SUB_APRENDIZAJE": "Explora cada simulador, practica sin límites y accede a información teórica para comprender los conceptos de electroterapia",
     "SUB_SIMULACION": "Simula el uso de un equipo de electroterapia en un entorno clínico realista. Configura los parámetros, coloca los electrodos sobre el cuerpo y practica sin evaluación ni ayuda teórica",
     "SUB_EVALUACION": "Resuelve casos prácticos creados por tu profesor. El sistema registra tus acciones para que puedan ser evaluadas posteriormente. ¡Pon en práctica tus conocimientos como si estuvieras en un entorno real!",
+    "SUB_CONTINUA": "Comprueba listas de asistencia y genera evaluaciones rápidas para los alumnos",
     "SUB_ALUMNOS": "Crea y elimina usuarios de la aplicación"
   },
 
@@ -170,6 +172,10 @@
     "CODIGO_PLACEHOLDER": "Introduzca el código de la actividad",
     "CODIGO_BUTTON": "Enviar",
     "ESTADISTICAS": "Estadísticas"
+  },
+
+  "CONTINUA": {
+    "LISTAS": "Listas de asistencia"
   },
 
   "ESTADISTICAS": {

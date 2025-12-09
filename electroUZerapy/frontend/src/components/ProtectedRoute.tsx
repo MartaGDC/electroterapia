@@ -19,20 +19,16 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> =
   const { user, loading } = useUser();
 
   if (evaluacion && room == null) return <Redirect to="/app/evaluacion" />;
-  if (!protect) return <Component/>
-  else if (loading) return <IonSpinner name="dots" />;
-  else return (
+  return (
     <Route
       {...rest}
-      render={props =>
-        (user && allowedRoles.includes(user.role)) ? (
-          <Component {...props} />
-        ) : (user != null) ? (
-          <Redirect to="/app/home" />
-        ) : (
-          <Redirect to="/" />
-        )
-      }
+      render={(props) => {
+        if (!protect) return <Component {...props}/>; //Se ha añadido esto para poder aceptar props (en concreto para salaProfesor/{id})
+        if (loading) return <IonSpinner name="dots"/>;
+        if (user && allowedRoles.includes(user.role)) return <Component {...props} />;
+        if (user != null) return <Redirect to="/app/home" />;
+        return <Redirect to="/" />
+      }}
     />
   );
 };

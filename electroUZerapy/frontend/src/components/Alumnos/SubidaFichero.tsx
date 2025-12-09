@@ -24,59 +24,58 @@ const SubidaFichero: React.FC = () => {
     setLista([])
 
     const file = e.target.files[0]
-      if (!file) return
+    if (!file) return
 
-      const fileReader = new FileReader()
+    const fileReader = new FileReader()
 
-      fileReader.readAsText(file)
+    fileReader.readAsText(file)
 
-      fileReader.onload = () => {
-        const text = fileReader.result;
+    fileReader.onload = () => {
+      const text = fileReader.result;
         
-        if (typeof text === 'string') {
-          const lines = text.split(/\r?\n|\r/);
-          // ahora puedes trabajar con lines
+      if (typeof text === 'string') {
+        const lines = text.split(/\r?\n|\r/);
+        // ahora puedes trabajar con lines
 
-          const parsedData: string[] = [];
-          const erroresEncontrados: string[] = [];
-  
-          lines.forEach((line, index) => {
-            // Eliminamos comillas y dividimos por ';'
-            if (line !== "") {
-              const fields = line.split(";");
-  
-              // Validar que haya exactamente 1 campo
-              if (fields.length === 2) {
-                const [nip, vacio] = fields;
-  
-                if (vacio !== "") {
-                  erroresEncontrados.push(`Línea ${index + 1}: Número incorrecto de campos.`);
-                  return;
-                }
-  
-                // Validar que NIP sea una cadena de texto
-                if (!nip || typeof nip !== "string") {
-                  erroresEncontrados.push(`Línea ${index + 1}: Nombre Apellidos no es válido.`);
-                  return;
-                }
-    
-                // Si todas las validaciones pasan, agregamos el objeto a los datos procesados
-                parsedData.push(nip);
-              } else {
+        const parsedData: string[] = [];
+        const erroresEncontrados: string[] = [];
+
+        lines.forEach((line, index) => {
+          // Eliminamos comillas y dividimos por ';'
+          if (line !== "") {
+            const fields = line.split(";");
+
+            // Validar que haya exactamente 1 campo
+            if (fields.length === 2) {
+              const [nip, vacio] = fields;
+
+              if (vacio !== "") {
                 erroresEncontrados.push(`Línea ${index + 1}: Número incorrecto de campos.`);
+                return;
               }
-            }
-          });
   
-          // Guardamos los datos válidos y los errores
-          setLista(parsedData);
-          setErrores(erroresEncontrados);
-        }
+              // Validar que NIP sea una cadena de texto
+              if (!nip || typeof nip !== "string") {
+                erroresEncontrados.push(`Línea ${index + 1}: Nombre Apellidos no es válido.`);
+                return;
+              }
+    
+              // Si todas las validaciones pasan, agregamos el objeto a los datos procesados
+              parsedData.push(nip);
+            } else {
+              erroresEncontrados.push(`Línea ${index + 1}: Número incorrecto de campos.`);
+            }
+          }
+        });
+  
+        // Guardamos los datos válidos y los errores
+        setLista(parsedData);
+        setErrores(erroresEncontrados);
       }
     }
+  }
 
   const create = async () => {
-
     const res = await addUsers(lista.map((nip: string, idx: number) => 
       ({name: nip, password: nip, role: "student"})));
 
@@ -148,7 +147,7 @@ const SubidaFichero: React.FC = () => {
       <IonAlert
         isOpen={isOpenAlert}
         onDidDismiss={() => setIsOpenAlert(false)}
-        trigger="create-students"
+        //trigger="create-students"
         header={`${t('ALUMNOS.FICHERO.ALERTA_CREAR.H1')} ${lista.length} ${t('ALUMNOS.FICHERO.ALERTA_CREAR.H2')}`}
         subHeader={`${t('ALUMNOS.FICHERO.ALERTA_CREAR.SH1')} ${lista.length} ${t('ALUMNOS.FICHERO.ALERTA_CREAR.SH2')}`}
         message={`${t('ALUMNOS.FICHERO.ALERTA_CREAR.MSG1')} ${lista.length} ${t('ALUMNOS.FICHERO.ALERTA_CREAR.MSG2')}`}

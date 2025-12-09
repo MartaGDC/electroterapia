@@ -76,6 +76,22 @@ const Home: React.FC = () => {
             </IonCard>
 
             {(user && user.role == Roles.PROFESOR) &&
+              <IonCard 
+                onClick={() => navigateButton("/app/evaluacionContinua")}>
+                <IonCardHeader>
+                  <IonCardTitle>
+                    <IonIcon src={constants.continuaIcon}/>
+                    {t('MENU.CONTINUA')}
+                  </IonCardTitle>
+                  <IonCardSubtitle>
+                    {t('HOME.SUB_CONTINUA')}
+                  </IonCardSubtitle>
+                </IonCardHeader>
+              </IonCard>
+            }
+            
+
+            {(user && user.role == Roles.PROFESOR) &&
               <IonCard onClick={() => navigateButton("/app/alumnos")}>
                 <IonCardHeader>
                   <IonCardTitle>

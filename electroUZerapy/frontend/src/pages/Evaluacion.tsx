@@ -50,6 +50,7 @@ const Evaluacion: React.FC = () => {
 
   const confirmarPassword = async () => {
     if (actividadSelected !== null) {
+      console.log(actividadSelected._id, password);
       const res = await enterRoom({ roomId: actividadSelected?._id, password });
 
       if (res.status == 200) {

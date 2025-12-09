@@ -43,6 +43,8 @@ import EvaluacionProfesor from '../pages/EvaluacionProfesor';
 import SalaProfesor from '../pages/Evaluacion/SalaProfesor';
 import VisualizadorLog  from '../pages/Evaluacion/VisualizadorLog';
 import Actividad from '../pages/Evaluacion/Actividad';
+
+import Continua from '../pages/EvaluacionContinua';
       
 import { useUser } from '../context/userContext';
 import constants from '../constants/constants';
@@ -68,8 +70,11 @@ const Menu: React.FC = () => {
       icon: constants.evaluacionIcon 
     },
     ...(user?.role === "teacher"
-      ? [{ name: t('MENU.USUARIOS'), url: "/app/alumnos", icon: constants.alumnosIcon }]
-      : [])
+    ? [
+      { name: t('MENU.USUARIOS'), url: "/app/alumnos", icon: constants.alumnosIcon },
+      { name: t('MENU.CONTINUA'), url: "/app/evaluacionContinua", icon: constants.continuaIcon }
+    ]
+    : [])
   ];
 
   const navigateButton = (path: string) => {
@@ -170,6 +175,9 @@ return (
       <ProtectedRoute protect={false} evaluacion exact path="/app/evaluacion/ultrasonidos" component={() => <UltrasonidosSimulacion type={"evaluacion"}/>} allowedRoles={[Roles.ALUMNO]}/>
       <ProtectedRoute protect={false} evaluacion exact path="/app/evaluacion/ultravioletas" component={() => <UVSimulacion type={"evaluacion"}/>} allowedRoles={[Roles.ALUMNO]}/>
       <ProtectedRoute protect={false} evaluacion exact path="/app/evaluacion/ondaschoque" component={() => <OndasChoqueSimulacion type={"evaluacion"}/>} allowedRoles={[Roles.ALUMNO]}/>
+
+      {/*Continua*/}
+      <ProtectedRoute protect={false} exact path="/app/evaluacionContinua" component={Continua} allowedRoles={[Roles.PROFESOR]} />
 
       {/* Alumnos */}
       <ProtectedRoute protect={false} exact path="/app/alumnos" component={Alumnos} allowedRoles={[Roles.PROFESOR]} />

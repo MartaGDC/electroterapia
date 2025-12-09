@@ -1,5 +1,5 @@
 //importacion de iconos, accesibles en otros componenetes al estar en este objeto constants
-import { bodyOutline, desktopOutline, documentTextOutline, locateOutline, medkitOutline, receiptOutline, schoolOutline, warningOutline, waterOutline } from "ionicons/icons";
+import { bodyOutline, desktopOutline, documentTextOutline, bulbOutline, locateOutline, medkitOutline, receiptOutline, schoolOutline, warningOutline, waterOutline } from "ionicons/icons";
 
 const constants = {  
   modes: [ //array de configuraciones de modos, cada uno tiene name, ruta a la pantalla de aprendizaje y ruta a la de simulación.
@@ -24,6 +24,7 @@ const constants = {
   aprendizajeIcon: desktopOutline, //asociar partes de menú a iconos importados
   simulacionIcon: bodyOutline,
   evaluacionIcon: documentTextOutline,
+  continuaIcon: bulbOutline,
   alumnosIcon: schoolOutline,
   complementosIcon: medkitOutline,
   aplicadoresIcon: locateOutline,

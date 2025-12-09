@@ -200,6 +200,7 @@ export const enterRoom = async (req, res) => {
     if (!room) return res.status(404).json({ status: 404, message: "Sala no encontrada" });
 
     const user = await User.findById(req.userId);
+    console.log(user);
     if (!user) return res.status(404).json({ status: 404, message: "Usuario no encontrado" });
 
     const alreadyInRoom = room.logs.some(log => log.userId.toString() === req.userId);
