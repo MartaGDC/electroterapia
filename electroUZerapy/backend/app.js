@@ -2,6 +2,7 @@ import express from "express"; // framework para crear api
 import userRoutes from "./routes/user.routes.js"
 import logRoutes from "./routes/log.routes.js"
 import roomRoutes from "./routes/room.routes.js"
+import listRoutes from "./routes/list.routes.js"
 import cors from "cors"; //habilita peticiones desde el frontend
 import cookieParser from "cookie-parser"; //para leer cookies en la API (necesario para JWT en cookies)
 
@@ -18,5 +19,6 @@ app.use(cors({
 app.use("/api/user", userRoutes); 
 app.use("/api/log", logRoutes);
 app.use("/api/room", roomRoutes);
+app.use("/api/list", listRoutes);
 
 export default app;

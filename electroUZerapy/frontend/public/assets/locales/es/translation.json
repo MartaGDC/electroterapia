@@ -175,7 +175,9 @@
   },
 
   "CONTINUA": {
-    "LISTAS": "Listas de asistencia"
+    "LISTAS": "Listas de asistencia",
+    "REGISTRO": "Registra tu asistencia",
+    "KAHOOT": "Test de evaluación rápida"
   },
 
   "ESTADISTICAS": {

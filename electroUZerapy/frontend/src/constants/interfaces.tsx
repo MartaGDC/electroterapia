@@ -133,3 +133,10 @@ export type Log = {
   simulator: Simuladores;
   room: string;
 }
+
+export type List = {
+  _id: string;
+  date: Date;
+  description: string;
+  users: {userId: string, userName: string}[];
+}

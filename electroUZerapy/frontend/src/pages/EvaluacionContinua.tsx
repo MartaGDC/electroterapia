@@ -4,30 +4,34 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './EvaluacionContinua.css'
 import constants from '../constants/constants';
+import { List } from '../constants/interfaces';
+import { getAllLists } from '../api/list';
+
+import QRClass from "./Continua/QRClass";
+
 
 
 const Continua: React.FC = () => {
   const {t} = useTranslation();
   const router = useIonRouter();
 
-  const [listados, setListados] = useState([]);
+  const [listados, setListados] = useState<List[]>([]);
+  const [qrVisible, setQrVisible] = useState(false);
 
   const navigateListado = (id: string) => {
-      event?.preventDefault();
-      router.push(`/app/listados/${id}`, 'root', 'replace');
-    }
+    event?.preventDefault();
+    router.push(`/app/salaListados/${id}`, 'root', 'replace');
+  }
   
-    useEffect(() => {
-      const getListados = async () => {
-        /*const res = await getAllLists();
-  
-        if (res.status == 200) {
-          setListados(res.data.rooms)
-        }*/
+  useEffect(() => {
+    const getListados = async () => {
+      const res = await getAllLists();
+      if (res.status == 200) {
+        setListados(res.data.lists)
       }
-  
-      getListados();
-    }, []);
+    };
+    getListados();
+  }, []);
 
   return (
     <IonPage>
@@ -46,7 +50,45 @@ const Continua: React.FC = () => {
       <IonContent className='ion-padding' fullscreen>
         <div className="lista-student-container">
             <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
-            {t("CONTINUA.LISTAS")} 
+              {t("CONTINUA.LISTAS")} 
+            </h2>
+            <IonFabButton onClick={() => setQrVisible(true)} color={'dark'}>
+                <IonIcon icon={add}></IonIcon>
+            </IonFabButton>
+            <QRClass
+            isOpen={qrVisible}
+            setIsOpen={setQrVisible}
+            />
+        </div>
+
+        <div className='lista-ev-prof-container'>
+          <ul className='ion-no-padding ion-no-margin'>
+            {listados.map((list, idx) => (
+            <li className='ion-no-margin' key={idx}>
+              <IonCard className='ion-no-margin'onClick={() => navigateListado(list._id)}>
+                <IonCardHeader className='ion-no-padding'>
+                  <div 
+                  className='ion-padding-end'
+                  style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
+                  >
+                    <IonCardTitle>
+                      {new Date(list.date).toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric',
+                      })}
+                    </IonCardTitle>
+                  </div>
+                </IonCardHeader>
+              </IonCard>
+            </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="lista-student-container">
+            <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
+            {t("CONTINUA.KAHOOT")} 
             </h2>
             <IonFabButton color={'dark'}>
                 <IonIcon icon={add}></IonIcon>
@@ -57,18 +99,14 @@ const Continua: React.FC = () => {
             <ul className='ion-no-padding ion-no-margin'>
             {listados.map((list, idx) => (
                 <li className='ion-no-margin' key={idx}>
-                    <IonCard className='ion-no-margin' onClick={() => navigateListado(list._id)}>
+                    <IonCard className='ion-no-margin'>
                         <IonCardHeader className='ion-no-padding'>
                             <div 
                             className='ion-padding-end'
                             style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
                             >
                                 <IonCardTitle>
-                                    {new Date(list.date).toLocaleDateString('es-ES', {
-                                        year: 'numeric',
-                                        month: 'numeric',
-                                        day: 'numeric',
-                                    })}
+                                    {}
                                 </IonCardTitle>
                             </div>
                         </IonCardHeader>
@@ -77,6 +115,8 @@ const Continua: React.FC = () => {
             ))}
             </ul>
         </div>
+
+
         
       </IonContent>
     </IonPage>

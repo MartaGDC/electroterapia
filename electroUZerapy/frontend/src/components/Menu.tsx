@@ -45,6 +45,7 @@ import VisualizadorLog  from '../pages/Evaluacion/VisualizadorLog';
 import Actividad from '../pages/Evaluacion/Actividad';
 
 import Continua from '../pages/EvaluacionContinua';
+import SalaListados from '../pages/Continua/SalaListados';
       
 import { useUser } from '../context/userContext';
 import constants from '../constants/constants';
@@ -178,6 +179,7 @@ return (
 
       {/*Continua*/}
       <ProtectedRoute protect={false} exact path="/app/evaluacionContinua" component={Continua} allowedRoles={[Roles.PROFESOR]} />
+      <ProtectedRoute protect={false} exact path="/app/salaListados/:id" component={SalaListados} allowedRoles={[Roles.PROFESOR]}/>
 
       {/* Alumnos */}
       <ProtectedRoute protect={false} exact path="/app/alumnos" component={Alumnos} allowedRoles={[Roles.PROFESOR]} />
