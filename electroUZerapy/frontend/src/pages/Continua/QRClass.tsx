@@ -5,42 +5,47 @@ import { createNewList } from '../../api/list';
 import QRCode from "react-qr-code";
 
 const QRClass: React.FC<{
-    isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    isVisible: boolean;
+    setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({
-    isOpen, setIsOpen
+    isVisible, setIsVisible
 }) => {
 
+    const [present] = useIonToast();
     const {t} = useTranslation();
     const [sessionId, setSessionId] = useState<string | null>(null);
     
-    const cerrarQR = () => setIsOpen(false);
+    const cerrarQR = () => {
+        setIsVisible(false);
+        location.reload();
+    }
     
-    useEffect(() => {
-        if (!isOpen) return;
-        
-        const crearListado = async () => {
-            const res = await createNewList();
-            setSessionId(res.data.sessionId)
+    const crearListado = async () => {
+        const res = await createNewList();
+        if (res.data.existingOpenList){
+            setIsVisible(false);
+            present({message: t('CONTINUA.ALERTAS.LISTA_EXISTE'), duration: 4000, cssClass: "error-toast"});
         }
-    }, [isOpen])
+        else {
+            setSessionId(res.data._id);
+        }
+    }
+
+    useEffect(() => {
+        if (!isVisible) return;
+        crearListado();
+    }, [isVisible])
 
     if(!sessionId) return null;
 
     return (
     <IonModal
-        isOpen={isOpen}
+        isOpen={isVisible}
         onIonModalDidDismiss={cerrarQR}
     >
         <IonContent className="ion-padding ion-text-center">
             <h2 className='ion-padding-bottom'>{t("CONTINUA.REGISTRO")}</h2>
             <QRCode value={sessionId} style={{ maxHeight: "80%", width: "auto" }}/>
-            <IonButton
-            className="ion-margin-top"
-            onClick={cerrarQR}
-            >
-                {t("ACTIVIDAD.CONFIRMAR")}
-        </IonButton>
         </IonContent>
     </IonModal>
     );

@@ -8,7 +8,7 @@ import { useParams } from 'react-router';
 import { Room } from '../../constants/interfaces';
 import { copyOutline } from 'ionicons/icons';
 import { copyToClipboard } from '../../components/Logica/General';
-import TooglePicker from '../../components/Pickers/TogglePicker';
+import TogglePicker from '../../components/Pickers/TogglePicker';
 
 const SalaProfesor: React.FC = () => {
   const [present] = useIonToast();
@@ -174,7 +174,7 @@ const SalaProfesor: React.FC = () => {
 
             {/* Estado: abierto / cerrado */}
             <div className='ion-padding-end'>
-              <TooglePicker
+              <TogglePicker
                 variable={estado}
                 onChange={() => setEstado(!estado)}
                 name={t('ACTIVIDAD.ESTADO.LABEL')}

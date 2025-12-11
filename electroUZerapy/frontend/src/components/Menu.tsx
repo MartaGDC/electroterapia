@@ -72,8 +72,8 @@ const Menu: React.FC = () => {
     },
     ...(user?.role === "teacher"
     ? [
-      { name: t('MENU.USUARIOS'), url: "/app/alumnos", icon: constants.alumnosIcon },
-      { name: t('MENU.CONTINUA'), url: "/app/evaluacionContinua", icon: constants.continuaIcon }
+      { name: t('MENU.CONTINUA'), url: "/app/evaluacionContinua", icon: constants.continuaIcon },
+      { name: t('MENU.USUARIOS'), url: "/app/alumnos", icon: constants.alumnosIcon }
     ]
     : [])
   ];

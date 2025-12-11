@@ -13,7 +13,7 @@ import constants from '../../constants/constants';
 import { Simuladores, Time } from '../../constants/interfaces';
 import { useLog } from '../../context/logContext';
 import LogButton from '../../components/Logs/LogButton';
-import TooglePicker from '../../components/Pickers/TogglePicker';
+import TogglePicker from '../../components/Pickers/TogglePicker';
 import ImageMapper from '../../components/ImageMapper/ImageMapper';
 
 import icon_1_1 from '../../assets/1-1.svg'
@@ -275,7 +275,7 @@ const MediaFrecuenciaSimulacion: React.FC<{
                 unit='Hz'
               />
 
-              <TooglePicker
+              <TogglePicker
                 name={t('MEDIA_FRECUENCIA.BARRIDO')}
                 variable={showBarrido}
                 onChange={() => setShowBarrido(!showBarrido)}

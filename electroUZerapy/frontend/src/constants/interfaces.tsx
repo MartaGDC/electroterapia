@@ -136,7 +136,8 @@ export type Log = {
 
 export type List = {
   _id: string;
-  date: Date;
-  description: string;
-  users: {userId: string, userName: string}[];
+  teacher: string;
+  asistentes: {userId: string, userName:string}[];
+  isOpen: Boolean;
+  start: Date;
 }

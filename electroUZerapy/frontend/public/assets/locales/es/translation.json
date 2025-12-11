@@ -177,7 +177,17 @@
   "CONTINUA": {
     "LISTAS": "Listas de asistencia",
     "REGISTRO": "Registra tu asistencia",
-    "KAHOOT": "Test de evaluación rápida"
+    "KAHOOT": "Test de evaluación rápida",
+    "CAMBIADA": "Actividad actualizada",
+    "ERROR_CAMBIO": "Error al actualizar. Vuelva a intentarlo más tarde",
+    "ESTADO":{
+      "LABEL":"Estado del registro",
+      "ABIERTO": "Abierto",
+      "CERRADO": "Cerrado"
+    },
+    "ALERTAS": {
+      "LISTA_EXISTE":"Existe ya una lista abierta"
+    }
   },
 
   "ESTADISTICAS": {

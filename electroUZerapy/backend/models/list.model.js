@@ -22,8 +22,11 @@ const ListSchema = mongoose.Schema({
     start: {
       type: Date,
       default: Date.now
+    },
+    reOpenedDate: {
+      type: Date,
+      default: Date.now
     }
-}, { timestamps: true}
-);
+});
 
 export default mongoose.model("List", ListSchema);

@@ -9,7 +9,7 @@ import ListPicker from '../../components/Pickers/ListPicker';
 import TimePicker from '../../components/Pickers/TimePicker';
 import RangePicker from '../../components/Pickers/RangePicker';
 import RangeColorPicker from '../../components/Pickers/RangeColorPicker';
-import TooglePicker from '../../components/Pickers/TogglePicker';
+import TogglePicker from '../../components/Pickers/TogglePicker';
 import constants from '../../constants/constants';
 import { Simuladores, Time } from '../../constants/interfaces';
 import { useLog } from '../../context/logContext';
@@ -115,7 +115,7 @@ const InfrarrojosAprendizaje: React.FC = () => {
               <h2 className='negro'> {t('INFRARROJOS.PARAMETROS')} </h2>
 
               {equipo == equipos.REGULABLE &&
-                <TooglePicker
+                <TogglePicker
                   name={t('INFRARROJOS.ALTA_POTENCIA')}
                   variable={bombillaPotente}
                   onChange={() => {

@@ -15,7 +15,7 @@ import MaterialPicker from '../../components/Pickers/MaterialPicker';
 import { Electrodo, TipoElectrodo } from '../../classes/Electrodos';
 import { useLog } from '../../context/logContext';
 import LogButton from '../../components/Logs/LogButton';
-import TooglePicker from '../../components/Pickers/TogglePicker';
+import TogglePicker from '../../components/Pickers/TogglePicker';
 
 import icon_1_1 from '../../assets/1-1.svg'
 import icon_1_5_1_5 from '../../assets/1-5-1-5.svg'
@@ -240,7 +240,7 @@ const MediaFrecuenciaAprendizaje: React.FC = () => {
                 unit='Hz'
               />
 
-              <TooglePicker
+              <TogglePicker
                 name={t('MEDIA_FRECUENCIA.BARRIDO')}
                 variable={showBarrido}
                 onChange={() => setShowBarrido(!showBarrido)}

@@ -32,7 +32,6 @@ export const update = async (req, res) => {
 
     const { roomId, name, description, open } = req.body;
 
-    // Cerrar la sala
     const salaRes = await Room.updateOne({ _id: roomId }, { name, description, open });
 
     if (salaRes.matchedCount == 0) {

@@ -1,7 +1,7 @@
 import "./TogglePicker.css"
 import { IonItem, IonToggle } from "@ionic/react";
 
-const TooglePicker: React.FC<{
+const TogglePicker: React.FC<{
   name: string;
   variable: boolean;
   onChange: any;
@@ -35,4 +35,4 @@ const TooglePicker: React.FC<{
   );
 };
 
-export default TooglePicker;
+export default TogglePicker;

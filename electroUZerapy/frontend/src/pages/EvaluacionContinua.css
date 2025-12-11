@@ -5,13 +5,13 @@
   gap: 8px;
 }
 
-.lista-ev-prof-container {
+.lista-list-container {
   display: flex;
   justify-content: center;
 
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
     gap: 50px;  
     width: 100%;
     

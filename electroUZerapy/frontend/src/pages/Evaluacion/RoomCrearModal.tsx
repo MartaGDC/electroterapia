@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useUserList } from '../../context/userListContext';
 import { createRoom } from '../../api/room';
-import TooglePicker from '../../components/Pickers/TogglePicker';
+import TogglePicker from '../../components/Pickers/TogglePicker';
 
 const RoomCrearModal: React.FC<{
   isOpen: boolean;
@@ -114,7 +114,7 @@ const RoomCrearModal: React.FC<{
         />
 
         {/* Abierto */}
-        <TooglePicker
+        <TogglePicker
           variable={open}
           onChange={() => setOpen(!open)}
           name={t('ACTIVIDAD.ESTADO.LABEL')}

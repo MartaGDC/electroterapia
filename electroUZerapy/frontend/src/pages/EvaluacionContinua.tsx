@@ -27,7 +27,8 @@ const Continua: React.FC = () => {
     const getListados = async () => {
       const res = await getAllLists();
       if (res.status == 200) {
-        setListados(res.data.lists)
+        setListados(res.data.lists);
+        console.log(res.data.lists);
       }
     };
     getListados();
@@ -49,73 +50,111 @@ const Continua: React.FC = () => {
 
       <IonContent className='ion-padding' fullscreen>
         <div className="lista-student-container">
-            <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
-              {t("CONTINUA.LISTAS")} 
-            </h2>
-            <IonFabButton onClick={() => setQrVisible(true)} color={'dark'}>
-                <IonIcon icon={add}></IonIcon>
-            </IonFabButton>
-            <QRClass
-            isOpen={qrVisible}
-            setIsOpen={setQrVisible}
-            />
+          <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
+            {t("CONTINUA.LISTAS")} 
+          </h2>
+          <IonFabButton onClick={() => setQrVisible(true)} color={'dark'} className='ion-margin-top ion-margin-start ion-no-margin'>
+              <IonIcon icon={add} ></IonIcon>
+          </IonFabButton>
         </div>
+        <QRClass
+        isVisible={qrVisible}
+        setIsVisible={setQrVisible}
+        />
 
-        <div className='lista-ev-prof-container'>
+        <div className='lista-list-container'>
           <ul className='ion-no-padding ion-no-margin'>
             {listados.map((list, idx) => (
             <li className='ion-no-margin' key={idx}>
-              <IonCard className='ion-no-margin'onClick={() => navigateListado(list._id)}>
+              <IonCard className='ion-no-margin' onClick={() => navigateListado(list._id)}>
                 <IonCardHeader className='ion-no-padding'>
                   <div 
-                  className='ion-padding-end'
-                  style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
+                    className='ion-padding-end'
+                    style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
                   >
-                    <IonCardTitle>
-                      {new Date(list.date).toLocaleDateString('es-ES', {
+                    <IonCardTitle className='ion-no-margin ion-text-start'>
+                      {new Date(list.start).toLocaleDateString('es-ES', {
                         year: 'numeric',
                         month: 'numeric',
                         day: 'numeric',
                       })}
                     </IonCardTitle>
                   </div>
+                  {list.isOpen ? (
+                    <IonCardSubtitle style={{fontWeight: "bold", opacity: "1", color: "var(--ion-color-naranja)"}}>
+                      {t('CONTINUA.ESTADO.ABIERTO')}
+                    </IonCardSubtitle>
+                  ) : (
+                    <IonCardSubtitle style={{fontWeight: "bold"}}>
+                      {t('CONTINUA.ESTADO.CERRADO')}
+                    </IonCardSubtitle>
+                  )}
                 </IonCardHeader>
+                <IonCardContent className='ion-margin-start'>
+                  <div 
+                    className='ion-margin-start'
+                    style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
+                  >
+                    {list.asistentes.length}
+                  </div>
+                </IonCardContent>                
               </IonCard>
             </li>
             ))}
           </ul>
         </div>
 
+        <div className="lista-student-container ion-margin-top"></div>
+        <div className="lista-student-container ion-margin-top"></div>
         <div className="lista-student-container">
-            <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
+          <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
             {t("CONTINUA.KAHOOT")} 
-            </h2>
-            <IonFabButton color={'dark'}>
-                <IonIcon icon={add}></IonIcon>
-            </IonFabButton>
+          </h2>
+          <IonFabButton color={'dark'} className='ion-margin-top ion-margin-start ion-no-margin'>
+              <IonIcon icon={add} ></IonIcon>
+          </IonFabButton>
         </div>
-
-        <div className='lista-ev-prof-container'>
-            <ul className='ion-no-padding ion-no-margin'>
+        <div className='lista-list-container'>
+          <ul className='ion-no-padding ion-no-margin'>
             {listados.map((list, idx) => (
-                <li className='ion-no-margin' key={idx}>
-                    <IonCard className='ion-no-margin'>
-                        <IonCardHeader className='ion-no-padding'>
-                            <div 
-                            className='ion-padding-end'
-                            style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
-                            >
-                                <IonCardTitle>
-                                    {}
-                                </IonCardTitle>
-                            </div>
-                        </IonCardHeader>
-                    </IonCard>
-                </li>
+            <li className='ion-no-margin' key={idx}>
+              <IonCard className='ion-no-margin' onClick={() => navigateListado(list._id)}>
+                <IonCardHeader className='ion-no-padding'>
+                  <div 
+                    className='ion-padding-end'
+                    style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
+                  >
+                    <IonCardTitle className='ion-no-margin ion-text-start'>
+                      {new Date(list.start).toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric',
+                      })}
+                    </IonCardTitle>
+                  </div>
+                  {list.isOpen ? (
+                    <IonCardSubtitle style={{fontWeight: "bold", opacity: "1", color: "var(--ion-color-naranja)"}}>
+                      {t('CONTINUA.ESTADO.ABIERTO')}
+                    </IonCardSubtitle>
+                  ) : (
+                    <IonCardSubtitle style={{fontWeight: "bold"}}>
+                      {t('CONTINUA.ESTADO.CERRADO')}
+                    </IonCardSubtitle>
+                  )}
+                </IonCardHeader>
+                <IonCardContent className='ion-margin-start'>
+                  <div 
+                    className='ion-margin-start'
+                    style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
+                  >
+                    {list.asistentes.length}
+                  </div>
+                </IonCardContent>                
+              </IonCard>
+            </li>
             ))}
-            </ul>
+          </ul>
         </div>
-
 
         
       </IonContent>

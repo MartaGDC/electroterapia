@@ -12,7 +12,7 @@ import constants from '../../constants/constants';
 import { Simuladores, Time } from '../../constants/interfaces';
 import { useLog } from '../../context/logContext';
 import LogButton from '../../components/Logs/LogButton';
-import TooglePicker from '../../components/Pickers/TogglePicker';
+import TogglePicker from '../../components/Pickers/TogglePicker';
 import ImageMapper from '../../components/ImageMapper/ImageMapper';
 
 const BifasicaSimulacion: React.FC<{
@@ -161,7 +161,7 @@ const BifasicaSimulacion: React.FC<{
                 unit='Hz'
               />
 
-              <TooglePicker
+              <TogglePicker
                 name={t('BIFASICA.TENS_TRENES')}
                 variable={showTrenes}
                 onChange={() => setShowTrenes(!showTrenes)}
