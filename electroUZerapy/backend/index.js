@@ -4,6 +4,6 @@ import { PORT, URI, TOKEN } from "./config.js" //importa puerto donde escucha el
 
 connectDB(URI); //con la funcion de conexion va a la url de la bd
 
-app.listen(PORT); // escucha en el puerto definido, lo que hace que la api quede disponible en ese puerto
+app.listen(4000, '0.0.0.0');
 
 console.log("Server on port", PORT);

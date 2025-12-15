@@ -1,0 +1,40 @@
+.content-listados {
+  h2 {
+    margin-left: 3vw;
+    margin-top: 30px;
+  }
+  .lista-container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+      gap: 50px;  
+      width: 95vw;
+      
+      margin-top: 20px;
+    
+      li {
+        border-radius: 10px;
+        
+        ion-card {
+          cursor: pointer;
+          height: 150px;
+          transition: transform 0.3s ease;
+    
+          ion-card-content {
+            font-weight: bold;
+            text-align: end;
+            justify-content: end;
+          }
+        }
+        ion-card:hover {
+          transform: scale(1.01);
+        }    
+      }
+    }
+  }  
+}

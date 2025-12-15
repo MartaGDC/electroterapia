@@ -91,6 +91,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
 
   useEffect(() => {
+
     const verifyIsLogued = async () => {
       const userStorage = localStorage.getItem('user');
       if (userStorage) setUser(JSON.parse(userStorage));
@@ -98,7 +99,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       const tokenStorage = localStorage.getItem('token');
       if (tokenStorage) {
         setToken(tokenStorage);
-  
         const res = await verifyTokenUser({ token: tokenStorage });
         if (res.status == 200) {
           setToken(tokenStorage);

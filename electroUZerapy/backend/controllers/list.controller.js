@@ -28,6 +28,7 @@ export const createList = async (req, res) => {
 };
 
 export const getAllLists = async (req, res) => {
+    console.log(req.body);
     try {
         const lists = await List.find({}).sort({ start: -1 });
         //Actualizo el estado de abierto a cerrado si ha pasado más de media hora (en el momento en que se ejectua getAllList en el frontend)

@@ -32,6 +32,7 @@ export const authRequired = (req, res, next) => {
 }
 
 export const authTeacherRequired = (req, res, next) => {
+  console.log(req.body);
   try {
     if (!req.cookies.token) return res.status(400).json({status: 400});
     
@@ -61,6 +62,7 @@ export const authTeacherRequired = (req, res, next) => {
 
 
 export const verifyToken = (req, res) => {
+  console.log("BODY RECIBIDO:", req.body);
 
   if (!req.body.token) {
     return res.status(400).json({

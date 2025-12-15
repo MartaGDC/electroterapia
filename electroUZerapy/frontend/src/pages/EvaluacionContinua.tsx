@@ -28,7 +28,6 @@ const Continua: React.FC = () => {
       const res = await getAllLists();
       if (res.status == 200) {
         setListados(res.data.lists);
-        console.log(res.data.lists);
       }
     };
     getListados();

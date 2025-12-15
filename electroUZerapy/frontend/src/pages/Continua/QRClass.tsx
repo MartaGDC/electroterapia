@@ -2,22 +2,29 @@ import { IonButton, IonButtons, IonContent, IonHeader, IonInput, IonModal, IonTe
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createNewList } from '../../api/list';
+import { useParams } from 'react-router';
+import { useUser } from '../../context/userContext';
+
 import QRCode from "react-qr-code";
 
 const QRClass: React.FC<{
     isVisible: boolean;
     setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
+    value?: string;
 }> = ({
-    isVisible, setIsVisible
+    isVisible, setIsVisible, value
 }) => {
 
     const [present] = useIonToast();
     const {t} = useTranslation();
-    const [sessionId, setSessionId] = useState<string | null>(null);
-    
+    const { id } = useParams<{ id: string }>(); //Si se accede desde alumno para registro asistencia
+
+    const [sessionId, setSessionId] = useState<string | null>(value ?? null);
     const cerrarQR = () => {
         setIsVisible(false);
-        location.reload();
+        if (!value){
+            location.reload();
+        }
     }
     
     const crearListado = async () => {
@@ -33,8 +40,26 @@ const QRClass: React.FC<{
 
     useEffect(() => {
         if (!isVisible) return;
-        crearListado();
-    }, [isVisible])
+        if(!value) {
+            crearListado();
+        } else {
+            setSessionId(value);
+        }
+    }, [isVisible, value])
+
+
+
+    useEffect(() => {
+        const handleBack = () => {
+            if (isVisible) {
+                setIsVisible(false);
+            }
+        };
+        window.addEventListener("popstate", handleBack);
+        return () => {
+            window.removeEventListener("popstate", handleBack);
+        };
+    }, [isVisible, setIsVisible]);
 
     if(!sessionId) return null;
 
@@ -45,7 +70,7 @@ const QRClass: React.FC<{
     >
         <IonContent className="ion-padding ion-text-center">
             <h2 className='ion-padding-bottom'>{t("CONTINUA.REGISTRO")}</h2>
-            <QRCode value={sessionId} style={{ maxHeight: "80%", width: "auto" }}/>
+            <QRCode value={`localhost:5173/alumnoRegistro?listId=${sessionId}`} style={{ maxHeight: "80%", width: "auto" }}/>
         </IonContent>
     </IonModal>
     );
