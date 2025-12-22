@@ -569,3 +569,25 @@ Las peticiones post se usan para crear o enviar datos al servidor (el cuerpo del
 1. user.routes.js: direcciones para api de funciones user.controller.
 2. room.routes.js: direcciones para api de funciones room.controller.
 3. log.routes.js: direcciones para api de funciones log.controller.
+
+<h1>Demo en movil</h1>
+
+1. Modo desarrollador en el móvil y aceptar depuración por usb.
+
+2. Path de adb. Incluir la ruta de adb (enC:\Users\TU_USUARIO\AppData\Local\Android\Sdk\platform-tools) al PATH de variables de entorno
+
+3. En VS Code:
+
+`adb version`
+`adb devices`
+`adb reverse tcp:3000 tcp:3000` No importa que el puerto que use en la app no sea éste.
+`cd frontend`
+`ionic build`
+`ionic cap sync android`
+`ionic cap open android`
+
+Si no abre directamente Android Studio, abrirlo manualmente y buscar la app creada en la carpeta de frontend.
+
+Ejecutar la app desde android studio al móvil.
+
+
