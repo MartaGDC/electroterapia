@@ -16,7 +16,8 @@ const constants = {
     },
   ],
   timeLog: 5000, // ms. Probablemente para refrescar logs, temporizadores, polling, intervalos
-  apiURL: "http://localhost:4000/api/", //url base del backend MODIFICADO PARA COINCIDA CON EL DEFINIDO EL BACKEND
+  //apiURL: "http://localhost:4000/api/", //url base del backend MODIFICADO PARA COINCIDA CON EL DEFINIDO EL BACKEND
+  apiURL: 'https://electroterapia-back.onrender.com/api/', //url base del backend
   izqColAprendizaje: '6', //probablemente se usará para definir el número de columnas en layouts
   dchColAprendizaje: '6',
   izqColSimulacion: '6',

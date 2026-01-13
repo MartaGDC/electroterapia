@@ -1,11 +1,12 @@
-import { IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
+import { IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonMenuButton, IonModal, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
 import { add } from 'ionicons/icons';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './EvaluacionContinua.css'
 import constants from '../constants/constants';
-import { List } from '../constants/interfaces';
+import { List, Test, Tema } from '../constants/interfaces';
 import { getAllLists } from '../api/list';
+import { createNewTest, getAllTests, getAllTemas } from '../api/test';
 
 import QRClass from "./Continua/QRClass";
 
@@ -16,22 +17,61 @@ const Continua: React.FC = () => {
   const router = useIonRouter();
 
   const [listados, setListados] = useState<List[]>([]);
-  const [qrVisible, setQrVisible] = useState(false);
+  const [qrListaVisible, setQrListaVisible] = useState(false);
+  const [temas, setTemas] = useState<Tema[]>([]);
+  const [temasVisible, setTemasVisible] = useState(false);
+  const [qrTestVisible, setQrTestVisible] = useState(false);
+
+  const [tests, setTests] = useState<Test[]>([]);
 
   const navigateListado = (id: string) => {
     event?.preventDefault();
     router.push(`/app/salaListados/${id}`, 'root', 'replace');
   }
   
+  const navigateTest = (id: string) => {
+    event?.preventDefault();
+    router.push(`/app/salaTest/${id}`, 'root', 'replace');
+  }
+
+  const getListados = async () => {
+    const res = await getAllLists();
+    if (res.status == 200) {
+      setListados(res.data.lists);
+    }
+  };
+  const getTests = async () => {
+    const res = await getAllTests();
+    if (res.status == 200) {
+      setTests(res.data.tests);
+    }
+  };
+
   useEffect(() => {
-    const getListados = async () => {
-      const res = await getAllLists();
-      if (res.status == 200) {
-        setListados(res.data.lists);
-      }
-    };
     getListados();
+    getTests();
   }, []);
+
+  useEffect(() => {
+    if (temasVisible) {
+      const getTemas = async () => {
+        const res = await getAllTemas();
+        if (res.status == 200) {
+          setTemas(res.data.temas);
+        }
+      };
+      getTemas();
+    }
+  }, [temasVisible]);
+
+  const crearNuevoTest = async (idTema:string) => {
+    const res = await createNewTest({idTema: idTema});
+    getTests();
+  }
+  
+  const cerrarTemas = () => {
+    setTemasVisible(false);
+  }
 
   return (
     <IonPage>
@@ -52,13 +92,14 @@ const Continua: React.FC = () => {
           <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
             {t("CONTINUA.LISTAS")} 
           </h2>
-          <IonFabButton onClick={() => setQrVisible(true)} color={'dark'} className='ion-margin-top ion-margin-start ion-no-margin'>
+          <IonFabButton onClick={() => setQrListaVisible(true)} color={'dark'} className='ion-margin-top ion-margin-start ion-no-margin'>
               <IonIcon icon={add} ></IonIcon>
           </IonFabButton>
         </div>
         <QRClass
-        isVisible={qrVisible}
-        setIsVisible={setQrVisible}
+        isVisible={qrListaVisible}
+        setIsVisible={setQrListaVisible}
+        value='lista'
         />
 
         <div className='lista-list-container'>
@@ -109,29 +150,58 @@ const Continua: React.FC = () => {
           <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
             {t("CONTINUA.KAHOOT")} 
           </h2>
-          <IonFabButton color={'dark'} className='ion-margin-top ion-margin-start ion-no-margin'>
+          <IonFabButton onClick={() => setTemasVisible(true)} color={'dark'} className='ion-margin-top ion-margin-start ion-no-margin'>
               <IonIcon icon={add} ></IonIcon>
           </IonFabButton>
         </div>
+        <IonModal
+          isOpen={temasVisible}
+          onIonModalDidDismiss={cerrarTemas}
+        >
+          <IonContent className='ion-padding'>
+            <ul className='ion-padding ion-margin'>
+              {temas.map((tema) => (
+                <li className='ion-no-margin' style={{cursor: 'pointer'}} key={tema._id}>
+                  <IonCard className='ion-no-margin' onClick={() => {
+                    crearNuevoTest(tema._id);
+                    setTemasVisible(false);
+                    setQrTestVisible(true);
+                  }}>
+                    <IonCardHeader className='ion-no-padding'>
+                      <IonCardTitle className='ion-margin'style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        {tema.nombre}
+                      </IonCardTitle>
+                    </IonCardHeader>
+                  </IonCard>
+                </li>
+              ))}
+            </ul>
+          </IonContent>
+        </IonModal>
+        <QRClass
+        isVisible={qrTestVisible}
+        setIsVisible={setQrTestVisible}
+        value='test'
+        />
         <div className='lista-list-container'>
           <ul className='ion-no-padding ion-no-margin'>
-            {listados.map((list, idx) => (
+            {tests.map((test, idx) => (
             <li className='ion-no-margin' key={idx}>
-              <IonCard className='ion-no-margin' onClick={() => navigateListado(list._id)}>
+              <IonCard className='ion-no-margin' onClick={() => navigateTest(test._id)}>
                 <IonCardHeader className='ion-no-padding'>
                   <div 
                     className='ion-padding-end'
                     style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
                   >
                     <IonCardTitle className='ion-no-margin ion-text-start'>
-                      {new Date(list.start).toLocaleDateString('es-ES', {
+                      {new Date(test.start).toLocaleDateString('es-ES', {
                         year: 'numeric',
                         month: 'numeric',
                         day: 'numeric',
                       })}
                     </IonCardTitle>
                   </div>
-                  {list.isOpen ? (
+                  {test.isOpen ? (
                     <IonCardSubtitle style={{fontWeight: "bold", opacity: "1", color: "var(--ion-color-naranja)"}}>
                       {t('CONTINUA.ESTADO.ABIERTO')}
                     </IonCardSubtitle>
@@ -146,7 +216,8 @@ const Continua: React.FC = () => {
                     className='ion-margin-start'
                     style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
                   >
-                    {list.asistentes.length}
+                    {/*{testCorregido.alumnos.length ? testCorregido.alumnos.length : 0}*/}
+                    
                   </div>
                 </IonCardContent>                
               </IonCard>

@@ -1,9 +1,11 @@
+//MODIFICAR  PARA PERMITIR MODIFICAR EL CODIGO DESDE AFUERA Y QUE PUEDA SER USADO TANTO PARA ASISTENCIA COMO PARA EXAMEN
+
 import { IonButton, IonButtons, IonContent, IonHeader, IonInput, IonModal, IonTextarea, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createNewList } from '../../api/list';
+import { createNewTest } from '../../api/test';
 import { useParams } from 'react-router';
-import { useUser } from '../../context/userContext';
 
 import QRCode from "react-qr-code";
 
@@ -11,20 +13,18 @@ const QRClass: React.FC<{
     isVisible: boolean;
     setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
     value?: string;
+    tema?: string;
 }> = ({
-    isVisible, setIsVisible, value
+    isVisible, setIsVisible, value, tema
 }) => {
 
     const [present] = useIonToast();
     const {t} = useTranslation();
-    const { id } = useParams<{ id: string }>(); //Si se accede desde alumno para registro asistencia
-
-    const [sessionId, setSessionId] = useState<string | null>(value ?? null);
+    
+    const [sessionId, setSessionId] = useState<string | null>(null);
     const cerrarQR = () => {
         setIsVisible(false);
-        if (!value){
-            location.reload();
-        }
+        //location.reload();
     }
     
     const crearListado = async () => {
@@ -40,10 +40,8 @@ const QRClass: React.FC<{
 
     useEffect(() => {
         if (!isVisible) return;
-        if(!value) {
+        if(value=='lista') {
             crearListado();
-        } else {
-            setSessionId(value);
         }
     }, [isVisible, value])
 
@@ -61,17 +59,27 @@ const QRClass: React.FC<{
         };
     }, [isVisible, setIsVisible]);
 
-    if(!sessionId) return null;
+    //if(!sessionId) return null;
 
     return (
     <IonModal
         isOpen={isVisible}
         onIonModalDidDismiss={cerrarQR}
     >
+        {value == 'test'  && tema == null? (
         <IonContent className="ion-padding ion-text-center">
+            <h2 className='ion-padding-bottom'>Selecciona el tema</h2>
+            <QRCode value={`localhost:5173/alumnoRegistro?listId=${sessionId}`} style={{ maxHeight: "80%", width: "auto" }}/>
+
+        </IonContent>
+        ): (
+            <IonContent className="ion-padding ion-text-center">
             <h2 className='ion-padding-bottom'>{t("CONTINUA.REGISTRO")}</h2>
             <QRCode value={`localhost:5173/alumnoRegistro?listId=${sessionId}`} style={{ maxHeight: "80%", width: "auto" }}/>
         </IonContent>
+        )}
+
+        
     </IonModal>
     );
 };

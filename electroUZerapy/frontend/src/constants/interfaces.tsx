@@ -136,8 +136,25 @@ export type Log = {
 
 export type List = {
   _id: string;
+  codigoQR: string;
   teacher: string;
   asistentes: {userId: string, userName:string}[];
   isOpen: Boolean;
   start: Date;
+}
+
+export type Test = {
+  _id: string;
+  teacher: string;
+  alumnos: {userId: string, userName:string}[];
+  tema: string;
+  codigoQR: string;
+  isOpen: Boolean;
+  start: Date;
+}
+
+export type Tema = {
+  _id: string;
+  nombre: string;
+  descripcion: string;
 }
