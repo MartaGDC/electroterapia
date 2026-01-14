@@ -159,7 +159,8 @@ const Continua: React.FC = () => {
           onIonModalDidDismiss={cerrarTemas}
         >
           <IonContent className='ion-padding'>
-            <ul className='ion-padding ion-margin'>
+            <h2 className='ion-padding ion-text-center'>{t("CONTINUA.TEMA")}</h2>
+            <ul className='ion-no-padding ion-margin'>
               {temas.map((tema) => (
                 <li className='ion-no-margin' style={{cursor: 'pointer'}} key={tema._id}>
                   <IonCard className='ion-no-margin' onClick={() => {

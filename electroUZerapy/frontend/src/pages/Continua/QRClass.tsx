@@ -4,7 +4,6 @@ import { IonButton, IonButtons, IonContent, IonHeader, IonInput, IonModal, IonTe
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createNewList } from '../../api/list';
-import { createNewTest } from '../../api/test';
 import { useParams } from 'react-router';
 
 import QRCode from "react-qr-code";
@@ -13,19 +12,16 @@ const QRClass: React.FC<{
     isVisible: boolean;
     setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
     value?: string;
-    tema?: string;
+    code?: string;
 }> = ({
-    isVisible, setIsVisible, value, tema
+    isVisible, setIsVisible, value, code
 }) => {
 
     const [present] = useIonToast();
     const {t} = useTranslation();
     
-    const [sessionId, setSessionId] = useState<string | null>(null);
-    const cerrarQR = () => {
-        setIsVisible(false);
-        //location.reload();
-    }
+    
+    const [codeQR, setCodeQR] = useState<string | null>(null);
     
     const crearListado = async () => {
         const res = await createNewList();
@@ -34,7 +30,8 @@ const QRClass: React.FC<{
             present({message: t('CONTINUA.ALERTAS.LISTA_EXISTE'), duration: 4000, cssClass: "error-toast"});
         }
         else {
-            setSessionId(res.data._id);
+            setCodeQR(res.data.codigo);
+            console.log(res.data.codigo);
         }
     }
 
@@ -64,20 +61,14 @@ const QRClass: React.FC<{
     return (
     <IonModal
         isOpen={isVisible}
-        onIonModalDidDismiss={cerrarQR}
+        onIonModalDidDismiss={() => {setIsVisible(false)}}
     >
-        {value == 'test'  && tema == null? (
-        <IonContent className="ion-padding ion-text-center">
-            <h2 className='ion-padding-bottom'>Selecciona el tema</h2>
-            <QRCode value={`localhost:5173/alumnoRegistro?listId=${sessionId}`} style={{ maxHeight: "80%", width: "auto" }}/>
-
-        </IonContent>
-        ): (
+        {value == 'lista' ? (
             <IonContent className="ion-padding ion-text-center">
             <h2 className='ion-padding-bottom'>{t("CONTINUA.REGISTRO")}</h2>
-            <QRCode value={`localhost:5173/alumnoRegistro?listId=${sessionId}`} style={{ maxHeight: "80%", width: "auto" }}/>
+            <QRCode value={`io.ionic.starter://alumnoRegistro?codeQR=${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
         </IonContent>
-        )}
+        ) : null}
 
         
     </IonModal>

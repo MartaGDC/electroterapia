@@ -178,6 +178,8 @@
     "LISTAS": "Listas de asistencia",
     "REGISTRO": "Registra tu asistencia",
     "KAHOOT": "Test de evaluación rápida",
+    "TEMA": "Selecciona el tema:",
+    "ACCESO_TEST": "Accede al test",
     "CAMBIADA": "Actividad actualizada",
     "ERROR_CAMBIO": "Error al actualizar. Vuelva a intentarlo más tarde",
     "MOSTRAR_QR": "Mostrar QR",

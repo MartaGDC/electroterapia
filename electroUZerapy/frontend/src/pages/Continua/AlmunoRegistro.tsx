@@ -1,52 +1,85 @@
-import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonMenuButton, IonPage, IonRow, IonTextarea, IonTitle, IonToolbar, useIonRouter, useIonToast } from '@ionic/react';
-import React, { useEffect, useState } from 'react';
+import {
+  IonPage,
+  IonContent,
+  IonInput,
+  IonButton,
+  IonRow,
+  IonCol,
+  useIonToast
+} from '@ionic/react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import constants from '../../constants/constants';
-import { registrarById } from '../../api/list';
-import { useParams } from 'react-router';
-import { copyOutline } from 'ionicons/icons';
-import { Roles } from '../../constants/interfaces';
-import QrScanner from "qr-scanner";
 import { useUser } from '../../context/userContext';
+import { registrarByCode } from '../../api/list';
 
+interface AlumnoRegistroProps {
+  codeQR: string;
+}
 
-const AlumnoRegistro: React.FC = () => {
-    const [present] = useIonToast();
-    const {t} = useTranslation();
-    const { id } = useParams<{ id: string }>(); //Si se accede desde alumno para registro asistencia
-    const { user } = useUser();
-    const router = useIonRouter();
+const AlumnoRegistro: React.FC<AlumnoRegistroProps> = ({ codeQR }) => {
+  const { t } = useTranslation();
+  const { login } = useUser();
+  const [present] = useIonToast();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (!id) {
-            present({message: t('CONTINUA.ALERTAS.MAL_QR'), duration: 4000, cssClass: "error-toast"});
-            return;
-        }
-        const registrarAsistencia = async () => {
-            if (!user.token) {
-                router.push(`/?redirect=/alumnoRegistro?listId=${id}`, 'forward', 'replace');
-                return;
-            }
+  const handleRegister = async () => {
+    setLoading(true);
+    try {
+      // Hacer login siempre, aunque haya token
+      const loginRes = await login(username, password);
+      if (loginRes.status !== 200) {
+        present({ message: t('LOGIN.ERROR'), duration: 4000, cssClass: 'error-toast' });
+        setLoading(false);
+        return;
+      }
 
-            if (user.token && user.role == Roles.ALUMNO) {
-                const registrar = async () => {
-                    const res = await registrarById(id);
-                    if (res.status === 200) {
-                        present({ message: t('CONTINUA.REGISTRADO'), duration: 4000, cssClass: "success-toast" });
-                    } else {
-                        present({ message: t('CONTINUA.ALERTAS.ERROR_REGISTRO'), duration: 4000, cssClass: "error-toast" });
-                    }
-                }
-                registrar();
-            }
-        };
-        registrarAsistencia();
-    }, [id, user.token]);
-    return (
-    <div style={{ padding: "2rem", textAlign: "center" }}>
-        <h2>Asistencia</h2>
+      // Registrar asistencia
+      const res = await registrarByCode(codeQR);
+      if (res.status === 200) {
+        present({ message: t('CONTINUA.REGISTRADO'), duration: 4000, cssClass: 'success-toast' });
+      } else {
+        present({ message: t('CONTINUA.ALERTAS.ERROR_REGISTRO'), duration: 4000, cssClass: 'error-toast' });
+      }
+    } catch (error) {
+      console.error(error);
+      present({ message: t('CONTINUA.ALERTAS.ERROR_REGISTRO'), duration: 4000, cssClass: 'error-toast' });
+    }
+    setLoading(false);
+  };
+
+  return (
+    <IonPage>
+      <IonContent className="ion-padding">
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <h2>{t('LOGIN.INICIAR_SESION')}</h2>
+          <IonRow>
+            <IonCol>
+              <IonInput
+                placeholder={t('LOGIN.USUARIO')}
+                value={username}
+                onIonInput={(e) => setUsername(e.detail.value!)}
+              />
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonInput
+                type="password"
+                placeholder={t('LOGIN.CONTRASENA')}
+                value={password}
+                onIonInput={(e) => setPassword(e.detail.value!)}
+              />
+            </IonCol>
+          </IonRow>
+          <IonButton onClick={handleRegister} disabled={loading}>
+            {loading ? t('GENERAL.CARGANDO') : t('CONTINUA.REGISTRAR')}
+          </IonButton>
         </div>
-    );
+      </IonContent>
+    </IonPage>
+  );
 };
 
 export default AlumnoRegistro;
