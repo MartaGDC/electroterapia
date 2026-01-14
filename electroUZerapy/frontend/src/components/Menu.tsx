@@ -54,7 +54,6 @@ import ProtectedRoute from './ProtectedRoute';
 import Alumnos from '../pages/Alumnos';
 
 
-
 const Menu: React.FC = () => {
   const router = useIonRouter();
   const {t} = useTranslation();

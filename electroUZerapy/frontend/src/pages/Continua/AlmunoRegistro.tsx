@@ -1,33 +1,24 @@
-import {
-  IonPage,
-  IonContent,
-  IonInput,
-  IonButton,
-  IonRow,
-  IonCol,
-  useIonToast
-} from '@ionic/react';
-import React, { useState } from 'react';
+import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonMenuButton, IonPage, IonRow, IonTextarea, IonTitle, IonToolbar, useIonRouter, useIonToast } from '@ionic/react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router';
 import { useUser } from '../../context/userContext';
 import { registrarByCode } from '../../api/list';
 
-interface AlumnoRegistroProps {
-  codeQR: string;
-}
-
-const AlumnoRegistro: React.FC<AlumnoRegistroProps> = ({ codeQR }) => {
-  const { t } = useTranslation();
-  const { login } = useUser();
+const AlumnoRegistro: React.FC = () => {
   const [present] = useIonToast();
+  const {t} = useTranslation();
+  const { codeQR } = useParams<{ codeQR: string }>();
+  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  const {login} = useUser();
+
+  console.log('AlumnoRegistro montado con codeQR:', codeQR);
 
   const handleRegister = async () => {
     setLoading(true);
     try {
-      // Hacer login siempre, aunque haya token
       const loginRes = await login(username, password);
       if (loginRes.status !== 200) {
         present({ message: t('LOGIN.ERROR'), duration: 4000, cssClass: 'error-toast' });

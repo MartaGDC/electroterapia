@@ -50,7 +50,7 @@ const Continua: React.FC = () => {
   useEffect(() => {
     getListados();
     getTests();
-  }, []);
+  }, [qrListaVisible]);
 
   useEffect(() => {
     if (temasVisible) {
