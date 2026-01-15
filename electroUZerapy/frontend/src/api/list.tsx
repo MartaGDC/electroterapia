@@ -15,7 +15,5 @@ export const getListById = async (listId: string) =>
 export const cambiarEstado= async (props: any)  =>
   await axiosConfig.post(constants.apiURL + "list/cambiarEstadoList", props);
 
-export const registrarByCode = async (codeQr: string) => 
-  await axiosConfig.post(constants.apiURL + "list/asistencia", {
-    params: {codeQr}
-  });
+export const registrarByCode = async (codeQr: string, userId: string) => 
+  await axiosConfig.post(constants.apiURL + "list/asistencia", {codeQr, userId});

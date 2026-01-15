@@ -66,7 +66,7 @@ const QRClass: React.FC<{
         {value == 'lista' ? (
             <IonContent className="ion-padding ion-text-center">
             <h2 className='ion-padding-bottom'>{t("CONTINUA.REGISTRO")}</h2>
-            <QRCode value={`io.ionic.starter://app/alumnoRegistro/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
+            <QRCode value={`http://192.168.0.15:5173/app/alumnoRegistro/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
         </IonContent>
         ) : null}
 

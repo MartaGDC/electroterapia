@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 import { useUser } from '../../context/userContext';
 import { registrarByCode } from '../../api/list';
+import Logo from '../../components/Logo';
+
 
 const AlumnoRegistro: React.FC = () => {
   const [present] = useIonToast();
@@ -12,57 +14,75 @@ const AlumnoRegistro: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isTouched, setIsTouched] = useState(false)
+    
   const {login} = useUser();
-
-  console.log('AlumnoRegistro montado con codeQR:', codeQR);
 
   const handleRegister = async () => {
     setLoading(true);
+    if (username == "" || password=="") {
+      setIsTouched(true);
+      return;
+    }
+
     try {
       const loginRes = await login(username, password);
       if (loginRes.status !== 200) {
         present({ message: t('LOGIN.ERROR'), duration: 4000, cssClass: 'error-toast' });
         setLoading(false);
+        setIsTouched(true);
         return;
       }
+      setIsTouched(false);
 
-      // Registrar asistencia
-      const res = await registrarByCode(codeQR);
+      const userId = loginRes.data.user.id;
+      const res = await registrarByCode(codeQR, userId);
       if (res.status === 200) {
+        setIsTouched(false)
         present({ message: t('CONTINUA.REGISTRADO'), duration: 4000, cssClass: 'success-toast' });
       } else {
+        setIsTouched(true);
         present({ message: t('CONTINUA.ALERTAS.ERROR_REGISTRO'), duration: 4000, cssClass: 'error-toast' });
       }
     } catch (error) {
       console.error(error);
       present({ message: t('CONTINUA.ALERTAS.ERROR_REGISTRO'), duration: 4000, cssClass: 'error-toast' });
+      setIsTouched(true);
     }
     setLoading(false);
   };
 
   return (
-    <IonPage>
-      <IonContent className="ion-padding">
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <h2>{t('LOGIN.INICIAR_SESION')}</h2>
-          <IonRow>
-            <IonCol>
-              <IonInput
-                placeholder={t('LOGIN.USUARIO')}
-                value={username}
-                onIonInput={(e) => setUsername(e.detail.value!)}
-              />
-            </IonCol>
+    <IonPage className='ion-no-padding ion-no-margin'>
+      <IonContent className='ion-no-padding ion-no-margin' fullscreen>
+        <div className='ion-margin ion-padding' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <h2 className='ion-no-padding ion-no-margin'>{t('LOGIN.INICIAR_SESION')}</h2>
+          <Logo type="home"/>
+          <IonRow style={{ width: '100%', maxWidth: '400px'}}>
+            <IonInput
+              className={`${isTouched && "ion-invalid ion-touched"} ion-margin`}
+              value={username}
+              onInput={(e) => setUsername((e.target as HTMLInputElement).value)}
+              label={t("LOGIN.USUARIO")}
+              type="text"
+              placeholder={t('LOGIN.USUARIO_PLACEHOLDER')}
+              labelPlacement="stacked"
+              fill="outline"
+              color={'dark'}
+            />
           </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonInput
-                type="password"
-                placeholder={t('LOGIN.CONTRASENA')}
-                value={password}
-                onIonInput={(e) => setPassword(e.detail.value!)}
-              />
-            </IonCol>
+          <IonRow style={{ width: '100%', maxWidth: '400px'}}>
+            <IonInput
+              className={`${isTouched && "ion-invalid ion-touched"} ion-margin`}
+              value={password}
+              onInput={(e) => setPassword((e.target as HTMLInputElement).value)}
+              label={t("LOGIN.CONTRASENA")}
+              type="password"
+              placeholder={t("LOGIN.CONTRASENA_PLACEHOLDER")}
+              labelPlacement="stacked"
+              fill="outline"
+              color={'dark'}
+            />
           </IonRow>
           <IonButton onClick={handleRegister} disabled={loading}>
             {loading ? t('GENERAL.CARGANDO') : t('CONTINUA.REGISTRAR')}

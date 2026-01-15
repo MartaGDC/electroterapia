@@ -1,6 +1,6 @@
 import { IonContent, IonFooter, IonHeader, IonIcon, IonItem, IonMenu, IonMenuToggle, IonPage, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
 import { homeOutline, logOutOutline, settingsOutline } from 'ionicons/icons';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import "./Menu.css"
@@ -46,6 +46,7 @@ import Actividad from '../pages/Evaluacion/Actividad';
 
 import Continua from '../pages/EvaluacionContinua';
 import SalaListados from '../pages/Continua/SalaListados';
+import AlmunoRegistro from '../pages/Continua/AlmunoRegistro';
       
 import { useUser } from '../context/userContext';
 import constants from '../constants/constants';
@@ -59,6 +60,7 @@ const Menu: React.FC = () => {
   const {t} = useTranslation();
   const {user} = useUser();
   const {logout} = useUser();
+
 
   const paths = [
     { name: t('MENU.HOME'), url: "/app/home", icon: homeOutline },
@@ -79,7 +81,6 @@ const Menu: React.FC = () => {
 
   const navigateButton = (path: string) => {
     router.push(path, "root", "replace");
-    window.location.reload();
   }
 
   const allUsers = [Roles.ALUMNO, Roles.PROFESOR];
@@ -179,6 +180,7 @@ return (
       {/*Continua*/}
       <ProtectedRoute protect={false} exact path="/app/evaluacionContinua" component={Continua} allowedRoles={[Roles.PROFESOR]} />
       <ProtectedRoute protect={false} exact path="/app/salaListados/:id" component={SalaListados} allowedRoles={[Roles.PROFESOR]}/>
+      <ProtectedRoute protect={false} exact path="/app/alumnoRegistro/:codeQR" component={AlmunoRegistro} allowedRoles={[Roles.ALUMNO]} />
 
       {/* Alumnos */}
       <ProtectedRoute protect={false} exact path="/app/alumnos" component={Alumnos} allowedRoles={[Roles.PROFESOR]} />

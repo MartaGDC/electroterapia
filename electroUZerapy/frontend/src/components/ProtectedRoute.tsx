@@ -23,28 +23,10 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> =
     <Route
       {...rest}
       render={(props) => {
-        console.log('ProtectedRoute render:', rest.path);
-        console.log('User:', user, 'Loading:', loading, 'AllowedRoles:', allowedRoles);
-
-        if (!protect) {
-          console.log('Ruta pública, renderizando componente...');
-          return <Component {...props} />;
-        }
-        if (loading) {
-          console.log('Cargando user, mostrando spinner...');
-          return <IonSpinner name="dots" />;
-        }
-        if (user && allowedRoles.includes(user.role)) {
-          console.log('Usuario permitido, renderizando componente...');
-          return <Component {...props} />;
-        }
-
-        if (user != null) {
-          console.log('Usuario logueado pero rol no permitido, redirigiendo a /app/home');
-          return <Redirect to="/app/home" />;
-        }
-
-        console.log('Usuario no logueado, redirigiendo a /');
+        if (!protect) return <Component {...props} />; //Se ha añadido esto para poder aceptar props (en concreto para salaProfesor/{id})
+        if (loading) return <IonSpinner name="dots" />;
+        if (user && allowedRoles.includes(user.role)) return <Component {...props} />;
+        if (user != null) return <Redirect to="/app/home" />;
         return <Redirect to="/" />;
       }}
     />

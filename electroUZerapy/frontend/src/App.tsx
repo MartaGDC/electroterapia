@@ -34,51 +34,16 @@ import { OrientationType, ScreenOrientation } from '@capawesome/capacitor-screen
 import './theme/variables.css';
 import Login from './pages/Login';
 import Menu from './components/Menu';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Capacitor } from '@capacitor/core';
 import { StatusBar } from '@capacitor/status-bar';
 import { LogProvider } from './context/logContext';
 import { UserProvider } from './context/userContext';
-import { App as CapacitorApp} from '@capacitor/app';
-import { useIonRouter } from '@ionic/react';
-import AlumnoRegistro from './pages/Continua/AlmunoRegistro';
 
 setupIonicReact();
 
-const DeepLinkHandler: React.FC = () => {
-  const router = useIonRouter();
-  const [pendingDeepLink, setPendingDeepLink] = useState<string | null>(null);
-
-  useEffect(() => {
-    CapacitorApp.addListener('appUrlOpen', (data: any) => {
-      console.log('==== Deep Link Opened ====');
-      console.log('URL completa:', data.url);
-
-      if (!data.url) return;
-
-      const path = data.url.split('://')[1]; // "app/alumnoRegistro/XXX"
-      console.log('Ruta parseada:', path);
-
-      const codeQR = path.startsWith('app/alumnoRegistro') ? path.split('/')[2] : null;
-      if (codeQR) console.log('Código QR detectado:', codeQR);
-
-      // Guardar ruta pendiente y hacer push cuando router esté listo
-      setPendingDeepLink(`/${path}`);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (pendingDeepLink && router) {
-      console.log('Redirigiendo deep link a:', pendingDeepLink);
-      router.push(pendingDeepLink);
-      setPendingDeepLink(null);
-    }
-  }, [pendingDeepLink, router]);
-
-  return null;
-};
-
 const App: React.FC = () => {
+
   useEffect(() => {
     const lockOrientation = async () => {
       if (Capacitor.getPlatform() !== 'web') {
@@ -91,7 +56,7 @@ const App: React.FC = () => {
         console.log("Orientación no bloqueada: ejecutando en web");
       }
     };
-
+  
     lockOrientation();
     StatusBar.hide();
 
@@ -105,19 +70,17 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <DeepLinkHandler />
         <UserProvider>
           <LogProvider>
             <IonRouterOutlet>
-              <Route path="/app/alumnoRegistro/:codeQR" component={AlumnoRegistro} />
-              <Route exact path="/" component={Login} />
-              <Route path="/app" component={Menu} />
+              <Route exact path="/"> <Login /> </Route>
+              <Route path="/app"> <Menu/> </Route>
             </IonRouterOutlet>
           </LogProvider>
         </UserProvider>
       </IonReactRouter>
     </IonApp>
   );
-};
+}
 
 export default App;
