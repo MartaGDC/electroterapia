@@ -24,9 +24,9 @@ const Continua: React.FC = () => {
 
   const [tests, setTests] = useState<Test[]>([]);
 
-  const navigateListado = (id: string) => {
+  const navigateListado = (codeQr: string) => {
     event?.preventDefault();
-    router.push(`/app/salaListados/${id}`, 'root', 'replace');
+    router.push(`/app/salaListados/${codeQr}`, 'root', 'replace');
   }
   
   const navigateTest = (id: string) => {
@@ -106,7 +106,7 @@ const Continua: React.FC = () => {
           <ul className='ion-no-padding ion-no-margin'>
             {listados.map((list, idx) => (
             <li className='ion-no-margin' key={idx}>
-              <IonCard className='ion-no-margin' onClick={() => navigateListado(list._id)}>
+              <IonCard className='ion-no-margin' onClick={() => navigateListado(list.codigo)}>
                 <IonCardHeader className='ion-no-padding'>
                   <div 
                     className='ion-padding-end'

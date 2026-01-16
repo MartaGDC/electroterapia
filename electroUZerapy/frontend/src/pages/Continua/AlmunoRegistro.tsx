@@ -11,7 +11,6 @@ const AlumnoRegistro: React.FC = () => {
   const [present] = useIonToast();
   const {t} = useTranslation();
   const { codeQR } = useParams<{ codeQR: string }>();
-  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isTouched, setIsTouched] = useState(false)
@@ -19,7 +18,6 @@ const AlumnoRegistro: React.FC = () => {
   const {login} = useUser();
 
   const handleRegister = async () => {
-    setLoading(true);
     if (username == "" || password=="") {
       setIsTouched(true);
       return;
@@ -27,42 +25,30 @@ const AlumnoRegistro: React.FC = () => {
 
     try {
       const loginRes = await login(username, password);
-      if (loginRes.status !== 200) {
-        present({ message: t('LOGIN.ERROR'), duration: 4000, cssClass: 'error-toast' });
-        setLoading(false);
-        setIsTouched(true);
-        return;
-      }
-      setIsTouched(false);
-
       const userId = loginRes.data.user.id;
       const res = await registrarByCode(codeQR, userId);
-      if (res.status === 200) {
-        setIsTouched(false)
-        present({ message: t('CONTINUA.REGISTRADO'), duration: 4000, cssClass: 'success-toast' });
-      } else {
-        setIsTouched(true);
-        present({ message: t('CONTINUA.ALERTAS.ERROR_REGISTRO'), duration: 4000, cssClass: 'error-toast' });
-      }
-    } catch (error) {
-      console.error(error);
-      present({ message: t('CONTINUA.ALERTAS.ERROR_REGISTRO'), duration: 4000, cssClass: 'error-toast' });
+      setIsTouched(false)
+      const mensaje = res.data.messageCode;
+      present({ message: t(`CONTINUA.${mensaje}`), duration: 4000, cssClass: 'success-toast' });
+    
+    } catch (error: any) {
+      const mensaje = error?.response?.data?.messageCode || t(`CONTINUA.ALERTAS.ERROR_REGISTRO`);
+      present({ message:  t(`CONTINUA.ALERTAS.${mensaje}`), duration: 4000, cssClass: 'error-toast' });
       setIsTouched(true);
     }
-    setLoading(false);
   };
 
   return (
     <IonPage className='ion-no-padding ion-no-margin'>
       <IonContent className='ion-no-padding ion-no-margin' fullscreen>
         <div className='ion-margin ion-padding' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <h2 className='ion-no-padding ion-no-margin'>{t('LOGIN.INICIAR_SESION')}</h2>
-          <Logo type="home"/>
-          <IonRow style={{ width: '100%', maxWidth: '400px'}}>
+          <h1 className='ion-padding-top ion-no-margin'>{t('CONTINUA.REGISTRO')}</h1>
+          <Logo type="register"/>
+          <IonRow className='ion-padding-top' style={{ width: '100%', maxWidth: '400px'}}>
             <IonInput
               className={`${isTouched && "ion-invalid ion-touched"} ion-margin`}
               value={username}
-              onInput={(e) => setUsername((e.target as HTMLInputElement).value)}
+              onIonInput={(e) => setUsername(e.detail.value!)}
               label={t("LOGIN.USUARIO")}
               type="text"
               placeholder={t('LOGIN.USUARIO_PLACEHOLDER')}
@@ -75,7 +61,7 @@ const AlumnoRegistro: React.FC = () => {
             <IonInput
               className={`${isTouched && "ion-invalid ion-touched"} ion-margin`}
               value={password}
-              onInput={(e) => setPassword((e.target as HTMLInputElement).value)}
+              onIonInput={(e) => setPassword(e.detail.value!)}
               label={t("LOGIN.CONTRASENA")}
               type="password"
               placeholder={t("LOGIN.CONTRASENA_PLACEHOLDER")}
@@ -84,8 +70,8 @@ const AlumnoRegistro: React.FC = () => {
               color={'dark'}
             />
           </IonRow>
-          <IonButton onClick={handleRegister} disabled={loading}>
-            {loading ? t('GENERAL.CARGANDO') : t('CONTINUA.REGISTRAR')}
+          <IonButton className= "log-button ion-margin-top" strong={true} onClick={handleRegister}>
+            {t('CONTINUA.REGISTRAR')}
           </IonButton>
         </div>
       </IonContent>

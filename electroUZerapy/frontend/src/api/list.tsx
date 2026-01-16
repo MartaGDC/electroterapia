@@ -7,9 +7,9 @@ export const createNewList= async () =>
 export const getAllLists = async () =>
   await axiosConfig.get(constants.apiURL + "list/getAllLists");//PENDIENTE
 
-export const getListById = async (listId: string) =>
-  await axiosConfig.get(constants.apiURL + "list/getListById", { //PENDIENTE
-    params: { listId }
+export const getListByCode = async (codeQr: string) =>
+  await axiosConfig.get(constants.apiURL + "list/getListByCode", { //PENDIENTE
+    params: { codeQr }
   });
 
 export const cambiarEstado= async (props: any)  =>

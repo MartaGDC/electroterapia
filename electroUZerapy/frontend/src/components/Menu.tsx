@@ -179,7 +179,7 @@ return (
 
       {/*Continua*/}
       <ProtectedRoute protect={false} exact path="/app/evaluacionContinua" component={Continua} allowedRoles={[Roles.PROFESOR]} />
-      <ProtectedRoute protect={false} exact path="/app/salaListados/:id" component={SalaListados} allowedRoles={[Roles.PROFESOR]}/>
+      <ProtectedRoute protect={false} exact path="/app/salaListados/:codeQr" component={SalaListados} allowedRoles={[Roles.PROFESOR]}/>
       <ProtectedRoute protect={false} exact path="/app/alumnoRegistro/:codeQR" component={AlmunoRegistro} allowedRoles={[Roles.ALUMNO]} />
 
       {/* Alumnos */}

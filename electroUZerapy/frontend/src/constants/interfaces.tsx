@@ -136,7 +136,7 @@ export type Log = {
 
 export type List = {
   _id: string;
-  codigoQR: string;
+  codigo: string;
   teacher: string;
   asistentes: {userId: string, userName:string}[];
   isOpen: Boolean;

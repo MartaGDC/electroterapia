@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './SalaListados.css'
 import constants from '../../constants/constants';
-import { getListById, cambiarEstado} from '../../api/list';
+import { getListByCode, cambiarEstado} from '../../api/list';
 import { useParams } from 'react-router';
 import { List } from '../../constants/interfaces';
 import TogglePicker from '../../components/Pickers/TogglePicker';
@@ -14,7 +14,7 @@ import QRClass from './QRClass';
 const SalaListados: React.FC = () => {
     const [present] = useIonToast();
     const router = useIonRouter(); 
-    const { id } = useParams<{ id: string }>();
+    const { codeQr } = useParams<{ codeQr: string }>();
 
     const {t} = useTranslation();
     
@@ -24,7 +24,7 @@ const SalaListados: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
     
     const cambioDeEstado = async () => {
-        const res = await cambiarEstado({idList:id, isOpen});
+        const res = await cambiarEstado({codeQr: codeQr, isOpen});
         console.log(res);
         if (res.status === 200) {
             if (firstOpen.current) {
@@ -46,14 +46,14 @@ const SalaListados: React.FC = () => {
 
     useEffect(() => {
         const getList = async () => {
-            const res = await getListById(id);
+            const res = await getListByCode(codeQr);
             if (res.status === 200){
                 setList(res.data.list);
                 setIsOpen(res.data.list.isOpen);
             }
         }
         getList();
-    }, [id]);
+    }, [codeQr]);
 
     useEffect(() => {
         if (list) {
@@ -118,9 +118,10 @@ const SalaListados: React.FC = () => {
             </IonRow>
         </IonContent>
         <QRClass
-            value={id}
+            value={"lista"}
             isVisible={isVisible}
             setIsVisible={setIsVisible}
+            code = {codeQr}
         />
     </IonPage>
     );

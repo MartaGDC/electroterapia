@@ -5,7 +5,7 @@ import logo_azul from "../assets/LogoAzul.webp";
 import { useState } from "react";
 
 const Logo: React.FC<{
-  type: "home" | "login"
+  type: "home" | "login" | "register"
 }> = ({
   type
 }) => {
@@ -18,6 +18,11 @@ const Logo: React.FC<{
       }
       {type == "home" &&
         <div className="logo-home-box">
+          <img src={logo_azul} />
+        </div>
+      }
+      {type == "register" &&
+        <div className="logo-register-box">
           <img src={logo_azul} />
         </div>
       }

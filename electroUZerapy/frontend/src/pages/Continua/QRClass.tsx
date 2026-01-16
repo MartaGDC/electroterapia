@@ -21,10 +21,11 @@ const QRClass: React.FC<{
     const {t} = useTranslation();
     
     
-    const [codeQR, setCodeQR] = useState<string | null>(null);
+    const [codeQR, setCodeQR] = useState<string | null>(code || null);
     
     const crearListado = async () => {
         const res = await createNewList();
+        console.log(res);
         if (res.data.existingOpenList){
             setIsVisible(false);
             present({message: t('CONTINUA.ALERTAS.LISTA_EXISTE'), duration: 4000, cssClass: "error-toast"});
@@ -37,10 +38,12 @@ const QRClass: React.FC<{
 
     useEffect(() => {
         if (!isVisible) return;
-        if(value=='lista') {
+        if (code) {
+            setCodeQR(codeQR);
+        } else if (value ==="lista"){
             crearListado();
         }
-    }, [isVisible, value])
+    }, [isVisible, value, code])
 
 
 
@@ -56,7 +59,7 @@ const QRClass: React.FC<{
         };
     }, [isVisible, setIsVisible]);
 
-    //if(!sessionId) return null;
+    if(!codeQR) return null;
 
     return (
     <IonModal

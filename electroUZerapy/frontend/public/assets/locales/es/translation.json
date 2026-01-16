@@ -176,7 +176,8 @@
 
   "CONTINUA": {
     "LISTAS": "Listas de asistencia",
-    "REGISTRO": "Registra tu asistencia",
+    "REGISTRO": "Registre su asistencia",
+    "REGISTRAR": "Registrar",
     "KAHOOT": "Test de evaluación rápida",
     "TEMA": "Selecciona el tema:",
     "ACCESO_TEST": "Accede al test",
@@ -192,7 +193,9 @@
     "ALERTAS": {
       "LISTA_EXISTE":"Existe ya una lista abierta",
       "MAL_QR":"QR incorrecto",
-      "ERROR_REGISTRO": "Error al resgistrar asistencia"
+      "ERROR_REGISTRO": "Error al resgistrar asistencia",
+      "MAL_CLASE": "Clase cerrada o inexistente",
+      "REGISTRO_EXISTE": "Asistencia ya registrada"
     }
   },
 
