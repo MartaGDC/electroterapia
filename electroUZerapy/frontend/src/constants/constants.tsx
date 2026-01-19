@@ -1,5 +1,5 @@
 //importacion de iconos, accesibles en otros componenetes al estar en este objeto constants
-import { bodyOutline, desktopOutline, documentTextOutline, bulbOutline, locateOutline, medkitOutline, receiptOutline, schoolOutline, warningOutline, waterOutline } from "ionicons/icons";
+import { bodyOutline, desktopOutline, documentTextOutline, bulbOutline, locateOutline, medkitOutline, receiptOutline, schoolOutline, warningOutline, waterOutline, eyeOutline } from "ionicons/icons";
 
 const constants = {  
   modes: [ //array de configuraciones de modos, cada uno tiene name, ruta a la pantalla de aprendizaje y ruta a la de simulación.
@@ -16,8 +16,8 @@ const constants = {
     },
   ],
   timeLog: 5000, // ms. Probablemente para refrescar logs, temporizadores, polling, intervalos
-  //apiURL: "http://localhost:4000/api/", //url base del backend MODIFICADO PARA COINCIDA CON EL DEFINIDO EL BACKEND
-  apiURL: 'https://electroterapia-back.onrender.com/api/', //url base del backend
+  apiURL: "http://192.168.0.15:4000/api/", //url base del backend MODIFICADO PARA COINCIDA CON EL DEFINIDO EL BACKEND
+  //apiURL: 'https://electroterapia-back.onrender.com/api/', //url base del backend
   izqColAprendizaje: '6', //probablemente se usará para definir el número de columnas en layouts
   dchColAprendizaje: '6',
   izqColSimulacion: '6',
@@ -26,6 +26,7 @@ const constants = {
   simulacionIcon: bodyOutline,
   evaluacionIcon: documentTextOutline,
   continuaIcon: bulbOutline,
+  verIcon: eyeOutline,
   alumnosIcon: schoolOutline,
   complementosIcon: medkitOutline,
   aplicadoresIcon: locateOutline,

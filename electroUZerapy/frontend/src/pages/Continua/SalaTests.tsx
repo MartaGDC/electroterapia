@@ -110,7 +110,7 @@ const SalaTests: React.FC = () => {
                     <ul className='ion-no-padding ion-no-margin'>
                     {test && test.alumnos.map((user, idx) => (
                         <li className='ion-no-margin' key={idx}>
-                            {user.userName}
+                            {user.name}
                         </li>
                     ))}
                     </ul>

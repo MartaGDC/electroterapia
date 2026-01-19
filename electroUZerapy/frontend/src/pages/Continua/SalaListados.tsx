@@ -25,7 +25,6 @@ const SalaListados: React.FC = () => {
     
     const cambioDeEstado = async () => {
         const res = await cambiarEstado({codeQr: codeQr, isOpen});
-        console.log(res);
         if (res.status === 200) {
             if (firstOpen.current) {
                 firstOpen.current = false;
@@ -53,10 +52,11 @@ const SalaListados: React.FC = () => {
             }
         }
         getList();
-    }, [codeQr]);
+    }, [codeQr, list]);
 
     useEffect(() => {
         if (list) {
+            console.log(list);
             cambioDeEstado();
         }
     }, [isOpen]);
@@ -105,17 +105,21 @@ const SalaListados: React.FC = () => {
                     </IonButtons>
                 </IonToolbar>
             )}
-            <IonRow>
-                <IonCol className='ion-padding-start' size='8'>
-                    <ul className='ion-no-padding ion-no-margin'>
-                    {list && list.asistentes.map((user, idx) => (
-                        <li className='ion-no-margin' key={idx}>
-                            {user.userName}
-                        </li>
-                    ))}
-                    </ul>
-                </IonCol>
-            </IonRow>
+            <IonCol className='ion-no-padding' size='8'>
+                <h3 className='ion-padding-start ion-margin-start' style={{ fontWeight: 'bold', textDecoration: 'underline' }}>
+                    {t("CONTINUA.LISTA")} de {list && new Date(list.start).toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric'
+                    })}:
+                </h3>
+                {list && list.asistentes.map((user, idx) => (
+                <IonRow className="ion-padding ion-margin" key={idx}>
+                    <strong className='ion-padding-start ion-margin-start'>{idx + 1}.</strong>
+                    <span className="ion-padding-start ion-margin-start">{user.name}</span>
+                </IonRow>
+                ))}
+            </IonCol>
         </IonContent>
         <QRClass
             value={"lista"}

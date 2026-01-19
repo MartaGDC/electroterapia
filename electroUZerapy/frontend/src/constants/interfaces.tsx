@@ -138,7 +138,9 @@ export type List = {
   _id: string;
   codigo: string;
   teacher: string;
-  asistentes: {userId: string, userName:string}[];
+  asistentes: {
+      _id: string, name:string
+  }[];
   isOpen: Boolean;
   start: Date;
 }
@@ -146,7 +148,7 @@ export type List = {
 export type Test = {
   _id: string;
   teacher: string;
-  alumnos: {userId: string, userName:string}[];
+  alumnos: {userId: string, name:string}[];
   tema: string;
   codigoQR: string;
   isOpen: Boolean;

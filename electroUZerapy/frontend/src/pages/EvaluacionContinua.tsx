@@ -1,4 +1,4 @@
-import { IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonMenuButton, IonModal, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonMenuButton, IonModal, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
 import { add } from 'ionicons/icons';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -32,6 +32,14 @@ const Continua: React.FC = () => {
   const navigateTest = (id: string) => {
     event?.preventDefault();
     router.push(`/app/salaTest/${id}`, 'root', 'replace');
+  }
+
+  const verAsistencias = () => {
+    router.push('/app/asistencia', 'root', 'replace');
+  }
+  
+  const verNotas = () => {
+    router.push('/app/notas', 'root', 'replace');
   }
 
   const getListados = async () => {
@@ -88,10 +96,14 @@ const Continua: React.FC = () => {
       </IonHeader>
 
       <IonContent className='ion-padding' fullscreen>
-        <div className="lista-student-container">
-          <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
-            {t("CONTINUA.LISTAS")} 
+        <div className="lista-student-container" style={{display:'flex'}}>
+          <h2 className='ion-margin-top ion-margin-start ion-margin-end ion-no-margin ion-padding-end'> 
+            {t("CONTINUA.LISTAS")}
           </h2>
+          <IonFabButton onClick={() => verAsistencias()} className='ion-margin-top ion-margin-start ion-margin-end ion-no-margin'>
+              <IonIcon src={constants.verIcon} size='large' />
+          </IonFabButton>
+          
           <IonFabButton onClick={() => setQrListaVisible(true)} color={'dark'} className='ion-margin-top ion-margin-start ion-no-margin'>
               <IonIcon icon={add} ></IonIcon>
           </IonFabButton>
@@ -144,12 +156,17 @@ const Continua: React.FC = () => {
           </ul>
         </div>
 
-        <div className="lista-student-container ion-margin-top"></div>
-        <div className="lista-student-container ion-margin-top"></div>
-        <div className="lista-student-container">
-          <h2 className='ion-margin-top ion-margin-start ion-no-margin'> 
+        <div className="lista-student-container ion-margin"></div>
+        <div className="lista-student-container ion-margin"></div>
+        <div className="lista-student-container ion-margin"></div>
+        <div className="lista-student-container" style={{display:'flex'}}>
+          <h2 className='ion-margin-top ion-margin-start ion-margin-end ion-no-margin ion-padding-end'> 
             {t("CONTINUA.KAHOOT")} 
           </h2>
+          <IonFabButton onClick={() => verNotas()} className='ion-margin-top ion-margin-start ion-margin-end ion-no-margin'>
+              <IonIcon src={constants.verIcon} size='large' />
+          </IonFabButton>
+          
           <IonFabButton onClick={() => setTemasVisible(true)} color={'dark'} className='ion-margin-top ion-margin-start ion-no-margin'>
               <IonIcon icon={add} ></IonIcon>
           </IonFabButton>

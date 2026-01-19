@@ -46,6 +46,7 @@ import Actividad from '../pages/Evaluacion/Actividad';
 
 import Continua from '../pages/EvaluacionContinua';
 import SalaListados from '../pages/Continua/SalaListados';
+import Asistencia from '../pages/Continua/Asistencia';
 import AlmunoRegistro from '../pages/Continua/AlmunoRegistro';
       
 import { useUser } from '../context/userContext';
@@ -180,6 +181,7 @@ return (
       {/*Continua*/}
       <ProtectedRoute protect={false} exact path="/app/evaluacionContinua" component={Continua} allowedRoles={[Roles.PROFESOR]} />
       <ProtectedRoute protect={false} exact path="/app/salaListados/:codeQr" component={SalaListados} allowedRoles={[Roles.PROFESOR]}/>
+      <ProtectedRoute protect={false} exact path="/app/asistencia" component={Asistencia} allowedRoles={[Roles.PROFESOR]}/>
       <ProtectedRoute protect={false} exact path="/app/alumnoRegistro/:codeQR" component={AlmunoRegistro} allowedRoles={[Roles.ALUMNO]} />
 
       {/* Alumnos */}

@@ -3,6 +3,11 @@
     margin-left: 3vw;
     margin-top: 30px;
   }
+  .table-header {
+    border-bottom: 2px solid var(--ion-color-primary);
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+  }
   .lista-container {
     width: 100vw;
     display: flex;
