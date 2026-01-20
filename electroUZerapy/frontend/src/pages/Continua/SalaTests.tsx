@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './SalaTests.css'
 import constants from '../../constants/constants';
-import { getTestById, cambiarEstado} from '../../api/test';
+import { getTestById, getTestCorregidoById, cambiarEstado, getAllTestsCorregidos} from '../../api/test';
 import { useParams } from 'react-router';
 import { Test } from '../../constants/interfaces';
 import TogglePicker from '../../components/Pickers/TogglePicker';
@@ -13,19 +13,18 @@ import QRClass from './QRClass';
 
 const SalaTests: React.FC = () => {
     const [present] = useIonToast();
-    const router = useIonRouter(); 
-    const { id } = useParams<{ id: string }>();
+    const { testId } = useParams<{ testId: string }>();
 
     const {t} = useTranslation();
     
     const [test, setTest] = useState<Test>();
+    const [testCorregidos, setTestCorregidos] = useState<Test[]>([]);
     const firstOpen = useRef(true);
     const [isOpen, setIsOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     
     const cambioDeEstado = async () => {
-        const res = await cambiarEstado({idTest:id, isOpen});
-        console.log(res);
+        const res = await cambiarEstado({testId:testId, isOpen});
         if (res.status === 200) {
             if (firstOpen.current) {
                 firstOpen.current = false;
@@ -46,14 +45,27 @@ const SalaTests: React.FC = () => {
 
     useEffect(() => {
         const getTest = async () => {
-            const res = await getTestById(id);
+            const res = await getTestById(testId);
+            console.log(res);
             if (res.status === 200){
                 setTest(res.data.test);
                 setIsOpen(res.data.test.isOpen);
             }
         }
         getTest();
-    }, [id]);
+    }, [testId]);
+    
+    useEffect(() => {
+        const getTestCorregidos = async () => {
+            const res = await getTestCorregidoById(testId);
+            console.log(res);
+            if (res.status === 200){
+                setTest(res.data.test);
+                setIsOpen(res.data.test.isOpen);
+            }
+        }
+        getTestCorregidos();
+    }, [testId]);
 
     useEffect(() => {
         if (test) {
@@ -86,7 +98,7 @@ const SalaTests: React.FC = () => {
                 <TogglePicker
                     variable={isOpen}
                     onChange={() => setIsOpen(!isOpen)}
-                    name={t('CONTINUA.ESTADO.LABEL')}
+                    name={t('CONTINUA.EXAMEN.LABEL')}
                     msgTrue={t('CONTINUA.ESTADO.ABIERTO')}
                     msgFalse={t('CONTINUA.ESTADO.CERRADO')}
                 />
@@ -105,20 +117,24 @@ const SalaTests: React.FC = () => {
                     </IonButtons>
                 </IonToolbar>
             )}
-            <IonRow>
-                <IonCol className='ion-padding-start' size='8'>
-                    <ul className='ion-no-padding ion-no-margin'>
-                    {test && test.alumnos.map((user, idx) => (
-                        <li className='ion-no-margin' key={idx}>
-                            {user.name}
-                        </li>
-                    ))}
-                    </ul>
-                </IonCol>
-            </IonRow>
+            <IonCol className='ion-padding-start' size='8'>
+                <h3 className='ion-padding-start ion-margin-start' style={{ fontWeight: 'bold', textDecoration: 'underline' }}>
+                    {t("CONTINUA.LISTA")} de {test && new Date(test.start).toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric'
+                    })}:
+                </h3>
+                {test?.alumnos?.map((user, idx) => (
+                    <IonRow className="ion-padding ion-margin" key={user._id ?? idx}>
+                        <strong className='ion-padding-start ion-margin-start'>{idx + 1}.</strong>
+                        <span className="ion-padding-start ion-margin-start">{user.name}</span>
+                    </IonRow>
+                ))}
+            </IonCol>
         </IonContent>
         <QRClass
-            value={id}
+            value="test"
             isVisible={isVisible}
             setIsVisible={setIsVisible}
         />

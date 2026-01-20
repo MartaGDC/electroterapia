@@ -191,6 +191,11 @@
       "ABIERTO": "Abierto",
       "CERRADO": "Cerrado"
     },
+    "EXAMEN":{
+      "LABEL":"Estado del examen",
+      "ABIERTO": "Abierto",
+      "CERRADO": "Cerrado"
+    },
     "ALERTAS": {
       "LISTA_EXISTE":"Existe ya una lista abierta",
       "MAL_QR":"QR incorrecto",

@@ -47,8 +47,11 @@ import Actividad from '../pages/Evaluacion/Actividad';
 import Continua from '../pages/EvaluacionContinua';
 import SalaListados from '../pages/Continua/SalaListados';
 import Asistencia from '../pages/Continua/Asistencia';
+import SalaTests from '../pages/Continua/SalaTests';
+import Notas from '../pages/Continua/Notas';
 import AlmunoRegistro from '../pages/Continua/AlmunoRegistro';
-      
+import RegistroExamen from '../pages/Continua/RegistroExamen';
+
 import { useUser } from '../context/userContext';
 import constants from '../constants/constants';
 import { Roles } from '../constants/interfaces';
@@ -182,7 +185,10 @@ return (
       <ProtectedRoute protect={false} exact path="/app/evaluacionContinua" component={Continua} allowedRoles={[Roles.PROFESOR]} />
       <ProtectedRoute protect={false} exact path="/app/salaListados/:codeQr" component={SalaListados} allowedRoles={[Roles.PROFESOR]}/>
       <ProtectedRoute protect={false} exact path="/app/asistencia" component={Asistencia} allowedRoles={[Roles.PROFESOR]}/>
+      <ProtectedRoute protect={false} exact path="/app/salaTests/:testId" component={SalaTests} allowedRoles={[Roles.PROFESOR]}/>
+      <ProtectedRoute protect={false} exact path="/app/notas" component={Notas} allowedRoles={[Roles.PROFESOR]}/>
       <ProtectedRoute protect={false} exact path="/app/alumnoRegistro/:codeQR" component={AlmunoRegistro} allowedRoles={[Roles.ALUMNO]} />
+      <ProtectedRoute protect={false} exact path="/app/registroExamen/:codeQR" component={RegistroExamen} allowedRoles={[Roles.ALUMNO]} />
 
       {/* Alumnos */}
       <ProtectedRoute protect={false} exact path="/app/alumnos" component={Alumnos} allowedRoles={[Roles.PROFESOR]} />

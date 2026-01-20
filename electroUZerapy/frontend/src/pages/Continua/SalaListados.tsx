@@ -13,7 +13,6 @@ import QRClass from './QRClass';
 
 const SalaListados: React.FC = () => {
     const [present] = useIonToast();
-    const router = useIonRouter(); 
     const { codeQr } = useParams<{ codeQr: string }>();
 
     const {t} = useTranslation();
@@ -52,11 +51,10 @@ const SalaListados: React.FC = () => {
             }
         }
         getList();
-    }, [codeQr, list]);
+    }, [codeQr]);
 
     useEffect(() => {
         if (list) {
-            console.log(list);
             cambioDeEstado();
         }
     }, [isOpen]);

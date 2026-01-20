@@ -148,9 +148,9 @@ export type List = {
 export type Test = {
   _id: string;
   teacher: string;
-  alumnos: {userId: string, name:string}[];
+  alumnos: {_id: string, name:string}[];
   tema: string;
-  codigoQR: string;
+  codigo: string;
   isOpen: Boolean;
   start: Date;
 }

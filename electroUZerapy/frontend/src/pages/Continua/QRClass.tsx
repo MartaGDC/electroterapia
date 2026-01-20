@@ -4,7 +4,6 @@ import { IonButton, IonButtons, IonContent, IonHeader, IonInput, IonModal, IonTe
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createNewList } from '../../api/list';
-import { useParams } from 'react-router';
 
 import QRCode from "react-qr-code";
 
@@ -39,10 +38,11 @@ const QRClass: React.FC<{
     useEffect(() => {
         if (!isVisible) return;
         if (code) {
-            setCodeQR(codeQR);
+            setCodeQR(code);
         } else if (value ==="lista"){
             crearListado();
         }
+
     }, [isVisible, value, code])
 
 
@@ -66,14 +66,18 @@ const QRClass: React.FC<{
         isOpen={isVisible}
         onIonModalDidDismiss={() => {setIsVisible(false)}}
     >
-        {value == 'lista' ? (
+        {value == 'lista' && (
             <IonContent className="ion-padding ion-text-center">
-            <h2 className='ion-padding-bottom'>{t("CONTINUA.REGISTRO")}</h2>
-            <QRCode value={`http://192.168.0.15:5173/app/alumnoRegistro/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
-        </IonContent>
-        ) : null}
-
-        
+                <h2 className='ion-padding-bottom'>{t("CONTINUA.REGISTRO")}</h2>
+                <QRCode value={`http://192.168.0.15:5173/app/alumnoRegistro/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
+            </IonContent>
+        )}
+        {value == 'test' && (
+            <IonContent className="ion-padding ion-text-center">
+                <h2 className='ion-padding-bottom'>{t("CONTINUA.ACCESO_TEST")}</h2>
+                <QRCode value={`http://192.168.0.15:5173/app/registroExamen/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
+            </IonContent>
+        )}
     </IonModal>
     );
 };

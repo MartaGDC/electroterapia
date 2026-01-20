@@ -8,42 +8,10 @@ import { getAllLists } from '../../api/list';
 import { List } from '../../constants/interfaces';
 import './SalaListados.css';
 
-const Asistencia: React.FC = () => {
+const Notas: React.FC = () => {
     const {t} = useTranslation();
-    const [lists, setLists] = useState<List[]>([]);
-
-    useEffect(() => {
-        const getLists = async () => {
-            const res = await getAllLists();
-            if (res.status === 200){
-                setLists(res.data.lists);
-            }
-        };
-        getLists();
-    }, []);
-
-const numLists = lists?.length;
-const asistenciaStats = Object.values(lists.reduce((acum, list) => {
-    list.asistentes.forEach((user) => {
-      if (!acum[user._id]) {
-        acum[user._id] = {
-          userId: user._id,
-          name: user.name,
-          asiste: 0
-        };
-      }
-      acum[user._id].asiste += 1;
-    });
-    return acum;
-  }, {} as Record<string, {userId: string, name: string, asiste: number}>)
-).map(user => ({
-  ...user,
-  falta: numLists - user.asiste
-}));
-
-
-
-
+        const [lists, setLists] = useState<List[]>([]);
+    
 return (
     <IonPage>
         <IonHeader className='page-header'>
@@ -70,17 +38,8 @@ return (
                         <IonCol className="ion-text-center table-header"><h3>Total</h3></IonCol>
                         <IonCol className="ion-text-center table-header"></IonCol>
                     </IonRow>
-                    {asistenciaStats.map((user, idx) => (
-                    <IonRow className="ion-margin-start ion-margin-top ion-padding-start ion-margin-end ion-padding-end" key={idx}>
-                        <IonCol className="ion-text-center">{user.name}</IonCol>
-                        <IonCol className="ion-text-center">{user.asiste}</IonCol>
-                        <IonCol className="ion-text-center">{user.falta}</IonCol>
-                        <IonCol className="ion-text-center">{numLists}</IonCol>
-                        <IonCol className="ion-text-center">
-                            {numLists > 0 ? ((user.asiste / numLists) * 100).toFixed(2) : '0.00'} %</IonCol>
-
-                    </IonRow>
-                    ))}
+                    
+                    
                 </IonGrid>
             </IonCol>
         </IonContent>
@@ -88,4 +47,4 @@ return (
     );
 };
 
-export default Asistencia;
+export default Notas;
