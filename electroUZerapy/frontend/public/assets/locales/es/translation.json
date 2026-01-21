@@ -181,7 +181,10 @@
     "REGISTRAR": "Registrar",
     "KAHOOT": "Test de evaluación rápida",
     "TEMA": "Selecciona el tema:",
-    "ACCESO_TEST": "Accede al test",
+    "ACCESO_TEST": "Acceda al test",
+    "ACCEDER": "Acceder",
+    "HACER_TEST": "Realice el test",
+    "TEST_FINALIZADO": "Test finalizado",
     "CAMBIADA": "Actividad actualizada",
     "ERROR_CAMBIO": "Error al actualizar. Vuelva a intentarlo más tarde",
     "MOSTRAR_QR": "Mostrar QR",
@@ -201,7 +204,8 @@
       "MAL_QR":"QR incorrecto",
       "ERROR_REGISTRO": "Error al resgistrar asistencia",
       "MAL_CLASE": "Clase cerrada o inexistente",
-      "REGISTRO_EXISTE": "Asistencia ya registrada"
+      "REGISTRO_EXISTE": "Asistencia ya registrada",
+      "ERROR_CREAR_TEST": "Error al crear el test"
     }
   },
 

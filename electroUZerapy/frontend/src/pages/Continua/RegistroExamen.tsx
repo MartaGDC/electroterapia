@@ -3,10 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 import { useUser } from '../../context/userContext';
-import { registrarByCode } from '../../api/list';
 import Logo from '../../components/Logo';
 import { crearTestAleatorio } from '../../api/test';
-import { code } from 'ionicons/icons';
 
 
 const RegistroExamen: React.FC = () => {
@@ -21,12 +19,12 @@ const RegistroExamen: React.FC = () => {
     
   const {login} = useUser();
 
-  const crearTestCorregido = async () => {
-    const res = await crearTestAleatorio({code: codeQR});
+  const crearTestCorregido = async (id: string) => {
+    const res = await crearTestAleatorio(codeQR, id);
     if (res.status === 200) {
       return res.data.quizId;
     } else {
-      present({ message: t('CONTINUA.ERROR_CREAR_TEST'), duration: 4000, cssClass: "error-toast" });
+      present({ message: t('CONTINUA.ALERTA.ERROR_CREAR_TEST'), duration: 4000, cssClass: "error-toast" });
       return null;
     }
   };
@@ -40,19 +38,14 @@ const RegistroExamen: React.FC = () => {
     try {
       const loginRes = await login(username, password);
       const userId = loginRes.data.user.id;
-      const res = await registrarByCode(codeQR, userId);
-      setIsTouched(false)
-      const mensaje = res.data.messageCode;
-      present({ message: t(`CONTINUA.${mensaje}`), duration: 4000, cssClass: 'success-toast' });
-      event?.preventDefault();
-      const testCorregidoId = await crearTestCorregido();
+      const testCorregidoId = await crearTestCorregido(userId);
+      console.log("Test corregido ID:", testCorregidoId);
       if (testCorregidoId)
         router.push(`/app/alumnoTest/${testCorregidoId}`, 'root', 'replace');
-      //router.push(`/app/alumnoTest/${testCorregidoId}`, 'root', 'replace');
-    
+      
     } catch (error: any) {
-      const mensaje = error?.response?.data?.messageCode || t(`CONTINUA.ALERTAS.ERROR_REGISTRO`);
-      present({ message:  t(`CONTINUA.ALERTAS.${mensaje}`), duration: 4000, cssClass: 'error-toast' });
+      const mensaje = error?.response?.data?.message;
+      present({ message:  mensaje, duration: 4000, cssClass: 'error-toast' });
       setIsTouched(true);
     }
   };
@@ -61,7 +54,7 @@ const RegistroExamen: React.FC = () => {
     <IonPage className='ion-no-padding ion-no-margin'>
       <IonContent className='ion-no-padding ion-no-margin' fullscreen>
         <div className='ion-margin ion-padding' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <h1 className='ion-padding-top ion-no-margin'>{t('CONTINUA.REGISTRO')}</h1>
+          <h1 className='ion-padding-top ion-no-margin'>{t('CONTINUA.ACCESO_TEST')}</h1>
           <Logo type="register"/>
           <IonRow className='ion-padding-top' style={{ width: '100%', maxWidth: '400px'}}>
             <IonInput
@@ -90,7 +83,7 @@ const RegistroExamen: React.FC = () => {
             />
           </IonRow>
           <IonButton className= "log-button ion-margin-top" strong={true} onClick={navigateExamen}>
-            {t('CONTINUA.REGISTRAR')}
+            {t('CONTINUA.ACCEDER')}
           </IonButton>
         </div>
       </IonContent>

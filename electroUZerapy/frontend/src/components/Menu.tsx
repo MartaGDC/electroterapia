@@ -51,6 +51,7 @@ import SalaTests from '../pages/Continua/SalaTests';
 import Notas from '../pages/Continua/Notas';
 import AlmunoRegistro from '../pages/Continua/AlmunoRegistro';
 import RegistroExamen from '../pages/Continua/RegistroExamen';
+import AlumnoTest from '../pages/Continua/AlumnoTest';
 
 import { useUser } from '../context/userContext';
 import constants from '../constants/constants';
@@ -189,6 +190,7 @@ return (
       <ProtectedRoute protect={false} exact path="/app/notas" component={Notas} allowedRoles={[Roles.PROFESOR]}/>
       <ProtectedRoute protect={false} exact path="/app/alumnoRegistro/:codeQR" component={AlmunoRegistro} allowedRoles={[Roles.ALUMNO]} />
       <ProtectedRoute protect={false} exact path="/app/registroExamen/:codeQR" component={RegistroExamen} allowedRoles={[Roles.ALUMNO]} />
+      <ProtectedRoute protect={false} exact path="/app/alumnoTest/:quizId" component={AlumnoTest} allowedRoles={[Roles.ALUMNO]} />
 
       {/* Alumnos */}
       <ProtectedRoute protect={false} exact path="/app/alumnos" component={Alumnos} allowedRoles={[Roles.PROFESOR]} />

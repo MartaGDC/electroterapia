@@ -25,11 +25,13 @@ export const getTestCorregidoById = async (testId: string) =>
 export const cambiarEstado= async (props: any)  =>
   await axiosConfig.post(constants.apiURL + "test/cambiarEstadoTest", props);
 
-export const crearTestAleatorio = async (props: any) =>
-  await axiosConfig.get(constants.apiURL + "test/crearTestAleatorio", props);
+export const crearTestAleatorio = async (code: string, userId: string) =>
+  await axiosConfig.post(constants.apiURL + "test/crearTestAleatorio",  {code, userId});
 
-export const submit = async (testId: string) => 
-  await axiosConfig.post(constants.apiURL + "test/submitTest", {
-    params: {testId}
+export const getTestAleatorio = async (quizId: string) =>
+  await axiosConfig.get(constants.apiURL + "test/getTestAleatorio", {
+    params: { quizId }
   });
 
+export const submit = async (testId: string, respuestas: any[]) => 
+  await axiosConfig.post(constants.apiURL + "test/submitTest", {testId, respuestas});
