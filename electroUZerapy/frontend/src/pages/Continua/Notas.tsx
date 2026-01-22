@@ -68,8 +68,8 @@ return (
                 </h2>
                 <IonGrid className="ion-padding ion-margin">
                     <IonRow className="ion-margin-start ion-padding-start ion-margin-end ion-padding-end" style={{background: 'var(--ion-color-primary)', color: 'white', borderRadius: '10px'}}>
-                        <IonCol className="ion-text-center table-header"><h3>Usuario</h3></IonCol>
-                        <IonCol className="ion-text-center table-header"><h3>Score medio</h3></IonCol>
+                        <IonCol className="ion-text-center table-header"><h3>{t("LOGIN.USUARIO")}</h3></IonCol>
+                        <IonCol className="ion-text-center table-header"><h3>{t("CONTINUA.SCORE_MEDIO")}</h3></IonCol>
                     </IonRow>
                     {resultado.map((user, idx) => (
                         <IonRow className="ion-margin-start ion-margin-top ion-padding-start ion-margin-end ion-padding-end" key={idx}>

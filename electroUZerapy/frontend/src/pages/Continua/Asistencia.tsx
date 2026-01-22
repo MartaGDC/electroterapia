@@ -64,10 +64,10 @@ return (
                 </h2>
                 <IonGrid className="ion-padding ion-margin">
                     <IonRow className="ion-margin-start ion-padding-start ion-margin-end ion-padding-end" style={{background: 'var(--ion-color-primary)', color: 'white', borderRadius: '10px'}}>
-                        <IonCol className="ion-text-center table-header"><h3>Usuario</h3></IonCol>
-                        <IonCol className="ion-text-center table-header"><h3>Asistencias</h3></IonCol>
-                        <IonCol className="ion-text-center table-header"><h3>Faltas</h3></IonCol>
-                        <IonCol className="ion-text-center table-header"><h3>Total</h3></IonCol>
+                        <IonCol className="ion-text-center table-header"><h3>{t("LOGIN.USUARIO")}</h3></IonCol>
+                        <IonCol className="ion-text-center table-header"><h3>{t("CONTINUA.ASISTENCIA")}</h3></IonCol>
+                        <IonCol className="ion-text-center table-header"><h3>{t("CONTINUA.AUSENCIA")}</h3></IonCol>
+                        <IonCol className="ion-text-center table-header"><h3>{t("CONTINUA.TOTAL")}</h3></IonCol>
                         <IonCol className="ion-text-center table-header"></IonCol>
                     </IonRow>
                     {asistenciaStats.map((user, idx) => (

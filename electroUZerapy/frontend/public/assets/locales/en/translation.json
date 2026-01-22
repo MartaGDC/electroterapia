@@ -14,6 +14,7 @@
     "APRENDIZAJE": "Learning",
     "SIMULACION": "Simulation",
     "EVALUACION": "Assessment",
+    "CONTINUA": "Continuous assessment",
     "USUARIOS": "Users",
     "AJUSTES": "Settings",
     "CERRAR_SESION": "Log out"
@@ -45,6 +46,7 @@
     "SUB_APRENDIZAJE": "Explore each simulator, practice without limits, and access theoretical information to understand electrotherapy concepts",
     "SUB_SIMULACION": "Simulate the use of an electrotherapy device in a realistic clinical setting. Set parameters, place electrodes on the body, and practice without evaluation or theoretical help",
     "SUB_EVALUACION": "Solve practical cases created by your teacher. The system records your actions so they can be evaluated later. Put your knowledge into practice as if you were in a real environment!",
+    "SUB_CONTINUA": "Check attendance lists and generate quick evaluations for students",
     "SUB_ALUMNOS": "Create and delete users in the application"
   },
 
@@ -170,6 +172,48 @@
     "CODIGO_PLACEHOLDER": "Enter the activity code",
     "CODIGO_BUTTON": "Submit",
     "ESTADISTICAS": "Statistics"
+  },
+
+    "CONTINUA": {
+    "LISTAS": "Attendance lists",
+    "LISTA": "Student list",
+    "REGISTRO": "Register your attendance",
+    "REGISTRAR": "Register",
+    "KAHOOT": "Quick evaluation test",
+    "TEMA": "Select the topic:",
+    "ACCESO_TEST": "Access the test",
+    "ACCEDER": "Access",
+    "HACER_TEST": "Take the test",
+    "TEST_FINALIZADO": "Test completed",
+    "CAMBIADA": "Activity updated",
+    "ERROR_CAMBIO": "Error updating. Please try again later",
+    "MOSTRAR_QR": "Show QR",
+    "REGISTRADO": "Attendance registered successfully",
+    "ASISTENCIA": "Attendance",
+    "AUSENCIA": "Absences",
+    "TOTAL": "Total",
+    "PREGUNTA": "Question",
+    "SCORE_MEDIO": "Average Score",
+    "ESTADO":{
+      "LABEL":"State of registry",
+      "ABIERTO": "Open",
+      "CERRADO": "Closed"
+    },
+    "EXAMEN":{
+      "LABEL":"State of the exam",
+      "ABIERTO": "Open",
+      "CERRADO": "Closed"
+    },
+    "ALERTAS": {
+      "LISTA_EXISTE":"There is already an open list",
+      "MAL_QR":"Invalid QR code",
+      "ERROR_REGISTRO": "Error registering attendance",
+      "MAL_CLASE": "Class closed or non-existent",
+      "REGISTRO_EXISTE": "Attendance already registered",
+      "ERROR_CREAR_TEST": "Error creating the test",
+      "MAL_TEST": "Incorrect or closed questionnaire",
+      "TEST_EXISTE": "Questionnaire already completed"
+    }
   },
 
   "ESTADISTICAS": {
@@ -502,16 +546,19 @@
         "NMES"
       ]
     },
+
     "FORMA_ONDA": {
       "LABEL": "Waveform", "PH": "Select waveform",
       "OPCIONES": ["Symmetrical", "Asymmetrical"]
     },
+    
     "ELECTRODOS": {
       "ELECTRODOS": "Electrodes",
       "CATODO": { "LABEL": "Cathode (-, black)", "PH": "Electrode material" },
       "ANODO": { "LABEL": "Anode (+, red)", "PH": "Electrode material" },
       "TAMAÑO": { "LABEL": "Size", "PH": "Electrode size" }
     },
+    
     "FIBRAS": {
       "LABEL": "Stimulated fibers",
       "PH": "Select stimulated fibers",
@@ -520,6 +567,7 @@
         "Adelta fibers"
       ]
     },
+    
     "RANGO_RECOMENDADO": "Within working range",
     "RANGO_NO_RECOMENDADO": "Outside working range",
     "RANGO_FIBRAS": {
@@ -1114,6 +1162,7 @@
       "CABEZAL": "Select head",
       "TRATAMIENTO": "Set treatment time"
     }
+    
   },
 
   "ONDAS_CHOQUE": {
@@ -1174,4 +1223,5 @@
       "TRATAMIENTO": "Set treatment time"
     }
   }
+
 }

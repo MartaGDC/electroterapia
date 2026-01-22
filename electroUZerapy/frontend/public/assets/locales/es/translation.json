@@ -189,6 +189,11 @@
     "ERROR_CAMBIO": "Error al actualizar. Vuelva a intentarlo más tarde",
     "MOSTRAR_QR": "Mostrar QR",
     "REGISTRADO": "Asistencia registrada correctamente",
+    "ASISTENCIA": "Asistencia",
+    "AUSENCIA": "Faltas",
+    "TOTAL": "Total",
+    "PREGUNTA": "Pregunta",
+    "SCORE_MEDIO": "Score medio",
     "ESTADO":{
       "LABEL":"Estado del registro",
       "ABIERTO": "Abierto",
@@ -205,7 +210,9 @@
       "ERROR_REGISTRO": "Error al resgistrar asistencia",
       "MAL_CLASE": "Clase cerrada o inexistente",
       "REGISTRO_EXISTE": "Asistencia ya registrada",
-      "ERROR_CREAR_TEST": "Error al crear el test"
+      "ERROR_CREAR_TEST": "Error al crear el test",
+      "MAL_TEST": "Cuestionario incorrecto o cerrado",
+      "TEST_EXISTE": "Cuestionario ya realizado"
     }
   },
 

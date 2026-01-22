@@ -44,7 +44,7 @@ const RegistroExamen: React.FC = () => {
         router.push(`/app/alumnoTest/${testCorregidoId}`, 'root', 'replace');
       
     } catch (error: any) {
-      const mensaje = error?.response?.data?.message;
+      const mensaje = error?.response?.data?.messageCode || t(`CONTINUA.ALERTAS.ERROR_CREAR_TEST`);
       present({ message:  mensaje, duration: 4000, cssClass: 'error-toast' });
       setIsTouched(true);
     }

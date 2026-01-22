@@ -59,7 +59,7 @@ const AlumnoTest: React.FC = () => {
                             <h1 className='ion-padding ion-margin'>{t('CONTINUA.HACER_TEST')}</h1>
                             <IonCard className='ion-no-padding ion-no-margin' style={{ width: '80%', maxWidth: '400px'}}>
                                 <IonCardHeader className= 'ion-no-padding ion-margin'>
-                                    <IonCardTitle className='ion-no-margin ion-text-center'>Pregunta {indice + 1} / {preguntas.length}</IonCardTitle>
+                                    <IonCardTitle className='ion-no-margin ion-text-center'>{t('CONTINUA.PREGUNTA')} {indice + 1} / {preguntas.length}</IonCardTitle>
                                 </IonCardHeader>
                                 <IonCardContent className='ion-margin ion-padding'>
                                     <h2>{pregunta.pregunta}</h2>
