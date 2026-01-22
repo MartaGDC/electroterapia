@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './SalaTests.css'
 import constants from '../../constants/constants';
-import { getTestById, getTestCorregidoById, cambiarEstado, getAllTestsCorregidos} from '../../api/test';
+import { getTestById, getTestCorregidoById, cambiarEstado} from '../../api/test';
 import { useParams } from 'react-router';
 import { Test } from '../../constants/interfaces';
 import TogglePicker from '../../components/Pickers/TogglePicker';
@@ -22,6 +22,7 @@ const SalaTests: React.FC = () => {
     const firstOpen = useRef(true);
     const [isOpen, setIsOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [codeQR, setCodeQR] = useState('');
     
     const cambioDeEstado = async () => {
         const res = await cambiarEstado({testId:testId, isOpen});
@@ -46,9 +47,9 @@ const SalaTests: React.FC = () => {
     useEffect(() => {
         const getTest = async () => {
             const res = await getTestById(testId);
-            console.log(res);
             if (res.status === 200){
                 setTest(res.data.test);
+                setCodeQR(res.data.test.codigo);
                 setIsOpen(res.data.test.isOpen);
             }
         }
@@ -60,8 +61,7 @@ const SalaTests: React.FC = () => {
             const res = await getTestCorregidoById(testId);
             console.log(res);
             if (res.status === 200){
-                setTest(res.data.test);
-                setIsOpen(res.data.test.isOpen);
+                setTestCorregidos(res.data.testCorregido);
             }
         }
         getTestCorregidos();
@@ -125,16 +125,18 @@ const SalaTests: React.FC = () => {
                         day: 'numeric'
                     })}:
                 </h3>
-                {test?.alumnos?.map((user, idx) => (
-                    <IonRow className="ion-padding ion-margin" key={user._id ?? idx}>
+                {testCorregidos && testCorregidos.length > 0 && testCorregidos.map((test, idx) => (
+                    <IonRow className="ion-padding ion-margin" key={test._id ?? idx}>
                         <strong className='ion-padding-start ion-margin-start'>{idx + 1}.</strong>
-                        <span className="ion-padding-start ion-margin-start">{user.name}</span>
+                        <span className="ion-padding-start ion-margin-start">{test.alumno.name}</span>
+                        <span className="ion-padding-start ion-margin-start">{test.score/4*10}</span>
                     </IonRow>
                 ))}
             </IonCol>
         </IonContent>
         <QRClass
             value="test"
+            code={codeQR}
             isVisible={isVisible}
             setIsVisible={setIsVisible}
         />

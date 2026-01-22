@@ -4,14 +4,50 @@ import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import constants from '../../constants/constants';
-import { getAllLists } from '../../api/list';
-import { List } from '../../constants/interfaces';
+import { getAllTests, getTestCorregidoById } from '../../api/test';
 import './SalaListados.css';
 
 const Notas: React.FC = () => {
     const {t} = useTranslation();
-        const [lists, setLists] = useState<List[]>([]);
-    
+    const [resultado, setResultado] = useState<any[]>([]);
+
+    type scoreAlumno = {
+        name: string;
+        score: number;
+        examenes: number;
+        media: number;
+    };
+
+    useEffect(() => {
+        const getTests = async () => {
+            const resTests = await getAllTests();
+            if (resTests.status !== 200) return;
+            const mapAlumnos: Record<string, scoreAlumno>={};
+
+            for (const test of resTests.data.tests) {
+                const resNotas = await getTestCorregidoById(test._id);
+                if (resNotas.status !== 200) continue;
+
+                const testCorregidos = Array.isArray(resNotas.data.testCorregido) ? resNotas.data.testCorregido : [resNotas.data.testCorregido];
+
+                for (const examen of testCorregidos) {
+                    const name = examen.alumno.name;
+                    if (!mapAlumnos[name]) {
+                        mapAlumnos[name] = { name, score: 0, examenes: 0, media: 0 };
+                    }
+                    mapAlumnos[name].score += examen.score/4*10;
+                    mapAlumnos[name].examenes += 1;
+                }
+            }
+            const resultado = Object.values(mapAlumnos).map(alumno => ({
+                ...alumno,
+                media: alumno.score / alumno.examenes
+            }));
+            setResultado(resultado);
+        };
+        getTests();
+    }, []);
+
 return (
     <IonPage>
         <IonHeader className='page-header'>
@@ -33,12 +69,14 @@ return (
                 <IonGrid className="ion-padding ion-margin">
                     <IonRow className="ion-margin-start ion-padding-start ion-margin-end ion-padding-end" style={{background: 'var(--ion-color-primary)', color: 'white', borderRadius: '10px'}}>
                         <IonCol className="ion-text-center table-header"><h3>Usuario</h3></IonCol>
-                        <IonCol className="ion-text-center table-header"><h3>Asistencias</h3></IonCol>
-                        <IonCol className="ion-text-center table-header"><h3>Faltas</h3></IonCol>
-                        <IonCol className="ion-text-center table-header"><h3>Total</h3></IonCol>
-                        <IonCol className="ion-text-center table-header"></IonCol>
+                        <IonCol className="ion-text-center table-header"><h3>Score medio</h3></IonCol>
                     </IonRow>
-                    
+                    {resultado.map((user, idx) => (
+                        <IonRow className="ion-margin-start ion-margin-top ion-padding-start ion-margin-end ion-padding-end" key={idx}>
+                            <IonCol className="ion-text-center">{user.name}</IonCol>
+                            <IonCol className="ion-text-center">{user.media}</IonCol>
+                        </IonRow>
+                    ))}
                     
                 </IonGrid>
             </IonCol>

@@ -148,7 +148,8 @@ export type List = {
 export type Test = {
   _id: string;
   teacher: string;
-  alumnos: {_id: string, name:string}[];
+  alumno: {_id: string, name:string};
+  score: number;
   tema: string;
   codigo: string;
   isOpen: Boolean;

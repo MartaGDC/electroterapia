@@ -69,13 +69,13 @@ const QRClass: React.FC<{
         {value == 'lista' && (
             <IonContent className="ion-padding ion-text-center">
                 <h2 className='ion-padding-bottom'>{t("CONTINUA.REGISTRO")}</h2>
-                <QRCode value={`http://192.168.0.15:5173/app/alumnoRegistro/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
+                <QRCode value={`http://10.1.160.105:5173/app/alumnoRegistro/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
             </IonContent>
         )}
         {value == 'test' && (
             <IonContent className="ion-padding ion-text-center">
                 <h2 className='ion-padding-bottom'>{t("CONTINUA.ACCESO_TEST")}</h2>
-                <QRCode value={`http://192.168.0.15:5173/app/registroExamen/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
+                <QRCode value={`http://10.1.160.105:5173/app/registroExamen/${codeQR}`} style={{ maxHeight: "80%", width: "auto" }}/>
             </IonContent>
         )}
     </IonModal>
